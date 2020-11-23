@@ -1,7 +1,7 @@
 import React from 'react';
 import { LoginForm } from './components/Login';
 import { SideSection } from './components/Side-section';
-import RegistrationForm from './components/Registration';
+import { RegistrationForm}  from './components/Registration';
 import { Map } from './components/Map';
 import { Profile } from './components/Profile';
 import './css/App.css';
@@ -11,14 +11,15 @@ import './css/Side-section.css';
 import map from './map.png';
 import logo from './Logo2.svg';
 
-const PAGES = {
+const PAGES = (navigateTo) => ({
   map: <Map />,
   profile: <Profile />,
-  login: <LoginForm />
-}
+  login: <LoginForm navigateTo={navigateTo}/>,
+  registration: <RegistrationForm navigateTo={navigateTo}/>
+})
 
-class App extends React.Component {
-  state = { currentPage: "map" }
+export class App extends React.Component {
+  state = { currentPage: "login" }
 
   navigateTo = (page) => {
     this.setState({ currentPage: page});
@@ -49,7 +50,7 @@ class App extends React.Component {
         </header>
         <main className="Main">
           <section className="Container">
-            {PAGES[this.state.currentPage]}
+            {PAGES(this.navigateTo)[this.state.currentPage]}
           </section>
         </main>
       </div>
