@@ -1,7 +1,9 @@
 import React from 'react';
 
-export const Profile = () => {
+const Profile = () => {
   return (
     <>Profile</>
   )
 }
+
+export default Profile;

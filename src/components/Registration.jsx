@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const RegistrationForm = ({navigateTo}) => {
+const RegistrationForm = ({navigateTo}) => {
  
   return (
     <form onSubmit={() => navigateTo("map")} className="Registration-form">
@@ -15,10 +15,11 @@ export const RegistrationForm = ({navigateTo}) => {
         <input type="submit" className="Registration-form__button" value="Зарегистрироваться" />
         <div className="Registration-form__new-user">
           <p className="Registration-form__new-user-text">Уже зарегистрированы?</p>
-          <button onClick={() => navigateTo("login")} className="Registration-form__new-user-link">Войти</button>
+          <button onClick={() => navigateTo("login")} className="Registration-form__button">Войти</button>
         </div>
       </div>
     </form>
   )
-  
 }
+
+export default RegistrationForm;

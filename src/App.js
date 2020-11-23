@@ -1,12 +1,12 @@
 import React from 'react';
-import { LoginForm } from './components/Login';
-import { SideSection } from './components/Side-section';
-import { RegistrationForm}  from './components/Registration';
-import { Map } from './components/Map';
-import { Profile } from './components/Profile';
+import LoginForm from './components/Login';
+import RegistrationForm from './components/Registration';
+import Map from './components/Map';
+import Profile from './components/Profile';
 import './css/App.css';
 import './css/Header.css';
 import './css/LoginForm.css';
+import './css/Registration.css';
 import './css/Side-section.css';
 import map from './map.png';
 import logo from './Logo2.svg';
