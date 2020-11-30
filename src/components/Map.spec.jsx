@@ -1,10 +1,12 @@
 import React from 'React';
-import { Map } from './Map';
-import { render } from '@testing-library/react';
+import { MapWithAuth }  from './Map';
+import { render, screen } from '@testing-library/react';
 
-describe("Map", () => {
-  it("renders correctly", () => {
-    const {container} = render(<Map/>)
-    expect(container.innerHTML).toMatch("Map")
-  })
-})
+
+describe("MapWithAuth", () => {
+  it('renders correctly', () => {
+    render(<MapWithAuth />);
+    screen.debug();
+    expect(screen.getByText("Профиль")).toBeInTheDocument();
+  });
+});

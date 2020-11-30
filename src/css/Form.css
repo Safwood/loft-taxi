@@ -1,0 +1,85 @@
+.Form-container {
+  border-radius: 20px;
+  min-height: 541px;
+  width: 580px;
+  background-color: #fff;
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 56px 113px;
+}
+
+.Form__heading {
+  text-align: center;
+}
+
+.Form__content {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.Form__inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.Form__label {
+  width: 100%;
+
+}
+.Form__text {
+  text-align: start;
+  width: 100%;
+  font-weight: bold;
+font-size: 16px;
+line-height: 19px;
+
+}
+
+.Form__new-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+.Form__new-user-text {
+  color: #828282;
+  margin-right: 5px;
+}
+
+.Form__input {
+  width: 100%;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-color: #E4E4E4;
+  height: 24px;
+    font-size: 16px;
+}
+.Form__email {
+  margin-bottom: 25px;
+}
+
+.Form__password {
+  margin-bottom: 78px;
+}
+
+.Form__notification {
+  font-weight: bold;
+  font-size: 27px;
+  margin-bottom: 53px;
+}
+
+.Form__notification-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 0px;
+}

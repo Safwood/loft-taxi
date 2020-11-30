@@ -1,56 +1,51 @@
 import React from 'react';
-import LoginForm from './components/Login';
+import {LoginWithAuth} from './components/Login';
 import RegistrationForm from './components/Registration';
-import Map from './components/Map';
-import Profile from './components/Profile';
+import { MapWithAuth } from './components/Map';
+import {ProfileWithAuth} from './components/Profile';
+import {WithAuth} from './components/AuthContext';
 import './css/App.css';
 import './css/Header.css';
-import './css/LoginForm.css';
+import './css/Form.css';
 import './css/Registration.css';
 import './css/Side-section.css';
+import './css/Starting-page.css';
+import './css/Map.css';
+import './css/Button.css';
 import map from './map.png';
-import logo from './Logo2.svg';
 
-const PAGES = (navigateTo) => ({
-  map: <Map />,
-  profile: <Profile />,
-  login: <LoginForm navigateTo={navigateTo}/>,
-  registration: <RegistrationForm navigateTo={navigateTo}/>
-})
+
+const PAGES = {
+  map: (props) => <MapWithAuth {...props}/>,
+  profile:  (props) => <ProfileWithAuth {...props}/>,
+  login:  (props) => <LoginWithAuth {...props}/>,
+  registration:  (props) => <RegistrationForm {...props}/>
+}
+
+let entryButton = "Войти";
 
 export class App extends React.Component {
   state = { currentPage: "login" }
 
   navigateTo = (page) => {
-    this.setState({ currentPage: page});
+    if (page === "login" || page === "registration") {
+      this.setState({ currentPage: page});
+    } else {
+      if(this.props.isLoggedIn) {
+        this.setState({ currentPage: page});
+      } else {
+        this.setState({ currentPage: "login"});
+      }
+    }
   }
 
   render () {
     return (
       <div className="App" style={{backgroundImage: "url(" + map +")"}}>
-        <header className="Header">
-          <div className="Container Header__container">
-            <div className="Header__column">
-              <img src={logo}  className="Header__logo" alt='logo'/>
-            </div>
-            <nav>
-              <ul className="Header__column">
-                <li>
-                  <button onClick={() => {this.navigateTo("map")}} className="Header__column-link Header__column-link--active">Карты</button>
-                </li>
-                <li>
-                  <button onClick={() => {this.navigateTo("profile")}} className="Header__column-link">Профиль</button>
-                </li>
-                <li>
-                  <button onClick={() => {this.navigateTo("login")}} className="Header__column-link">Войти</button>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </header>
+        
         <main className="Main">
-          <section className="Container">
-            {PAGES(this.navigateTo)[this.state.currentPage]}
+          <section>
+            {PAGES[this.state.currentPage]({navigate: this.navigateTo})}
           </section>
         </main>
       </div>
@@ -58,4 +53,4 @@ export class App extends React.Component {
   }
 }
 
-export default App;
+export default WithAuth(App);

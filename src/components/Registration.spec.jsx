@@ -4,9 +4,9 @@ import RegistrationForm from './Registration';
 
 describe("RegistrationForm", () => {
   it("renders correctly", () => {
-    const {getByLabelText} = render(<RegistrationForm/>)
-    expect(getByLabelText('Email*')).toHaveAttribute('name', 'email')
-    expect(getByLabelText('Придумайте пароль*')).toHaveAttribute('name', 'password')
-    expect(getByLabelText('Как Вас зовут?*')).toHaveAttribute('name', 'name')
+    const {getByTestId} = render(<RegistrationForm/>)
+    expect(getByTestId('email')).toHaveAttribute('name', 'email')
+    expect(getByTestId('password')).toHaveAttribute('name', 'password')
+    expect(getByTestId('name')).toHaveAttribute('name', 'name')
   })
 })

@@ -2,11 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
 import App from './App';
+import {AuthProvider} from './components/AuthContext.jsx';
+import {AuthContext} from './components/AuthContext.jsx';
 import reportWebVitals from './reportWebVitals';
+import 'fontsource-roboto';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AuthProvider>
+      <App />
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

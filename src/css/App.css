@@ -10,7 +10,7 @@
 
 .App-main {
   flex: 1;
-  background-image: './map.png';
+  background-image: './map.png' center center no-repeat;
 }
 
 

@@ -1,0 +1,10 @@
+.Starting-page {
+  display: flex;
+}
+
+.Starting-page__main-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+}

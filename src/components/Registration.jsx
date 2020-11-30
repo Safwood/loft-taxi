@@ -1,25 +1,49 @@
 import React from 'react';
+import logo from '../logo.svg';
+import {PropTypes} from "prop-types"
+
+
 
 const RegistrationForm = ({navigateTo}) => {
  
   return (
-    <form onSubmit={() => navigateTo("map")} className="Registration-form">
-      <h2 className="Registration-form__heading">Регистрация</h2>
-      <div className="Registration-form__content">
-        <label htmlFor="email">Email*</label>
-        <input id="email" type="email" className="Registration-form__email" name="email" size="28" placeholder="mail@mail.ru"/>
-        <label htmlFor="name">Как Вас зовут?* </label>
-        <input id="name" type="text" className="Registration-form__email" name="name" size="28" placeholder="Петр Александрович"/>
-        <label htmlFor="password">Придумайте пароль*</label >
-        <input id="password" type="password" className="Registration-form__password" name="password" size="28" placeholder="************"/>
-        <input type="submit" className="Registration-form__button" value="Зарегистрироваться" />
-        <div className="Registration-form__new-user">
-          <p className="Registration-form__new-user-text">Уже зарегистрированы?</p>
-          <button onClick={() => navigateTo("login")} className="Registration-form__button">Войти</button>
+    <div className="Starting-page">
+      <section className="Side-section">
+        <img src={logo}  className="Side-section__logo" alt='logo'/>
+      </section>
+      <main className="Starting-page__main-block">
+        <div  className="Form-container">
+          <form onSubmit={() => navigateTo("map")} className="Form">
+            <h2 className="Form__heading">Регистрация</h2>
+            <div className="Form__content">
+              <label className="Form__label" htmlFor="email">
+                <p className="Form__text">Email*</p>
+                <input id="email" type="email"  data-testid="email" className="Form__email Form__input" name="email" size="28" placeholder="mail@mail.ru"/>
+              </label>
+              <label className="Form__label" htmlFor="name">
+                <p className="Form__text">Как вас зовут?*</p>
+                <input id="name" type="text"  data-testid="name" className="Form__email  Form__input" name="name" size="28" placeholder="Петр Александрович"/>
+              </label>
+              <label className="Form__label" htmlFor="password">
+                <p className="Form__text">Придумайте пароль*</p>
+                <input id="password" data-testid="password" type="password" className="Form__password  Form__input" name="password" size="28" placeholder="************"/>
+              </label >
+              <input type="submit" className="Form__button Entry-button" value="Зарегистрироваться" />
+              <div className="Form__new-user">
+                <p className="Form__new-user-text">Уже зарегистрированы?</p>
+                <button onClick={() => navigateTo("login")} className="Button New-user__button Form__button">Войти</button>
+              </div>
+            </div>
+          </form>
         </div>
-      </div>
-    </form>
+      </main>
+    </div>
   )
 }
+
+RegistrationForm.propTypes = {
+  navigateTo: PropTypes.func,
+}
+
 
 export default RegistrationForm;

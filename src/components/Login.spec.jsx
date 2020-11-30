@@ -4,8 +4,8 @@ import { LoginForm } from './Login';
 
 describe("LoginForm", () => {
   it("renders correctly", () => {
-    const {getByLabelText} = render(<LoginForm/>)
-    expect(getByLabelText('Email:')).toHaveAttribute('name', 'email')
-    expect(getByLabelText('Password:')).toHaveAttribute('name', 'password')
+    const {getByTestId} = render(<LoginForm/>)
+    expect(getByTestId('email')).toHaveAttribute('name', 'email')
+    expect(getByTestId('password')).toHaveAttribute('name', 'password')
   })
 })
