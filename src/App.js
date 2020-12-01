@@ -19,10 +19,8 @@ const PAGES = {
   map: (props) => <MapWithAuth {...props}/>,
   profile:  (props) => <ProfileWithAuth {...props}/>,
   login:  (props) => <LoginWithAuth {...props}/>,
-  registration:  (props) => <RegistrationForm {...props}/>
+  registration:  (props) => <RegistrationForm {...props}/>,
 }
-
-let entryButton = "Войти";
 
 export class App extends React.Component {
   state = { currentPage: "login" }
@@ -45,7 +43,7 @@ export class App extends React.Component {
         
         <main className="Main">
           <section>
-            {PAGES[this.state.currentPage]({navigate: this.navigateTo})}
+            {PAGES[this.state.currentPage]({navigate: this.navigateTo, currentPage: this.state.currentPage})}
           </section>
         </main>
       </div>

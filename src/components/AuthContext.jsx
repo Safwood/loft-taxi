@@ -5,7 +5,7 @@ export const AuthContext = React.createContext();
 export const AuthProvider = ({children}) => {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
-  const LogIn = (email, password) => {
+  const logIn = (email, password) => {
     if (email !== "mail@mail.ru" || password !== "111") {
       return;
     } else {
@@ -13,12 +13,12 @@ export const AuthProvider = ({children}) => {
     }
   }
 
-  const LogOut = () => {
+  const logOut = () => {
     setIsLoggedIn(false);
   }
 
   return (
-    <AuthContext.Provider value={{LogIn, LogOut, isLoggedIn}}>
+    <AuthContext.Provider value={{logIn, logOut, isLoggedIn}}>
       {children}
     </AuthContext.Provider>
   )

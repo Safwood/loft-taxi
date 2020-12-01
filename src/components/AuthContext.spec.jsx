@@ -4,17 +4,17 @@ import { act } from 'react-dom/test-utils';
 import { AuthProvider, AuthContext } from './AuthContext';
 
 describe("AuthContext", () => {
-  describe("#LogIn", () => {
+  describe("#logIn", () => {
     it("sets 'isLoggedIn' to true", () => {
       let isLoggedIn;
-      let LogIn;
+      let logIn;
 
       render(
         <AuthProvider>
           <AuthContext.Consumer>
             {(value) => {
               isLoggedIn = value.isLoggedIn;
-              LogIn = value.LogIn;
+              logIn = value.logIn;
               return null;
             }}
           </AuthContext.Consumer>
@@ -23,7 +23,7 @@ describe("AuthContext", () => {
 
       expect(isLoggedIn).toBe(false)
       act(() => {
-        LogIn("mail@mail.ru", "111")
+        logIn("mail@mail.ru", "111")
       })
       expect(isLoggedIn).toBe(true)
     })
@@ -32,15 +32,15 @@ describe("AuthContext", () => {
   describe("#logOut", () => {
     it("sets 'isLoggedIn' to false", () => {
       let isLoggedIn;
-      let LogOut;
-      let LogIn;
+      let logOut;
+      let logIn;
 
       render(
         <AuthProvider>
           <AuthContext.Consumer>
             {(value) => {
-              LogOut = value.LogOut;
-              LogIn = value.LogIn;
+              logOut = value.logOut;
+              logIn = value.logIn;
               isLoggedIn = value.isLoggedIn;
               return null;
             }}
@@ -49,8 +49,8 @@ describe("AuthContext", () => {
       );
 
       act(() => {
-        LogIn("mail@mail.ru", "111");
-        LogOut();
+        logIn("mail@mail.ru", "111");
+        logOut();
       });
 
       expect(isLoggedIn).toBe(false);

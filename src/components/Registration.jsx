@@ -2,9 +2,7 @@ import React from 'react';
 import logo from '../logo.svg';
 import {PropTypes} from "prop-types"
 
-
-
-const RegistrationForm = ({navigateTo}) => {
+const RegistrationForm = ({navigate}) => {
  
   return (
     <div className="Starting-page">
@@ -13,7 +11,7 @@ const RegistrationForm = ({navigateTo}) => {
       </section>
       <main className="Starting-page__main-block">
         <div  className="Form-container">
-          <form onSubmit={() => navigateTo("map")} className="Form">
+          <form onSubmit={() => navigate("map")} className="Form">
             <h2 className="Form__heading">Регистрация</h2>
             <div className="Form__content">
               <label className="Form__label" htmlFor="email">
@@ -31,7 +29,7 @@ const RegistrationForm = ({navigateTo}) => {
               <input type="submit" className="Form__button Entry-button" value="Зарегистрироваться" />
               <div className="Form__new-user">
                 <p className="Form__new-user-text">Уже зарегистрированы?</p>
-                <button onClick={() => navigateTo("login")} className="Button New-user__button Form__button">Войти</button>
+                <button onClick={() => navigate("login")} className="Button New-user__button Form__button">Войти</button>
               </div>
             </div>
           </form>
