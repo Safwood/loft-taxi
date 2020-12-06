@@ -12,10 +12,18 @@ code {
     monospace;
 }
 
+input:active, input:focus{
+  outline: none;
+}
+
 .Container {
   width: 85%;
   margin: auto;
   height: 100%;
+}
+* {
+  box-sizing: border-box;
+
 }
 
 #root, body, html {
@@ -26,4 +34,18 @@ code {
 
 li {
   list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.Profile-page {
+  height: 100%;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
 }

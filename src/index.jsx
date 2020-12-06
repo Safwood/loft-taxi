@@ -2,16 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
 import App from './App';
-import {AuthProvider} from './components/AuthContext.jsx';
-import {AuthContext} from './components/AuthContext.jsx';
 import reportWebVitals from './reportWebVitals';
+import {Provider} from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import 'fontsource-roboto';
+import { store } from "./store"
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthProvider>
-      <App />
-    </AuthProvider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

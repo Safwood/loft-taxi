@@ -1,19 +1,19 @@
 import React from 'react';
-import {WithAuth} from './AuthContext'
-import {HeaderWithAuth} from "./Header";
+import Header from "./Header";
+import ProfileForm from "./ProfileForm";
+import ProfileNotification from "./ProfileNotification";
+import { connect } from "react-redux"
+import { logOut } from "../actions"
 
 
+class Profile extends React.Component {
+  
 
-export class Profile extends React.Component {
-    goToPage = (page) => {
-      this.props.navigate(page);
-    }
-    
-    render() {
+  render() {
     return (
       <div>
-        <HeaderWithAuth goToPage={this.goToPage} currentPage={this.props.currentPage}/>
-        <>Profile</>
+        <Header currentPage={this.props.currentPage}/>
+        <ProfileForm />
       </div>
     )
   }
@@ -21,4 +21,4 @@ export class Profile extends React.Component {
 
 
 
-export const ProfileWithAuth = WithAuth(Profile);
+export default connect(null, {logOut})(Profile);

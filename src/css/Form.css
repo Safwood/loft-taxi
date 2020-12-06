@@ -5,6 +5,10 @@
   background-color: #fff;
 }
 
+.Form-container--profile {
+  width: 888px;
+}
+
 .Form {
   display: flex;
   flex-direction: column;
@@ -12,14 +16,30 @@
   margin: 56px 113px;
 }
 
+.Form--profile {
+  margin: 59px 45px 67px;
+  align-items: center;
+}
+
 .Form__heading {
   text-align: center;
+  font-size: ;
+}
+
+.Form__heading--profile {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0;
 }
 
 .Form__content {
   display: flex;
   flex-direction: column;
   
+}
+.Form__content--profile{
+  width: 100%;
+  margin-bottom: 50px;
 }
 
 .Form__inputs {
@@ -30,8 +50,12 @@
 
 .Form__label {
   width: 100%;
-
 }
+
+.Form__label--date{
+  margin-right: 35px;
+}
+
 .Form__text {
   text-align: start;
   width: 100%;
@@ -39,6 +63,12 @@
 font-size: 16px;
 line-height: 19px;
 
+}
+
+.Form__text--profile {
+  font-size: 15px;
+  color: #7B7B7B;
+  font-weight: normal;
 }
 
 .Form__new-user {
@@ -72,8 +102,10 @@ line-height: 19px;
 
 .Form__notification {
   font-weight: bold;
-  font-size: 27px;
+  font-size: 18px;
   margin-bottom: 53px;
+  color: #7B7B7B;
+  font-weight: normal;
 }
 
 .Form__notification-wrapper {
@@ -82,4 +114,29 @@ line-height: 19px;
   justify-content: center;
   align-items: center;
   padding: 100px 0px;
+}
+
+.Form__subtitle {
+  margin-bottom: 39px;
+  color: #7B7B7B;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.Form__blocks {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Form__blocks-inputs {
+  width: 43%;
+}
+
+.Form__blocks-card {
+  max-width: 347px;
+}
+
+.Form__blocks-date-cvc {
+  display: flex;
+  justify-content: space-between;
 }

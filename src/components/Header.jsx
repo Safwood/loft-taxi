@@ -1,24 +1,17 @@
 import React from 'react';
-import logo from '../Logo2.svg';
-import {PropTypes} from "prop-types"
-import {WithAuth} from './AuthContext'
+import logo from '../images/Logo2.svg';
+import { PropTypes } from "prop-types"
+import { connect } from "react-redux"
+import { logOut } from "../actions"
+import { Link } from "react-router-dom"
+//import { PrivateRoute } from '../privateRoute';
 
 
 
 class Header extends React.Component {
-  
-  goToMapPage = () => {
-    this.props.goToPage('map');
-      }
-
-  goToProfilePage = () => {
-    this.props.goToPage('profile')
-    
-  }
 
   unauthenticate = () => {
     this.props.logOut();
-    this.props.goToPage('login')
   }
 
   render () {
@@ -32,13 +25,13 @@ class Header extends React.Component {
                <nav>
                  <ul className="Header__column">
                    <li>
-                     <button onClick={this.goToMapPage} className={'Header__column-button' + " " + (this.props.currentPage === 'map' ? 'Header__column-button--active' : "")}>Карты</button>
+                      <Link to="/map" className={'Header__column-button' + " " + (this.props.currentPage === 'map' ? 'Header__column-button--active' : "")}>Карты</Link>
                    </li>
                    <li>
-                     <button onClick={this.goToProfilePage} className={'Header__column-button' + " " + (this.props.currentPage === 'profile' ? 'Header__column-button--active' : "")}>Профиль</button>
+                      <Link to="/profile" className={'Header__column-button' + " " + (this.props.currentPage === 'profile' ? 'Header__column-button--active' : "")}>Профиль</Link>
                    </li>
                    <li>
-                     <button onClick={this.unauthenticate} className="Header__column-button">Выйти</button>
+                     <Link to="/" className="Header__column-button">Выйти</Link>
                    </li>
                  </ul>
                </nav>
@@ -51,7 +44,6 @@ class Header extends React.Component {
 
 Header.propTypes = {
   logOut: PropTypes.func,
-  navigate: PropTypes.func,
 }
 
-export const HeaderWithAuth = WithAuth(Header);
+export default connect(null, {logOut})(Header);

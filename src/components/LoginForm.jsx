@@ -1,19 +1,27 @@
 import React, {Component} from 'react';
-import {WithAuth} from "./AuthContext";
 import {PropTypes} from "prop-types";
-
-
+import { connect } from "react-redux"
+import { authenticate } from "../actions"
+import { Link } from "react-router-dom"
 
 class LoginForm extends Component {
+  state = {email: "", password: ""}
 
-  goToRegistrationPage = () => {
-    this.props.goToPage('registration');
+  changeEmail = (event) => {
+    this.setState({email: event.target.value})
+  }
+
+  changePassword = (event) => {
+    this.setState({password: event.target.value})
+
   }
 
   authenticate = (event) => {
     event.preventDefault();
+    //const {email, password} = this.state;
     const {email, password} = event.target;
-    this.props.logIn(email.value, password.value)
+
+    this.props.auth({email: email.value, password: password.value})
   }
 
   render() {
@@ -25,17 +33,17 @@ class LoginForm extends Component {
             <div className="Form__inputs">
               <label className="Form__label" htmlFor="Email">
                 <p className="Form__text">Email:</p>
-                <input type="email" data-testid="email"  id="Email" className="Form__email  Form__input" name="email" placeholder="mail@mail.ru"/>
+                <input onChange={this.changeEmail} type="email" data-testid="email"  id="Email" className="Form__email  Form__input" name="email" placeholder="mail@mail.ru"/>
               </label>
               <label className="Form__label" htmlFor="Password">
                 <p className="Form__text">Пароль:</p>
-                <input type="password" data-testid="password"  id="Password" className="Form__password Form__input" name="password" placeholder="************"/>
+                <input type="password" onChange={this.changePassword} data-testid="password"  id="Password" className="Form__password Form__input" name="password" placeholder="************"/>
               </label>
             </div>
             <input type="submit" className="Login-form__button Entry-button" value="Войти" />
             <div className="Form__new-user">
               <p className="Form__new-user-text">Новый пользователь?</p>
-              <button onClick={this.goToRegistrationPage} className="Button New-user__button Login-form__new-user-button">Регистрация</button>
+              <Link to="/registration" className="Button New-user__button Login-form__new-user-button">Регистрация</Link>
             </div>
           </div>
         </form>
@@ -45,8 +53,16 @@ class LoginForm extends Component {
 }
 
 LoginForm.propTypes = {
-  logIn: PropTypes.func,
-  goToPage: PropTypes.func,
+  authenticate: PropTypes.func,
 }
 
-export default WithAuth(LoginForm);
+const mapStateToProps = state => ({
+  isLoggedIn: state.auth.isLoggedIn,
+  token: state.auth.token
+})
+
+const mapDispatchToProps = dispatch => ({
+  auth: (props) => dispatch(authenticate(props.email, props.password))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

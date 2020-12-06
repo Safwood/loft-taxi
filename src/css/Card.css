@@ -1,0 +1,30 @@
+.Card {
+  width: 347px;
+  height: 182px;
+  border: 1px ;
+  border-color: thistle;
+  border-radius: 5px;
+  box-shadow: 0px 3px 6px 3px #F1F1F1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18px;
+}
+
+.Card__block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Card__number-output {
+  font-size: 21px;
+  border: transparent;
+  text-align: center;
+}
+
+.Card__date-output {
+  font-size: 12px;
+  width: 34px;
+  border: transparent;
+
+}
