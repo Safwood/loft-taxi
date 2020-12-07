@@ -12,29 +12,4 @@
   padding-right: 50px;
 }
 
-.Header__column {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.Header__column-button {
-  font-size: 20px;
-  margin-right: 30px;
-  color: #fff;
-  text-decoration: none;
-  background-color: transparent;
-  border: none;
-}
-
-.Header__column-button:active, .Header__column-button:focus {
-  outline: none;
-
-}
-.Header__column-button:last-child {
-  margin-right: 0;
-}
-
-.Header__column-button--active {
-  color: #FDBF5A;
-}

@@ -1,17 +1,15 @@
 import { serverCard } from "./serverCard"
-import { SAVECARD } from "./actions"
+import { SAVECARD, saveCardSuccess } from "./actions"
 
-export const CardMiddleware = (store) => (next) => async (action) => {
+export const cardMiddleware = (store) => (next) => async (action) => {
   
   if(action.type === SAVECARD) {
-    const {cardNumber, expiryDate, cardName, cvc} = action.payload;
-    const data = await serverCard(cardNumber, expiryDate, cardName, cvc);
-    console.log(data)
+    const state = store.getState()
+    const data = await serverCard(action.payload.cardNumber, action.payload.expiryDate, action.payload.cardName, action.payload.cvc, state.auth.token);
     if(data.success) {
-       //store.dispatch(logIn(data.token))
-    } 
-    else {
-      return next(action)
-    }
+      store.dispatch(saveCardSuccess())
+     } 
   }
+
+  return next(action)
 }

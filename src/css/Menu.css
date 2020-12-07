@@ -1,0 +1,30 @@
+.Menu__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Menu__item {
+  margin-right: 30px;
+}
+
+.Menu__item:last-child {
+  margin-right: 0;
+}
+
+.Menu__button {
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+}
+
+.Menu__button:active, .Menu__button:focus {
+  outline: none;
+}
+
+
+.active {
+  color: #FDBF5A;
+}

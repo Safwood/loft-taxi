@@ -1,5 +1,5 @@
 
-export const serverCard = async (cardNumber, expiryDate, cardName, cvc) => {
+export const serverCard = async (cardNumber, expiryDate, cardName, cvc, token) => {
   return fetch(
     `https://loft-taxi.glitch.me/card`, {
       method: "POST",
@@ -7,7 +7,8 @@ export const serverCard = async (cardNumber, expiryDate, cardName, cvc) => {
         cardNumber: cardNumber,
         expiryDate: expiryDate,
         cardName: cardName,
-        cvc: cvc
+        cvc: cvc,
+        token: token
       }),
       headers: {
         "Content-Type": "application/json",
@@ -15,3 +16,4 @@ export const serverCard = async (cardNumber, expiryDate, cardName, cvc) => {
     }
     ).then(res => res.json())
 }
+

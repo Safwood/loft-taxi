@@ -2,7 +2,6 @@ import React from 'react';
 import logo from '../images/logo.svg';
 import LoginForm from "./LoginForm";
 import { connect } from "react-redux"
-import { authenticate } from "../actions"
 import LoginNotification from "./LoginNotification";
 import {PropTypes} from "prop-types";
 
@@ -27,6 +26,10 @@ class Login extends React.Component {
       </div>
     )
   }
+}
+
+Login.propTypes = {
+  isLoggedIn: PropTypes.bool,
 }
 
 

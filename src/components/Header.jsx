@@ -3,10 +3,7 @@ import logo from '../images/Logo2.svg';
 import { PropTypes } from "prop-types"
 import { connect } from "react-redux"
 import { logOut } from "../actions"
-import { Link } from "react-router-dom"
-//import { PrivateRoute } from '../privateRoute';
-
-
+import { Link, NavLink } from "react-router-dom"
 
 class Header extends React.Component {
 
@@ -22,19 +19,21 @@ class Header extends React.Component {
                <div className="Header__column">
                  <img src={logo}  className="Header__logo" alt='logo'/>
                </div>
-               <nav>
-                 <ul className="Header__column">
-                   <li>
-                      <Link to="/map" className={'Header__column-button' + " " + (this.props.currentPage === 'map' ? 'Header__column-button--active' : "")}>Карты</Link>
-                   </li>
-                   <li>
-                      <Link to="/profile" className={'Header__column-button' + " " + (this.props.currentPage === 'profile' ? 'Header__column-button--active' : "")}>Профиль</Link>
-                   </li>
-                   <li>
-                     <Link to="/" className="Header__column-button">Выйти</Link>
-                   </li>
-                 </ul>
-               </nav>
+               <div  className="Header__column">
+                 <nav className="Menu">
+                   <ul className="Menu__list">
+                     <li className="Menu__item">
+                        <NavLink to="/map" className='Menu__button'>Карты</NavLink>
+                     </li>
+                     <li  className="Menu__item">
+                        <NavLink to="/profile" className='Menu__button'>Профиль</NavLink>
+                     </li>
+                     <li  className="Menu__item">
+                       <Link to="/" onClick={this.unauthenticate} className="Menu__button">Выйти</Link>
+                     </li>
+                   </ul>
+                 </nav>
+               </div>
              </div>
            </header>
       </div>
@@ -46,4 +45,8 @@ Header.propTypes = {
   logOut: PropTypes.func,
 }
 
-export default connect(null, {logOut})(Header);
+const mapDispatchToProps = dispatch => ({
+  logOut: () => dispatch(logOut())
+})
+
+export default connect(null, mapDispatchToProps)(Header);

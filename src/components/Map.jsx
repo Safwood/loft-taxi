@@ -1,10 +1,6 @@
 import React, {Component} from 'react';
 import mapboxgl from 'mapbox-gl';
 import Header from "./Header";
-import { connect } from "react-redux"
-import { logOut } from "../actions"
-import {PropTypes} from "prop-types"
-
 
 class Map extends Component {
   map = null;
@@ -18,7 +14,6 @@ class Map extends Component {
       center: [37.6156, 55.7522],
       zoom: 10,
     })
-
   }
 
   componentWillUnmount() {
@@ -28,7 +23,7 @@ class Map extends Component {
   render() {
     return (
      <div>
-       <Header currentPage={this.props.currentPage}/>
+       <Header/>
         <div className="Map-wrapper">
           <div className="Map" data-testid="map" ref={this.mapContainer}>
         </div>
@@ -39,4 +34,4 @@ class Map extends Component {
   }
 }
 
-export default connect(null, {logOut})(Map);
+export default Map;

@@ -11,6 +11,7 @@ import './css/Form.css';
 import './css/Registration.css';
 import './css/Side-section.css';
 import './css/Starting-page.css';
+import './css/Menu.css';
 import './css/Map.css';
 import './css/Button.css';
 import './css/Card.css';

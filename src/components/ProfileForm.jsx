@@ -2,17 +2,34 @@ import React, {Component} from 'react';
 import { connect } from "react-redux"
 import chip from "../images/chip.png"
 import cardSign from "../images/card_sign.png"
-import cardSign2 from "../images/card_sign2.svg"
+import {saveCard} from "../actions"
 import {PropTypes} from "prop-types";
 
-
-
 class ProfileForm extends Component {
+  state = {cardNumber:"", expiryDate:"", cardName:"", cvc: ""}
+
+  changeCardNumber = (event) => {
+    this.setState({cardNumber: event.target.value})
+  }
+
+  changeExpiryDate = (event) => {
+    this.setState({expiryDate: event.target.value})
+
+  }
+
+  changeCardName = (event) => {
+    this.setState({cardName: event.target.value})
+
+  }
+
+  changeCvc = (event) => {
+    this.setState({cvc: event.target.value})
+
+  }
 
   saveProfile = async (event) => {
     event.preventDefault();
-    const {cardNumber, expiryDate, cardName, cvc} = event.target;
-    await saveCard(cardNumber.value, expiryDate.value, cardName.value, cvc.value)
+    this.props.saveCard(this.state.cardNumber, this.state.expiryDate, this.state.cardName, this.state.cvc)
   }
 
   render() {
@@ -27,20 +44,20 @@ class ProfileForm extends Component {
                 <div className="Form__blocks-inputs">
                     <label className="Form__label" htmlFor="name">
                       <p className="Form__text Form__text--profile">Имя владельца</p>
-                      <input type="text" data-testid="Name"  id="name" className="Form__name  Form__input" name="Name"/>
+                      <input type="text" onChange={this.changeCardName} data-testid="Name"  id="name" className="Form__name  Form__input" name="Name"/>
                     </label>
                     <label className="Form__label" htmlFor="card-number">
                       <p className="Form__text Form__text--profile">Номер карты</p>
-                      <input type="card" data-testid="card-number"  id="card-number" className="Form__card-number Form__input" name="password" />
+                      <input type="card" onChange={this.changeCardNumber} data-testid="card-number"  id="card-number" className="Form__card-number Form__input" name="password" />
                     </label>
                    <div className="Form__blocks-date-cvc">
                       <label className="Form__label Form__label--date" htmlFor="date">
                         <p className="Form__text Form__text--profile">MM.YY</p>
-                        <input type="date" data-testid="date" id="date" className="Form__date Form__input" name="password" />
+                        <input type="date"  onChange={this.changeExpiryDate} data-testid="date" id="date" className="Form__date Form__input" name="password" />
                       </label>
                       <label className="Form__label" htmlFor="CVC-code">
                         <p className="Form__text Form__text--profile">CVC</p>
-                        <input type="text" data-testid="CVC-code"  id="CVC-code" className="Form__CVC-code Form__input" name="password" />
+                        <input type="text"  onChange={this.changeCvc} data-testid="CVC-code"  id="CVC-code" className="Form__CVC-code Form__input" name="password" />
                       </label>
                    </div>
                 </div>
@@ -66,8 +83,12 @@ class ProfileForm extends Component {
   }
 }
 
+ProfileForm.propTypes = {
+  saveCard: PropTypes.func,
+}
+
 const mapDispatchToProps = dispatch => ({
-  saveCard: (cardNumber, expiryDate, cardName, cvc) => dispatch(serverCard({cardNumber, expiryDate, cardName, cvc}))
+  saveCard: (cardNumber, expiryDate, cardName, cvc) => dispatch(saveCard({cardNumber, expiryDate, cardName, cvc}))
 })
 
 export default connect(null, mapDispatchToProps)(ProfileForm);
