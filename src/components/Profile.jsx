@@ -13,7 +13,7 @@ class Profile extends React.Component {
     return (
       <div>
         <Header currentPage={this.props.currentPage}/>
-        <ProfileForm />
+        <ProfileNotification />
       </div>
     )
   }

@@ -21,10 +21,11 @@ class LoginForm extends Component {
     //const {email, password} = this.state;
     const {email, password} = event.target;
 
-    this.props.auth({email: email.value, password: password.value})
+    this.props.auth(email.value, password.value)
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className="Form-container">
         <form onSubmit={this.authenticate} className="Form">
@@ -62,7 +63,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  auth: (props) => dispatch(authenticate(props.email, props.password))
+  auth: (email, password) => dispatch(authenticate({email, password}))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

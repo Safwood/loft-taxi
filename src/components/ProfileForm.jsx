@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { connect } from "react-redux"
 import chip from "../images/chip.png"
 import cardSign from "../images/card_sign.png"
 import cardSign2 from "../images/card_sign2.svg"
@@ -8,19 +9,11 @@ import {PropTypes} from "prop-types";
 
 class ProfileForm extends Component {
 
-  //componentDidMount() {
-  //  saveData = (name, cardNumber, date, cvcCode) => {
-  //    return fetch(`https://loft-taxi.glitch.me/card`)
-  //    .then(res => res.json()).then(data => data.success)
-  //  }
-
-  //  saveProfile = async (event) => {
-  //    event.preventDefault();
-  //    const {name, cardNumber, date, cvcCode} = event.target;
- //     await saveData(name.value, cardNumber.value, date.value, cvcCode.value)
-  //  }
-  //}
-
+  saveProfile = async (event) => {
+    event.preventDefault();
+    const {cardNumber, expiryDate, cardName, cvc} = event.target;
+    await saveCard(cardNumber.value, expiryDate.value, cardName.value, cvc.value)
+  }
 
   render() {
     return(
@@ -73,4 +66,8 @@ class ProfileForm extends Component {
   }
 }
 
-export default ProfileForm;
+const mapDispatchToProps = dispatch => ({
+  saveCard: (cardNumber, expiryDate, cardName, cvc) => dispatch(serverCard({cardNumber, expiryDate, cardName, cvc}))
+})
+
+export default connect(null, mapDispatchToProps)(ProfileForm);

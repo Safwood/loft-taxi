@@ -2,14 +2,15 @@ import { serverLogin } from "./api"
 import { AUTHENTICATE, logIn } from "./actions"
 
 export const authMiddleware = (store) => (next) => async (action) => {
+  console.log(action.type)
   if(action.type === AUTHENTICATE) {
     const {email, password} = action.payload;
     const data = await serverLogin(email, password);
+    console.log(data)
     if(data.success) {
-      return store.dispatch(logIn(data.token))
+       store.dispatch(logIn(data.token))
     } 
-    else {
-      return next(action)
-    }
   }
+
+  return next(action)
 }
