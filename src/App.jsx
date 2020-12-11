@@ -6,15 +6,8 @@ import Profile from './components/Profile';
 import { Switch, Route } from "react-router-dom";
 import { PrivateRoute } from "./privateRoute"
 import './css/App.css';
-import './css/Header.css';
 import './css/Form.css';
-import './css/Registration.css';
-import './css/Side-section.css';
-import './css/Starting-page.css';
-import './css/Menu.css';
-import './css/Map.css';
 import './css/Button.css';
-import './css/Card.css';
 import map from './images/map.png';
 
 export class App extends React.Component {

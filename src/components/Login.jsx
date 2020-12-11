@@ -4,6 +4,9 @@ import LoginForm from "./LoginForm";
 import { connect } from "react-redux"
 import LoginNotification from "./LoginNotification";
 import {PropTypes} from "prop-types";
+import '../css/Starting-page.css';
+import '../css/Side-section.css';
+
 
 
 class Login extends React.Component {

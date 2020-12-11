@@ -8,8 +8,22 @@ const initialState = {
   isCardSaved: false
 }
 
-export default function(state = initialState, action) {
+//const user = JSON.parse(localStorage.getItem("allUsers"))
 
+//if (localStorage) {
+ // console.log(user)
+//    initialState = 
+//    { cardNumber: user.cardData.cardNumber, 
+//      expiryDate: user.cardData.expiryDate, 
+//      cardName: user.cardData.cardName, 
+//      cvc: user.cardData.cvc,
+ //     isCardSaved: true
+//    }
+
+ //   console.log(initialState)
+//}
+
+export default function(state = initialState, action) {
   switch(action.type) {
     case SAVECARD: {
       return {

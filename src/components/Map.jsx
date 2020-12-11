@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import mapboxgl from 'mapbox-gl';
 import Header from "./Header";
+import '../css/Map.css';
+
 
 class Map extends Component {
   map = null;

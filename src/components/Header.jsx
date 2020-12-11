@@ -4,6 +4,8 @@ import { PropTypes } from "prop-types"
 import { connect } from "react-redux"
 import { logOut } from "../actions"
 import { Link, NavLink } from "react-router-dom"
+import '../css/Header.css';
+import '../css/Menu.css';
 
 class Header extends React.Component {
 
