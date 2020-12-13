@@ -9,6 +9,14 @@
   width: 888px;
 }
 
+.Form-container--order-form {
+  position: absolute;
+  left: 6%;
+  top: 7%;
+  min-height: 486px;
+  width: 471px;
+}
+
 .Form {
   display: flex;
   flex-direction: column;
@@ -21,9 +29,14 @@
   align-items: center;
 }
 
+.Form--order-form {
+  margin: 0;
+  overflow: hidden;
+}
+
 .Form__heading {
   text-align: center;
-  font-size: ;
+  font-size: 36px;
 }
 
 .Form__heading--profile {

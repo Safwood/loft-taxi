@@ -76,7 +76,7 @@ class ProfileForm extends Component {
                   <div className="Card">
                     <div className="Card__block">
                       <img className="Card__block-image" src={cardSign} alt="card_sign"/>
-                      <input type="text" value="" placeholder={this.state.expiryDate} className="Card__date-output" readOnly></input>
+                      <input type="text" value={this.state.expiryDate} placeholder="2020/01" className="Card__date-output" readOnly></input>
                     </div>
                     <input type="text" placeholder="5545 2300 3432 4521" value={this.state.cardNumber} className="Card__number-output" readOnly></input>
                     <div className="Card__block">

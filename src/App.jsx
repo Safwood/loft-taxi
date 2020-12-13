@@ -1,6 +1,6 @@
 import React from 'react';
 import Login from './components/Login';
-import RegistrationForm from './components/Registration';
+import Registration from './components/Registration';
 import  Map from './components/Map';
 import Profile from './components/Profile';
 import { Switch, Route } from "react-router-dom";
@@ -20,7 +20,7 @@ export class App extends React.Component {
           <section>
             <Switch>
               <Route exact path="/" component={Login} />
-              <Route path="/registration" component={RegistrationForm} />
+              <Route path="/registration" component={Registration} />
               <PrivateRoute path="/map" component={Map} />
               <PrivateRoute path="/profile" component={Profile}/>
             </Switch>

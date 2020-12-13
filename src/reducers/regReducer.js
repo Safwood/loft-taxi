@@ -1,12 +1,12 @@
-import { LOG_IN, LOG_OUT  } from "../actions";
+import { REGISTER } from "../actions";
 
 const initialState = {
-  isLoggedIn: true,
+  isLoggedIn: false,
   token: null,
 }
 
 export default function(state = initialState, action) {
-  console.log(action.payload)
+
   switch(action.type) {
     case LOG_IN: {
       return {isLoggedIn: true, token: action.payload}
@@ -14,7 +14,11 @@ export default function(state = initialState, action) {
     case LOG_OUT: {
       return {isLoggedIn: false, token: null}
     }
+    case REGISTER: {
+      return {isLoggedIn: true, token: action.payload}
+    }
     default: 
       return state
+    
   }
 }
