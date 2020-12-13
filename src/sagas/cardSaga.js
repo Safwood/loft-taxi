@@ -2,18 +2,18 @@ import { takeEvery, call, put, select } from "redux-saga/effects";
 import { serverCard } from "../serverFunctions/serverCard"
 import { SAVECARD, saveCardSuccess } from "../actions";
 
-export const token = (state) => {
-  return state.auth.token
-};
+//export const token = (state) => {
+  //return state.auth.token
+//};
 
 export function* saveCardSaga(action) {
   //const state = store.getState()
     
-  const token = yield select(token)
-  console.log(token)
+  //const token = yield select(token)
+  //console.log(token)
 
   let user = {
-    token: token, 
+    token: action.payload.token, 
     cardData:
       {
         cardNumber: action.payload.cardNumber,
@@ -28,8 +28,7 @@ export function* saveCardSaga(action) {
 
   localStorage.setItem('allUsers', JSON.stringify(allUsers));
 
-  const data = yield call (serverCard, action.payload.cardNumber, action.payload.expiryDate, action.payload.cardName, action.payload.cvc, "rec5jE3JjG9KSvRKX");
-  console.log(data)
+  const data = yield call (serverCard, action.payload.cardNumber, action.payload.expiryDate, action.payload.cardName, action.payload.cvc, action.payload.token);
 
   if(data.success) {
     yield put(saveCardSuccess())

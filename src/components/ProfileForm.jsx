@@ -31,7 +31,7 @@ class ProfileForm extends Component {
 
   saveProfile = async (event) => {
     event.preventDefault();
-    this.props.saveCard(this.state.cardNumber, this.state.expiryDate, this.state.cardName, this.state.cvc)
+    this.props.saveCard(this.state.cardNumber, this.state.expiryDate, this.state.cardName, this.state.cvc, this.props.token)
   }
 
   
@@ -98,8 +98,12 @@ ProfileForm.propTypes = {
   saveCard: PropTypes.func,
 }
 
+const mapStateToProps = (state) => ({
+  token: state.auth.token
+})
+
 const mapDispatchToProps = dispatch => ({
   saveCard: (cardNumber, expiryDate, cardName, cvc) => dispatch(saveCard({cardNumber, expiryDate, cardName, cvc}))
 })
 
-export default connect(null, mapDispatchToProps)(ProfileForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileForm);

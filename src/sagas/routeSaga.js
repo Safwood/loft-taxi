@@ -1,16 +1,14 @@
 import { takeEvery, call, put } from "redux-saga/effects";
-import { GETROUTE, getRoute } from "../actions";
-import { serverLogin } from "../api";
+import { GETROUTE, saveRoute } from "../actions";
+import { serverRoute } from "../serverFunctions/serverRoute";
 
-export function* authenticateSaga(action) {
-  const {email, password} = action.payload;
-  const data = yield call(serverLogin, email, password)
-
-  if (data.success) {
-    yield put(logIn(data.token))
-  }
+export function* getRouteSaga(action) {
+  const {address1, address2} = action.payload;
+  const data = yield call(serverRoute, address1, address2)
+  
+  yield put(saveRoute(data))
 }
 
 export function* routeSaga() {
-  yield takeEvery(AUTHENTICATE, authenticateSaga)
+  yield takeEvery(GETROUTE, getRouteSaga)
 }

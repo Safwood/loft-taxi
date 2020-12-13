@@ -1,46 +1,17 @@
-import { SAVECARD, SAVECARDSUCCESS } from "../actions";
+import { GETADDRESS, SAVEADDRESS } from "../actions";
 
 const initialState = {
-  cardNumber: null, 
-  expiryDate: null, 
-  cardName: null, 
-  cvc: null,
-  isCardSaved: false
+  addressList: null, 
+  isAddressListUpload: false
 }
 
-//const user = JSON.parse(localStorage.getItem("allUsers"))
-
-//if (localStorage) {
- // console.log(user)
-//    initialState = 
-//    { cardNumber: user.cardData.cardNumber, 
-//      expiryDate: user.cardData.expiryDate, 
-//      cardName: user.cardData.cardName, 
-//      cvc: user.cardData.cvc,
- //     isCardSaved: true
-//    }
-
- //   console.log(initialState)
-//}
-
 export default function(state = initialState, action) {
+  console.log(action.payload)
   switch(action.type) {
-    case SAVECARD: {
+    case SAVEADDRESS: {
       return {
-        cardNumber: action.payload.cardNumber, 
-        expiryDate: action.payload.expiryDate, 
-        cardName: action.payload.cardName, 
-        cvc: action.payload.cvc,
-        isCardSaved: state.isCardSaved
-      }
-    }
-    case SAVECARDSUCCESS: {
-      return {
-        cardNumber: state.cardNumber, 
-        expiryDate: state.expiryDate, 
-        cardName: state.cardName, 
-        cvc: state.cvc,
-        isCardSaved: true
+        addressList: action.payload, 
+        isAddressListUpload: true
       }
     }
     default: 

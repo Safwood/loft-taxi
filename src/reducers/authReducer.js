@@ -1,12 +1,11 @@
 import { LOG_IN, LOG_OUT  } from "../actions";
 
 const initialState = {
-  isLoggedIn: true,
+  isLoggedIn: false,
   token: null,
 }
 
 export default function(state = initialState, action) {
-  console.log(action.payload)
   switch(action.type) {
     case LOG_IN: {
       return {isLoggedIn: true, token: action.payload}
