@@ -4,7 +4,7 @@ import {saveCard, saveCardSuccess} from '../actions'
 describe("cardReducer", () => {
   describe("#SAVECARD", () => {
     it('returns isLoggedIn true', () => {
-      expect(cardReducer({}, saveCard())).toEqual({isCardSaved: false})
+      expect(cardReducer({}, saveCard({cardName: John, cardNumber: John}))).toEqual({isCardSaved: false})
     })
   })
 

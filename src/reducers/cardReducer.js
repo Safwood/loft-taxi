@@ -1,6 +1,6 @@
 import { SAVECARD, SAVECARDSUCCESS } from "../actions";
 
-const initialState = {
+let initialState = {
   cardNumber: null, 
   expiryDate: null, 
   cardName: null, 
@@ -8,18 +8,18 @@ const initialState = {
   isCardSaved: false
 }
 
-//const user = JSON.parse(localStorage.getItem("allUsers"))
+const user = JSON.parse(localStorage.getItem("allUsers"))
 
 //if (localStorage) {
- // console.log(user)
+//  console.log(user[0])
 //    initialState = 
-//    { cardNumber: user.cardData.cardNumber, 
-//      expiryDate: user.cardData.expiryDate, 
-//      cardName: user.cardData.cardName, 
-//      cvc: user.cardData.cvc,
- //     isCardSaved: true
+ //   { cardNumber: user[0].cardData.cardNumber, 
+ //     expiryDate: user[0].cardData.expiryDate, 
+ //     cardName: user[0].cardData.cardName, 
+  //    cvc: user[0].cardData.cvc,
+//      isCardSaved: true
 //    }
-
+//
  //   console.log(initialState)
 //}
 

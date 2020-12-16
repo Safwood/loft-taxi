@@ -5,7 +5,7 @@ import cross from '../images/cross.png';
 import car1 from '../images/car1.png';
 import car2 from '../images/car2.png';
 import car3 from '../images/car3.png';
-import { getRoute } from '../actions';
+import { getRoute } from '../actions';import {drawRoute} from "../helper/routeFunction";
 import '../css/Order.css';
 
 class OrderForm extends React.Component {
@@ -14,17 +14,21 @@ class OrderForm extends React.Component {
     address2: ""
   }
 
-  changeAddress1 = (e) => {
-    this.setState({address1: e.target.value})
+  changeAddress1 = (event) => {
+    console.log(event.target.value)
+    this.setState({address1: event.target.value})
+    console.log(this.state.address1)
   }
 
-  changeAddress2 = (e) => {
-    this.setState({address2: e.target.value})
+  changeAddress2 = (event) => {
+    console.log(event.target.value)
+    const address2 = this.setState({address2: event.target.value})
+    console.log(address2)
   }
 
   sendOrder = (e) => {
     e.preventDefault();
-    this.getRoute(this.state.address1, this.state.address2)
+    this.props.getRoute(this.state.address1, this.state.address2);
   }
 
   render() {
@@ -33,16 +37,31 @@ class OrderForm extends React.Component {
         <form onSubmit={this.sendOrder} className="Form Form--order-form Order">
           <div className="Order-addresses">
             <div className="Order-addresses__address Order-addresses__address--from">
-              <input onChange={this.changeAddress1} className="Order-addresses__input "type="text" placeholder="Адрес отправления"/>
+              <select onChange={this.changeAddress1} className="Order-addresses__input "type="text" placeholder="Адрес отправления">
+            { this.props.addressList 
+              ? this.props.addressList.filter(item => item !== this.state.address2).map(item => {
+                return <option key={item}>{item}</option>
+              })
+              : <option></option>
+            } 
+              </select>
               <button className="Order-addresses__button">
-                <img  className="Order-addresses__button-image" src={cross} alt="cross"/>
+                <img className="Order-addresses__button-image" src={cross} alt="cross"/>
               </button>
               <button className="Order-addresses__button Order-addresses__button--errow">
                 <img  className="Order-addresses__button-image" src={errowDown} alt="errowDown"/>
               </button>
             </div>
             <div className="Order-addresses__address Order-addresses__address--to">
-              <input onChange={this.changeAddress2} className="Order-addresses__input" type="text" placeholder="Адрес прибытия"/>
+              <select onChange={this.changeAddress2} className="Order-addresses__input" type="text" placeholder="Адрес прибытия">
+              { this.props.addressList 
+                ? this.props.addressList.filter(item => item!==this.state.address1).map (item => {
+                    return <option key={item} value={item}>{item}</option>
+                  })
+                  
+                : <option></option>
+              }
+              </select>
               <button className="Order-addresses__button">
                 <img  className="Order-addresses__button-image" src={cross} alt="cross"/>
               </button>
@@ -89,8 +108,12 @@ class OrderForm extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  getRoute: (address1, address2) => dispatch(getRoute({address1, address2}))
+const mapStateToProps = (state) => ({
+  addressList: state.address.addressList,
 })
 
-export default connect(null, mapDispatchToProps)(OrderForm);
+const mapDispatchToProps = dispatch => ({
+  getRoute: (address1, address2) => dispatch(getRoute(address1, address2))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(OrderForm);

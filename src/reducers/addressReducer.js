@@ -1,16 +1,15 @@
-import { GETADDRESS, SAVEADDRESS } from "../actions";
+import { SAVEADDRESS } from "../actions";
 
 const initialState = {
-  addressList: null, 
+  addressList: null,
   isAddressListUpload: false
 }
 
 export default function(state = initialState, action) {
-  console.log(action.payload)
   switch(action.type) {
     case SAVEADDRESS: {
       return {
-        addressList: action.payload, 
+        addressList: action.payload.addressList, 
         isAddressListUpload: true
       }
     }
