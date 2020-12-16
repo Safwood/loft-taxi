@@ -11,16 +11,13 @@ let initialState = {
 const user = JSON.parse(localStorage.getItem("allUsers"))
 
 //if (localStorage) {
-//  console.log(user[0])
-//    initialState = 
- //   { cardNumber: user[0].cardData.cardNumber, 
- //     expiryDate: user[0].cardData.expiryDate, 
- //     cardName: user[0].cardData.cardName, 
+  //  initialState = 
+  //  { cardNumber: user[0].cardData.cardNumber, 
+  //    expiryDate: user[0].cardData.expiryDate, 
+  //    cardName: user[0].cardData.cardName, 
   //    cvc: user[0].cardData.cvc,
-//      isCardSaved: true
-//    }
-//
- //   console.log(initialState)
+  //    isCardSaved: true
+  //  }
 //}
 
 export default function(state = initialState, action) {

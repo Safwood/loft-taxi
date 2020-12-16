@@ -18,4 +18,4 @@ export const register = ({email, password, name, surname}) => ({type: REGISTER, 
 export const getAddress = () => ({type: GETADDRESS})
 export const saveAddressList = (addressList) => ({type: SAVEADDRESS, payload: {addressList}})
 export const getRoute = (address1, address2) => ({type: GETROUTE, payload: {address1, address2}})
-export const saveRoute = (route) => ({type: SAVEROUTE, payload: {route}})
+export const saveRoute = (route) => ({type: SAVEROUTE, payload: route})

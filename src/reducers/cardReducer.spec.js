@@ -3,14 +3,26 @@ import {saveCard, saveCardSuccess} from '../actions'
 
 describe("cardReducer", () => {
   describe("#SAVECARD", () => {
-    it('returns isLoggedIn true', () => {
-      expect(cardReducer({}, saveCard({cardName: John, cardNumber: John}))).toEqual({isCardSaved: false})
+    it('saves CardData', () => {
+      expect(cardReducer({}, saveCard({
+        cardNumber: "0000000000000000",
+        expiryDate: "2020/12", 
+        cardName: "John",
+        cvc: "555"
+      }))).toEqual({
+        cardNumber: "0000000000000000",
+        expiryDate: "2020/12", 
+        cardName: "John",
+        cvc: "555"
+      })
     })
   })
 
   describe("#SAVECARDSUCCESS", () => {
-    it('returns isLoggedIn false', () => {
-      expect(cardReducer({}, saveCardSuccess())).toEqual({isCardSaved: true})
+    it('returns isCardSaved true', () => {
+      expect(cardReducer({}, saveCardSuccess({
+        isCardSaved: true
+      }))).toEqual({isCardSaved: true})
     })
   })
 })

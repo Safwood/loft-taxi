@@ -2,17 +2,8 @@ import { takeEvery, call, put, select } from "redux-saga/effects";
 import { serverCard } from "../serverFunctions/serverCard"
 import { SAVECARD, saveCardSuccess } from "../actions";
 
-//export const token = (state) => {
-  //return state.auth.token
-//};
-
 export function* saveCardSaga(action) {
-  //const state = store.getState()
-    
-  //const token = yield select(token)
-  //console.log(token)
-
-  let user = {
+   let user = {
     token: action.payload.token, 
     cardData:
       {

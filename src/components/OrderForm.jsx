@@ -15,15 +15,11 @@ class OrderForm extends React.Component {
   }
 
   changeAddress1 = (event) => {
-    console.log(event.target.value)
     this.setState({address1: event.target.value})
-    console.log(this.state.address1)
   }
 
   changeAddress2 = (event) => {
-    console.log(event.target.value)
     const address2 = this.setState({address2: event.target.value})
-    console.log(address2)
   }
 
   sendOrder = (e) => {
