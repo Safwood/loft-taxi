@@ -5,8 +5,6 @@ const initialState = {
 }
 
 export default function (state = initialState, action) {
-  console.log(action.payload)
-
   switch (action.type) {
     case SAVEROUTE: {
       return {
@@ -14,6 +12,6 @@ export default function (state = initialState, action) {
       }
     }
     default:
-      return action
+      return state
   } 
 }

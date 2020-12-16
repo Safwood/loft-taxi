@@ -1,4 +1,4 @@
-import { SAVECARD, SAVECARDSUCCESS } from "../actions";
+import { SAVECARD, SAVECARDSUCCESS, GETCARDSUCCESS } from "../actions";
 
 let initialState = {
   cardNumber: null, 
@@ -8,7 +8,7 @@ let initialState = {
   isCardSaved: false
 }
 
-const user = JSON.parse(localStorage.getItem("allUsers"))
+//const user = JSON.parse(localStorage.getItem("allUsers"))
 
 //if (localStorage) {
   //  initialState = 
@@ -37,6 +37,16 @@ export default function(state = initialState, action) {
         expiryDate: state.expiryDate, 
         cardName: state.cardName, 
         cvc: state.cvc,
+        isCardSaved: true
+      }
+    }
+    case GETCARDSUCCESS: {
+      console.log(action.payload)
+      return {
+        cardNumber: action.payload.cardNumber, 
+        expiryDate: action.payload.expiryDate, 
+        cardName: action.payload.cardName, 
+        cvc: action.payload.cvc,
         isCardSaved: true
       }
     }

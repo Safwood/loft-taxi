@@ -4,6 +4,7 @@ import { cardSaga } from "./cardSaga"
 import { regSaga } from "./regSaga"
 import { addressSaga } from "./addressSaga"
 import { routeSaga } from "./routeSaga"
+import { getCardSaga } from "./getCardSaga"
 
 export default function* rootSaga() {
   yield fork(authSaga);
@@ -11,4 +12,5 @@ export default function* rootSaga() {
   yield fork(cardSaga);
   yield fork(addressSaga);
   yield fork(routeSaga);
+  yield fork(getCardSaga);
 }

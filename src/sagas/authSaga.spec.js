@@ -2,7 +2,7 @@ import { recordSaga } from "./recordSaga"
 import { authenticateSaga } from "./authSaga"
 import { authenticate } from "../actions"
 
-jest.mock("../serverFunctions/api", () => ({ serverLogin: {success:true, token: '123'}}))
+jest.mock("../serverFunctions/api", () => ({ serverLogin: () => ({success:true, token: '123'})}))
 
 describe("authSaga", () => {
   describe("#AUTHENTICATE", () => {
@@ -13,6 +13,7 @@ describe("authSaga", () => {
       )
       expect(dispatched).toEqual([
         {
+          payload: "123",
           type: "LOG_IN"
         }
       ])

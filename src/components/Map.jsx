@@ -5,6 +5,7 @@ import Header from "./Header";
 import MapNotification from "./MapNotification";
 import OrderForm from "./OrderForm";
 import {getAddress} from "../actions";
+import {getCard} from "../actions";
 import {drawRoute} from "../helper/routeFunction";
 import '../css/Map.css';
 
@@ -15,7 +16,6 @@ class Map extends Component {
   uploadAddressList = async () => {
     await this.props.getAddress()
   }
-  
 
   componentDidMount() {
     mapboxgl.accessToken = "pk.eyJ1Ijoic2Fmd29vZCIsImEiOiJja2h6eTVtY2MwazZmMnNxaHVsdnBhM3k2In0.dipQbU6mft7qKnKJBWj3kA";
@@ -26,15 +26,14 @@ class Map extends Component {
       zoom: 10,
     })
 
-        
-    this.map.on("load", () => {
-      console.log(this.props.route)
-      if (this.props.route){
-        drawRoute(this.map, this.props.route)
-      }
-    }) 
-
     this.props.getAddress()
+    this.props.getCard(this.props.token)
+  }
+
+  componentDidUpdate() {
+    if (this.props.route) {
+      drawRoute(this.map, this.props.route);
+    }
   }
 
   componentWillUnmount() {
@@ -61,12 +60,13 @@ class Map extends Component {
 const mapStateToProps = (state) => ({
   isCardSaved: state.card.isCardSaved,
   route: state.route.route,
-  //routeList: coordinates,
+  token: state.auth.token,
   isAddressListUpload: state.card.isAddressListUpload,
 })
 
 const mapDispatchToProps = dispatch => ({
-  getAddress: () => dispatch(getAddress({}))
+  getAddress: () => dispatch(getAddress({})),
+  getCard: (token) => dispatch(getCard({token}))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);

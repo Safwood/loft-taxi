@@ -10,7 +10,7 @@ export default function(state = initialState, action) {
     case SAVEADDRESS: {
       return {
         addressList: action.payload.addressList, 
-        isAddressListUpload: true
+        isAddressListUpload: true 
       }
     }
     default: 
