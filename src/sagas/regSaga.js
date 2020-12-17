@@ -1,4 +1,4 @@
-import { takeEvery, call, put, fork } from "redux-saga/effects";
+import { takeEvery, call, put } from "redux-saga/effects";
 import { REGISTER, logIn } from "../actions";
 import { serverRegister } from "../serverFunctions/serverRegister";
 

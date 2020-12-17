@@ -9,8 +9,8 @@ import { getCardSaga } from "./getCardSaga"
 export default function* rootSaga() {
   yield fork(authSaga);
   yield fork(regSaga);
+  yield fork(getCardSaga);
   yield fork(cardSaga);
   yield fork(addressSaga);
   yield fork(routeSaga);
-  yield fork(getCardSaga);
 }

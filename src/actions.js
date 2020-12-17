@@ -16,7 +16,7 @@ export const logOut = () => ({type: LOG_OUT});
 export const authenticate = ({email, password}) => ({type: AUTHENTICATE, payload: { email, password }})
 export const saveCard = ({cardNumber, expiryDate, cardName, cvc, token}) => ({type: SAVECARD, payload: { cardNumber, expiryDate, cardName, cvc, token }})
 export const getCard = ({token}) => ({type: GETCARD, payload: token })
-export const getCardSuccess = ({cardNumber, expiryDate, cardName, cvc}) => ({type: GETCARDSUCCESS, payload: {cardNumber, expiryDate, cardName, cvc} })
+export const getCardSuccess = ({cardNumber, expiryDate, cardName, cvc}) => ({type: GETCARDSUCCESS, payload: { cardNumber, expiryDate, cardName, cvc }})
 export const saveCardSuccess = () => ({type: SAVECARDSUCCESS})
 export const register = ({email, password, name, surname}) => ({type: REGISTER, payload: { email, password, name, surname}})
 export const getAddress = () => ({type: GETADDRESS})

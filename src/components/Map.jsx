@@ -28,9 +28,12 @@ class Map extends Component {
 
     this.props.getAddress()
     this.props.getCard(this.props.token)
+    
   }
 
   componentDidUpdate() {
+
+    
     if (this.props.route) {
       drawRoute(this.map, this.props.route);
     }
@@ -61,7 +64,6 @@ const mapStateToProps = (state) => ({
   isCardSaved: state.card.isCardSaved,
   route: state.route.route,
   token: state.auth.token,
-  isAddressListUpload: state.card.isAddressListUpload,
 })
 
 const mapDispatchToProps = dispatch => ({

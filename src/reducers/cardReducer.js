@@ -8,19 +8,8 @@ let initialState = {
   isCardSaved: false
 }
 
-//const user = JSON.parse(localStorage.getItem("allUsers"))
-
-//if (localStorage) {
-  //  initialState = 
-  //  { cardNumber: user[0].cardData.cardNumber, 
-  //    expiryDate: user[0].cardData.expiryDate, 
-  //    cardName: user[0].cardData.cardName, 
-  //    cvc: user[0].cardData.cvc,
-  //    isCardSaved: true
-  //  }
-//}
-
 export default function(state = initialState, action) {
+
   switch(action.type) {
     case SAVECARD: {
       return {
@@ -29,6 +18,15 @@ export default function(state = initialState, action) {
         cardName: action.payload.cardName, 
         cvc: action.payload.cvc,
         isCardSaved: state.isCardSaved
+      }
+    }
+    case GETCARDSUCCESS: {
+      return{ 
+        cardNumber: action.payload.cardNumber, 
+        expiryDate: action.payload.expiryDate, 
+        cardName: action.payload.cardName, 
+        cvc: action.payload.cvc,
+        isCardSaved: true
       }
     }
     case SAVECARDSUCCESS: {
@@ -40,16 +38,7 @@ export default function(state = initialState, action) {
         isCardSaved: true
       }
     }
-    case GETCARDSUCCESS: {
-      console.log(action.payload)
-      return {
-        cardNumber: action.payload.cardNumber, 
-        expiryDate: action.payload.expiryDate, 
-        cardName: action.payload.cardName, 
-        cvc: action.payload.cvc,
-        isCardSaved: true
-      }
-    }
+    
     default: 
       return state
   }

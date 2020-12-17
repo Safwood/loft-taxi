@@ -8,7 +8,6 @@ export function* authenticateSaga(action) {
 
   if (data.success) {
     yield put(logIn(data.token))
-    
   }
 }
 
