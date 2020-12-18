@@ -1,5 +1,5 @@
 import { takeEvery, call, put } from "redux-saga/effects";
-import { GETADDRESS, saveAddressList } from "../actions";
+import { GETADDRESS, saveAddressList } from "../actions/addressAction";
 import { serverAddresses } from "../serverFunctions/serverAddresses";
 
 export function* getAddressListSaga(action) {

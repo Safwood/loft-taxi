@@ -2,7 +2,7 @@ import React from 'react';
 import logo from '../images/Logo2.svg';
 import { PropTypes } from "prop-types"
 import { connect } from "react-redux"
-import { logOut } from "../actions"
+import { logOut } from "../actions/logOutAction"
 import { Link, NavLink } from "react-router-dom"
 import '../css/Header.css';
 import '../css/Menu.css';

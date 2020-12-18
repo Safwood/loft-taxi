@@ -1,6 +1,6 @@
 import { recordSaga } from "./recordSaga"
 import { getAddressListSaga } from "./addressSaga"
-import { getAddress } from "../actions"
+import { getAddress } from "../actions/addressAction"
 
 jest.mock("../serverFunctions/serverAddresses.js", () => ({ serverAddresses: () => ({addresses: ['123']})}))
 

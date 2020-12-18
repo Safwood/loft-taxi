@@ -1,5 +1,5 @@
 import addressReducer from './addressReducer'
-import {saveAddressList} from '../actions'
+import {saveAddressList} from '../actions/addressAction'
 
 describe("addressReducer", () => {
     it('returns isAddressListUpload true', () => {

@@ -1,5 +1,5 @@
 import routeReducer from './routeReducer'
-import {saveRoute} from '../actions'
+import {saveRoute} from '../actions/routeAction'
 
 describe("routeReducer", () => {
   describe("#SAVEROUTE", () => {

@@ -1,4 +1,4 @@
-import { SAVEADDRESS } from "../actions";
+import { SAVEADDRESS } from "../actions/addressAction";
 
 const initialState = {
   addressList: null,

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {PropTypes} from "prop-types";
 import { connect } from "react-redux"
-import { authenticate } from "../actions"
+import { authenticate } from "../actions/authenticateAction"
 import { Link } from "react-router-dom"
 
 class LoginForm extends Component {

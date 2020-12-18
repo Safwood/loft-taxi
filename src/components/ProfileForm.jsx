@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from "react-redux"
 import chip from "../images/chip.png"
 import cardSign from "../images/card_sign.png"
-import {saveCard} from "../actions"
+import {saveCard} from "../actions/cardAction"
 import {PropTypes} from "prop-types";
 import '../css/Card.css';
 

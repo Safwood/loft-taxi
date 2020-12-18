@@ -1,5 +1,6 @@
 import { takeEvery, call, put } from "redux-saga/effects";
-import { GETROUTE, saveRoute } from "../actions";
+import { GETROUTE } from "../actions/routeAction";
+import { saveRoute } from "../actions/routeAction";
 import { serverRoute } from "../serverFunctions/serverRoute";
 
 export function* getRouteSaga(action) {

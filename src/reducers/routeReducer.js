@@ -1,4 +1,4 @@
-import {SAVEROUTE} from "../actions"
+import {SAVEROUTE} from "../actions/routeAction"
 
 const initialState = {
   route: null

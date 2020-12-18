@@ -1,4 +1,5 @@
-import { SAVECARD, SAVECARDSUCCESS, GETCARDSUCCESS } from "../actions";
+import { GETCARDSUCCESS } from "../actions/cardAction";
+import { SAVECARD, SAVECARDSUCCESS } from "../actions/cardAction";
 
 let initialState = {
   cardNumber: null, 

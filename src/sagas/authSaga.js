@@ -1,5 +1,6 @@
 import { takeEvery, call, put } from "redux-saga/effects";
-import { AUTHENTICATE, logIn } from "../actions";
+import { AUTHENTICATE } from "../actions/authenticateAction";
+import { logIn } from "../actions/logInAction";
 import { serverLogin } from "../serverFunctions/api";
 
 export function* authenticateSaga(action) {

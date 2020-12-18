@@ -1,6 +1,6 @@
 import { takeEvery, call, put } from "redux-saga/effects";
 import { serverGetCard } from "../serverFunctions/serverGetCard"
-import { GETCARD, getCardSuccess } from "../actions";
+import { GETCARD, getCardSuccess } from "../actions/cardAction";
 
 export function* getCardDataSaga(action) {
   let user = {

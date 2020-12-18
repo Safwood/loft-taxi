@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom"
 import '../css/Registration.css';
 import {connect} from "react-redux"
-import {register} from "../actions"
+import {register} from "../actions/registerAction"
 
 
 class RegistrationForm extends React.Component {

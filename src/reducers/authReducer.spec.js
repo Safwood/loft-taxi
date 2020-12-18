@@ -1,5 +1,6 @@
 import authReducer from './authReducer'
-import {logIn, logOut} from '../actions'
+import {logIn} from '../actions/logInAction'
+import {logOut} from '../actions/logOutAction'
 
 describe("authReducer", () => {
   describe("#LOG_IN", () => {

@@ -1,6 +1,6 @@
 import { recordSaga } from "./recordSaga"
 import { getRouteSaga } from "./routeSaga"
-import { getRoute } from "../actions"
+import { getRoute } from "../actions/routeAction"
 
 jest.mock("../serverFunctions/serverRoute", () => ({ serverRoute: () => (["route"])}))
 

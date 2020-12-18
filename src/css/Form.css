@@ -9,6 +9,11 @@
   width: 888px;
 }
 
+.Form-container--new-order {
+  width: 440px;
+  min-height: 290px;
+}
+
 .Form-container--order-form {
   position: absolute;
   left: 6%;
@@ -22,6 +27,10 @@
   flex-direction: column;
   justify-content: center;
   margin: 56px 113px;
+}
+
+.Form--new-order {
+  margin: 0 20px
 }
 
 .Form--profile {
@@ -127,6 +136,11 @@ line-height: 19px;
   justify-content: center;
   align-items: center;
   padding: 100px 0px;
+}
+
+.Form__notification-wrapper--new-order {
+  padding: 12px 0px;
+
 }
 
 .Form__subtitle {

@@ -4,8 +4,8 @@ import mapboxgl from 'mapbox-gl';
 import Header from "./Header";
 import MapNotification from "./MapNotification";
 import OrderForm from "./OrderForm";
-import {getAddress} from "../actions";
-import {getCard} from "../actions";
+import {getAddress} from "../actions/addressAction";
+import {getCard} from "../actions/cardAction";
 import {drawRoute} from "../helper/routeFunction";
 import '../css/Map.css';
 
@@ -28,12 +28,18 @@ class Map extends Component {
 
     this.props.getAddress()
     this.props.getCard(this.props.token)
-    
   }
 
   componentDidUpdate() {
 
-    
+    if (this.map.getLayer("route")) {
+      this.map.removeLayer("route");
+    }
+
+    if (this.map.getSource("route")) {
+      this.map.removeSource("route");
+    }
+
     if (this.props.route) {
       drawRoute(this.map, this.props.route);
     }
@@ -55,7 +61,6 @@ class Map extends Component {
           }  
         </div>
      </div>
-      
     )
   }
 }

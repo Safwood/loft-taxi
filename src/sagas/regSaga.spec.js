@@ -1,6 +1,6 @@
 import { recordSaga } from "./recordSaga"
 import { registerSaga } from "./regSaga"
-import { register } from "../actions"
+import { register } from "../actions/registerAction"
 
 jest.mock("../serverFunctions/serverRegister", () => ({ serverRegister: () => ({success:true, token: '123'})}))
 

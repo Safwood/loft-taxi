@@ -1,6 +1,6 @@
 import { recordSaga } from "./recordSaga"
 import { saveCardSaga } from "./cardSaga"
-import { saveCard } from "../actions"
+import { saveCard } from "../actions/cardAction"
 
 jest.mock("../serverFunctions/serverCard", () => ({ serverCard: () => ({success: true})}))
 

@@ -1,5 +1,5 @@
 import cardReducer from './cardReducer'
-import {saveCard, saveCardSuccess} from '../actions'
+import {saveCard, saveCardSuccess} from '../actions/cardAction'
 
 describe("cardReducer", () => {
   describe("#SAVECARD", () => {
