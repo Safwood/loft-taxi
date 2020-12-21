@@ -6,22 +6,12 @@ import car1 from '../images/car1.png';
 import car2 from '../images/car2.png';
 import car3 from '../images/car3.png';
 import { getRoute } from '../actions/routeAction';
-import NewOrderNotification from "./NewOrderNotification";
+import { Formik, Form, ErrorMessage } from "formik";
 import '../css/Order.css';
 
 class OrderForm extends React.Component {
   state = {
-    address1: "",
-    address2: "",
     isRouteBuilt: false
-  }
-
-  changeAddress1 = (event) => {
-    this.setState({address1: event.target.value})
-  }
-
-  changeAddress2 = (event) => {
-    this.setState({address2: event.target.value})
   }
   
   changeRouteStateTrue = () => {
@@ -30,13 +20,6 @@ class OrderForm extends React.Component {
 
   changeRouteStateFalse = () => {
     this.setState({isRouteBuilt: false})
-  }
-
-  sendOrder = (e) => {
-    e.preventDefault();
-    this.props.getRoute(this.state.address1, this.state.address2);
-
-    this.changeRouteStateTrue();
   }
 
   render() {
@@ -59,77 +42,107 @@ class OrderForm extends React.Component {
           </div>
           : 
           <div className="Form-container Form-container--order-form">
-            <form onSubmit={this.sendOrder} className="Form Form--order-form Order">
-              <div className="Order-addresses">
-                <div className="Order-addresses__address Order-addresses__address--from">
-                  <select onChange={this.changeAddress1} className="Order-addresses__input "type="text" placeholder="Адрес отправления">
+            <Formik
+              initialValues = {{
+                address1: "",
+                address2: ""
+                
+              }}
+              onSubmit={(values) => {
+                this.props.getRoute(values.address1, values.address2);
+                this.changeRouteStateTrue();
+              }
+              }
+              validate={values => {
+                let errors= {}
+
+                if (!values.address1) {
+                  errors.address1 = "Укажите, пожалуйста, адрес отправления"
+                }
+
+                if (!values.address2) {
+                  errors.address2 = "Укажите, пожалуйста, адрес места назначения"
+                }
+
+                return errors
+              }}>
+            
+              {props => (
+                <Form className="Form Form--order-form Order">
+                <div className="Order-addresses">
+                  <div className="Order-addresses__address Order-addresses__address--from">
+                    <select { ...props.getFieldProps("address1")} name="address1" className="Order-addresses__input">
+                      <option></option>
+                      { this.props.addressList 
+                        ? this.props.addressList.filter(item => item !== props.values.address2).map(item => {
+                          return <option key={item}>{item}</option>
+                        })
+                        : <option></option>
+                      } 
+                    </select>
+                    <button className="Order-addresses__button">
+                      <img className="Order-addresses__button-image" src={cross} alt="cross"/>
+                    </button>
+                    <button className="Order-addresses__button Order-addresses__button--errow">
+                      <img  className="Order-addresses__button-image" src={errowDown} alt="errowDown"/>
+                    </button>
+                  </div>
+                  <div className="Order-addresses__address Order-addresses__address--to">
+                    <select { ...props.getFieldProps("address2")} name="address2" className="Order-addresses__input">
                     <option></option>
                     { this.props.addressList 
-                      ? this.props.addressList.filter(item => item !== this.state.address2).map(item => {
-                        return <option key={item}>{item}</option>
-                      })
+                      ? this.props.addressList.filter(item => item!==props.values.address1).map (item => {
+                          return <option key={item} value={item}>{item}</option>
+                        })
+                        
                       : <option></option>
-                    } 
-                  </select>
-                  <button className="Order-addresses__button">
-                    <img className="Order-addresses__button-image" src={cross} alt="cross"/>
-                  </button>
-                  <button className="Order-addresses__button Order-addresses__button--errow">
-                    <img  className="Order-addresses__button-image" src={errowDown} alt="errowDown"/>
-                  </button>
+                    }
+                    </select>
+                    <button className="Order-addresses__button">
+                      <img  className="Order-addresses__button-image" src={cross} alt="cross"/>
+                    </button>
+                    <button className="Order-addresses__button Order-addresses__button--errow">
+                      <img  className="Order-addresses__button-image" src={errowDown} alt="errowDown"/>
+                    </button>
+                  </div>
                 </div>
-                <div className="Order-addresses__address Order-addresses__address--to">
-                  <select onChange={this.changeAddress2} className="Order-addresses__input" type="text" placeholder="Адрес прибытия">
-                  <option></option>
-                  { this.props.addressList 
-                    ? this.props.addressList.filter(item => item!==this.state.address1).map (item => {
-                        return <option key={item} value={item}>{item}</option>
-                      })
-                      
-                    : <option></option>
-                  }
-                  </select>
-                  <button className="Order-addresses__button">
-                    <img  className="Order-addresses__button-image" src={cross} alt="cross"/>
-                  </button>
-                  <button className="Order-addresses__button Order-addresses__button--errow">
-                    <img  className="Order-addresses__button-image" src={errowDown} alt="errowDown"/>
-                  </button>
+                <div className="Order-cars">
+                  <ul className="Order-cars__list">
+                    <li className="Order-cars__item">
+                      <input className="Order-cars__item-label" name="car" type="radio" id="car1"/>
+                      <label htmlFor="car1">
+                        <h3 className="Order-cars__heading">Стандарт</h3>
+                        <p className="Order-cars__cost">стоимость</p>
+                        <p className="Order-cars__price">150 ₽</p>
+                        <img className="Order-cars__image" src={car1} alt="car"/>
+                      </label>
+                    </li>
+                    <li className="Order-cars__item">
+                      <input className="Order-cars__item-label" name="car" type="radio" id="car2"/>
+                      <label htmlFor="car2">
+                        <h3 className="Order-cars__heading">Премиум</h3>
+                        <p className="Order-cars__cost">стоимость</p>
+                        <p className="Order-cars__price">250 ₽</p>
+                        <img className="Order-cars__image" src={car2} alt="car"/>
+                      </label>
+                    </li>
+                    <li className="Order-cars__item">
+                      <input className="Order-cars__item-label" name="car" type="radio" id="car3"/>
+                      <label htmlFor="car3">
+                        <h3 className="Order-cars__heading">Бизнес</h3>
+                        <p className="Order-cars__cost">стоимость</p>
+                        <p className="Order-cars__price">300 ₽</p>
+                        <img className="Order-cars__image" src={car3} alt="car"/>
+                      </label>
+                    </li>
+                  </ul>
+                  <ErrorMessage name="address1" component="div" className="Form__error"/>
+                  <ErrorMessage name="address2" component="div" className="Form__error"/>
+                  <input type="submit"  disabled={!props.values.address1 && !props.values.address2 && props.errors} className="Order-form__button Entry-button" value="Заказать" />
                 </div>
-              </div>
-              <div className="Order-cars">
-                <ul className="Order-cars__list">
-                  <li className="Order-cars__item">
-                    <input className="Order-cars__item-label" name="car" type="radio" id="car1"/>
-                    <label htmlFor="car1">
-                      <h3 className="Order-cars__heading">Стандарт</h3>
-                      <p className="Order-cars__cost">стоимость</p>
-                      <p className="Order-cars__price">150 ₽</p>
-                      <img className="Order-cars__image" src={car1} alt="car"/>
-                    </label>
-                  </li>
-                  <li className="Order-cars__item">
-                    <input className="Order-cars__item-label" name="car" type="radio" id="car2"/>
-                    <label htmlFor="car2">
-                      <h3 className="Order-cars__heading">Премиум</h3>
-                      <p className="Order-cars__cost">стоимость</p>
-                      <p className="Order-cars__price">250 ₽</p>
-                      <img className="Order-cars__image" src={car2} alt="car"/>
-                    </label>
-                  </li>
-                  <li className="Order-cars__item">
-                    <input className="Order-cars__item-label" name="car" type="radio" id="car3"/>
-                    <label htmlFor="car3">
-                      <h3 className="Order-cars__heading">Бизнес</h3>
-                      <p className="Order-cars__cost">стоимость</p>
-                      <p className="Order-cars__price">300 ₽</p>
-                      <img className="Order-cars__image" src={car3} alt="car"/>
-                    </label>
-                  </li>
-                </ul>
-                <input type="submit" className="Order-form__button Entry-button" value="Заказать" />
-              </div>
-            </form>
+              </Form>
+              )}
+            </Formik> 
           </div>
         }
       </div>

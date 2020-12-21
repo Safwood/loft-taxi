@@ -114,11 +114,11 @@ line-height: 19px;
   height: 24px;
     font-size: 16px;
 }
-.Form__email {
+.Form__label--email {
   margin-bottom: 25px;
 }
 
-.Form__password {
+.Form__label--password {
   margin-bottom: 78px;
 }
 
@@ -166,4 +166,10 @@ line-height: 19px;
 .Form__blocks-date-cvc {
   display: flex;
   justify-content: space-between;
+}
+
+.Form__error {
+  color: red;
+  font-size: 16px;
+  text-align: left;
 }

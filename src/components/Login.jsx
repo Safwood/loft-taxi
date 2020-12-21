@@ -9,16 +9,15 @@ import '../css/Side-section.css';
 
 
 
-class Login extends React.Component {
+export const Login = (props) => {
   
-  render() {
     return (
       <div  className="Starting-page">
         <section className="Side-section">
           <img src={logo}  className="Side-section__logo" alt='logo'/>
         </section>
         <main className="Starting-page__main-block">
-          {this.props.isLoggedIn 
+          {props.isLoggedIn 
           ? (
             <LoginNotification/>
             ) 
@@ -28,7 +27,6 @@ class Login extends React.Component {
         </main>
       </div>
     )
-  }
 }
 
 Login.propTypes = {
