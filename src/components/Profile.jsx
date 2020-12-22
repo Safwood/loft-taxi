@@ -5,7 +5,7 @@ import ProfileNotification from "./ProfileNotification";
 import ProfileForm from "./ProfileForm";
 import { connect } from "react-redux"
 
-class Profile extends React.Component {
+export class Profile extends React.Component {
   
   render() {
     return (

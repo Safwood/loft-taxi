@@ -1,17 +1,17 @@
 import React from 'React';
-import ProfileNotification from './ProfileNotification';
+import NewOrderNotification from './NewOrderNotification';
 import { render } from '@testing-library/react';
 import {Router} from 'react-router-dom';
 import {createMemoryHistory} from 'history';
 
-describe("./ProfileNotification.jsx", () => {
+describe("./NewOrderNotification.jsx", () => {
   it("renders correctly", () => {
     const history = createMemoryHistory();
     const {getByText} = render(
       <Router history={history}>
-        <ProfileNotification />
+        <NewOrderNotification />
       </Router>);
-    const element = getByText(/Платёжные данные обновлены. Теперь вы можете заказывать такси./i);
+    const element = getByText(/Ваше такси уже едет к вам. Прибудет приблизительно через 10 минут./i);
     expect(element).toBeInTheDocument();
   })
 })

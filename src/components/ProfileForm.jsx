@@ -9,7 +9,7 @@ import { Formik, Form, ErrorMessage } from "formik";
 
 let a=0;
 
-class ProfileForm extends Component {
+export class ProfileForm extends Component {
  
   addSpace = (event) => {
     if (a===4) {
@@ -89,7 +89,7 @@ class ProfileForm extends Component {
                         </label>
                         <label className="Form__label" htmlFor="cvc">
                           <p className="Form__text Form__text--profile">CVC</p>
-                          <input type="text" { ...props.getFieldProps("cvc")} maxLength="3" data-testid="cvc"  id="cvc" className="Form__CVC-code Form__input" name="cvc" />
+                          <input type="text" { ...props.getFieldProps("cvc")} maxLength="3" data-testid="cvc"  id="cvc" className="Form__CVC-code Form__input" name="expiryDate" />
                           <ErrorMessage name="cvc" component="div" className="Form__error"/>
                         </label>
                      </div>

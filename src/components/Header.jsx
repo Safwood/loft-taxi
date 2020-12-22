@@ -7,7 +7,7 @@ import { Link, NavLink } from "react-router-dom"
 import '../css/Header.css';
 import '../css/Menu.css';
 
-class Header extends React.Component {
+export class Header extends React.Component {
 
   unauthenticate = () => {
     this.props.logOut();

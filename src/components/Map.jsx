@@ -9,7 +9,7 @@ import {getCard} from "../actions/cardAction";
 import {drawRoute} from "../helper/routeFunction";
 import '../css/Map.css';
 
-class Map extends Component {
+export class Map extends Component {
   map = null;
   mapContainer = React.createRef();
 
@@ -54,7 +54,7 @@ class Map extends Component {
      <div>
        <Header/>
         <div className="Map-wrapper">
-          <div className="Map" data-testid="map" ref={this.mapContainer}></div>
+          <div className="Map" ref={this.mapContainer}></div>
           {this.props.isCardSaved
           ? <OrderForm></OrderForm>
           : <MapNotification></MapNotification>

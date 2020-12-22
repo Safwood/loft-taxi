@@ -9,7 +9,7 @@ import { getRoute } from '../actions/routeAction';
 import { Formik, Form, ErrorMessage } from "formik";
 import '../css/Order.css';
 
-class OrderForm extends React.Component {
+export class OrderForm extends React.Component {
   state = {
     isRouteBuilt: false
   }

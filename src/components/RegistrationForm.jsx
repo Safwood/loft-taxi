@@ -5,7 +5,7 @@ import {connect} from "react-redux"
 import {register} from "../actions/registerAction"
 import { Formik, Form, ErrorMessage } from "formik";
 
-class RegistrationForm extends React.Component {
+export class RegistrationForm extends React.Component {
   render() {
     return (
       <div  className="Form-container">

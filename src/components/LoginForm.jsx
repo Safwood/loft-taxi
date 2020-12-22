@@ -5,7 +5,7 @@ import { authenticate } from "../actions/authenticateAction";
 import { Link } from "react-router-dom";
 import { Formik, Form, ErrorMessage } from "formik";
 
-class LoginForm extends React.Component {
+export class LoginForm extends React.Component {
     render() {
     return (
       <div className="Form-container">
