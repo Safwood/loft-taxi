@@ -57,8 +57,8 @@
 .Form__content {
   display: flex;
   flex-direction: column;
-  
 }
+
 .Form__content--profile{
   width: 100%;
   margin-bottom: 50px;
@@ -68,29 +68,35 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-bottom: 78px;
 }
 
 .Form__label {
   width: 100%;
+  text-align: start;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
 }
 
-.Form__label--date{
+.Form__input-wrapper {
+  text-align: start;
+  width: 100%;
+  height: 88px;
+}
+
+.Form__input-wrapper--date{
   margin-right: 35px;
 }
 
-.Form__text {
-  text-align: start;
+.Form__input {
   width: 100%;
-  font-weight: bold;
-font-size: 16px;
-line-height: 19px;
-
-}
-
-.Form__text--profile {
-  font-size: 15px;
-  color: #7B7B7B;
-  font-weight: normal;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-color: #E4E4E4;
+  height: 24px;
+  font-size: 16px;
 }
 
 .Form__new-user {
@@ -103,23 +109,6 @@ line-height: 19px;
 .Form__new-user-text {
   color: #828282;
   margin-right: 5px;
-}
-
-.Form__input {
-  width: 100%;
-  border-top: 0;
-  border-right: 0;
-  border-left: 0;
-  border-color: #E4E4E4;
-  height: 24px;
-    font-size: 16px;
-}
-.Form__label--email {
-  margin-bottom: 25px;
-}
-
-.Form__label--password {
-  margin-bottom: 78px;
 }
 
 .Form__notification {
@@ -140,7 +129,6 @@ line-height: 19px;
 
 .Form__notification-wrapper--new-order {
   padding: 12px 0px;
-
 }
 
 .Form__subtitle {

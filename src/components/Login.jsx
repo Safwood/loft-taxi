@@ -7,8 +7,6 @@ import {PropTypes} from "prop-types";
 import '../css/Starting-page.css';
 import '../css/Side-section.css';
 
-
-
 const Login = (props) => {
   
     return (
@@ -32,6 +30,5 @@ const Login = (props) => {
 Login.propTypes = {
   isLoggedIn: PropTypes.bool,
 }
-
 
 export default connect((state) => ({isLoggedIn: state.auth.isLoggedIn}))(Login);
