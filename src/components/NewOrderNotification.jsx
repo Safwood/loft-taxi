@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from "react-router-dom"
 
-const NewOrderNotification = () => {
+const NewOrderNotification = (props) => {
   return(
-    <div className="Map-page">
-      <div className="Form-container Form-container--profile">
-      <form className="Form">
+    <div className="Map-page Map-page--new-order">
+      <div className="Form-container Form-container--new-order">
+      <form className="Form Form--new-order" onSubmit={props.onSubmit}>
         <div className="Form__notification-wrapper Form__notification-wrapper--new-order">
         <h2 className="Form__heading Form__heading--profile">Заказ размещен</h2>
           <p className="Form__notification">
            Ваше такси уже едет к вам. Прибудет приблизительно через 10 минут.
           </p>
-          <Link to="/map" className="Entry-button">Сделать новый заказ</Link>
+          <button className="Entry-button">Сделать новый заказ</button>
         </div>
         </form>
       </div>

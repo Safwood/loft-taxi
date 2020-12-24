@@ -6,7 +6,7 @@ import { getRoute } from '../actions/routeAction';
 import { Formik, Form, ErrorMessage } from "formik";
 import '../css/Order.css';
 import OrderCars from "./OrderCars"
-import OrderNotification from "./OrderNotification"
+import NewOrderNotification from "./NewOrderNotification"
 
 
 export class OrderForm extends React.Component {
@@ -52,7 +52,7 @@ export class OrderForm extends React.Component {
       <div>
         {this.state.isRouteBuilt
           ? 
-          <OrderNotification onSubmit={this.changeRouteStateFalse}/>
+          <NewOrderNotification onSubmit={this.changeRouteStateFalse}/>
           : 
           <div className="Form-container Form-container--order-form">
             <Formik
