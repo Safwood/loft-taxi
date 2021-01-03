@@ -5,6 +5,10 @@
   background-color: #fff;
 }
 
+.Form-container--auth-error {
+  min-height: 390px;
+}
+
 .Form-container--profile {
   width: 888px;
 }

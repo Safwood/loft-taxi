@@ -5,6 +5,7 @@ import { authenticate } from "../actions/authenticateAction";
 import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import Input from "./Input"
+import ErrorNotification from "./ErrorNotification"
 
 export class LoginForm extends React.Component {
   initialValues ={
@@ -41,6 +42,12 @@ export class LoginForm extends React.Component {
             <Form className="Form">
               <h2 className="Form__heading">Войти</h2>
               <div className="Form__content">
+                <div className="Auth_error">
+                  {this.props.hasAuthError
+                  ? <ErrorNotification />
+                  : null
+                  }
+                </div>
                 <div className="Form__inputs">
                   <Input inputType="text" inputName="email" inputText="Email:" placeholder="mail@mail.ru"  onChange={props.handleChange} onBlur={props.handleBlur} errors={props.errors.email}/>
                   <Input inputType="password" inputName="password" inputText="Пароль:" placeholder="************"  errors={props.errors.password} onBlur={props.handleBlur} onChange={props.handleChange} />
@@ -63,8 +70,12 @@ LoginForm.propTypes = {
   auth: PropTypes.func,
 }
 
+const mapStateToProps = state => ({
+  hasAuthError: state.auth.hasAuthError
+})
+
 const mapDispatchToProps = dispatch => ({
   auth: (email, password) => dispatch(authenticate({email, password}))
 })
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
