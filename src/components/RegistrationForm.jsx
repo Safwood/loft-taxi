@@ -5,6 +5,9 @@ import {connect} from "react-redux"
 import {register} from "../actions/registerAction"
 import { Formik, Form } from "formik";
 import Input from "./Input"
+import Preloader from './Preloader';
+import ErrorNotification from "./ErrorNotification"
+
 
 export class RegistrationForm extends React.Component {
   validate = values => {
@@ -57,6 +60,18 @@ export class RegistrationForm extends React.Component {
         <Form className="Form">
           <h2 className="Form__heading">Регистрация</h2>
           <div className="Form__content">
+            <div className="Auth_error">
+                {this.props.hasAuthError
+                ? <ErrorNotification error={this.props.hasAuthError}/>
+                : null
+                }
+            </div>
+            <div>
+              {this.props.isPreloaderOn
+              ? <Preloader />
+              : null
+              }
+            </div>
             <Input inputType="email" inputName="email" inputText="Email*" placeholder="mail@mail.ru"  errors={props.errors.email} onBlur={props.handleBlur} onChange={props.handleChange}/>
             <Input inputType="text" inputName="name" inputText="Как вас зовут?*" placeholder="Alexander"  errors={props.errors.name} onBlur={props.handleBlur} onChange={props.handleChange}/>
             <Input inputType="text" inputName="surname" inputText="Как ваша фамилия?*" placeholder="Ivanov"  errors={props.errors.surname} onBlur={props.handleBlur} onChange={props.handleChange}/>
@@ -76,8 +91,13 @@ export class RegistrationForm extends React.Component {
   
 }
 
+const mapStateToProps = state => ({
+  hasAuthError: state.auth.hasAuthError,
+  isPreloaderOn: state.loader.isPreloaderOn
+})
+
 const mapDispatchToProps = dispatch => ({
   register: (email, password, name, surname) => dispatch(register({email, password, name, surname}))
 })
 
-export default connect(null, mapDispatchToProps)(RegistrationForm);
+export default connect(mapStateToProps, mapDispatchToProps)(RegistrationForm);

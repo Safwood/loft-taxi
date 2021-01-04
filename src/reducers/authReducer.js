@@ -6,7 +6,8 @@ import { LOG_OUT  } from "../actions/logOutAction";
 const initialState = {
   isLoggedIn: false,
   token: null,
-  hasAuthError: null
+  hasAuthError: null,
+  error: null
 }
 
 export default function(state = initialState, action) {

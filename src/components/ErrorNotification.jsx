@@ -4,16 +4,16 @@ import { logInFailClose } from "../actions/logInAction"
 
 const ErrorNotification = (props) => {
   return(
-    <div className="Map-page">
+    <div className="Map-page Map-page--auth-error">
       <div className="Form-container Form-container--auth-error">
-      <form className="Form">
+      <div className="Form">
         <div className="Form__notification-wrapper">
           <p className="Form__notification">
-           Ошибка авторизации.
+           {props.error}
           </p>
           <button onClick={props.closeError} className="Entry-button">Закрыть</button>
         </div>
-        </form>
+        </div>
       </div>
     </div>
   )
