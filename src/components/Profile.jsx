@@ -5,24 +5,22 @@ import ProfileNotification from "./ProfileNotification";
 import ProfileForm from "./ProfileForm";
 import { connect } from "react-redux"
 
-export class Profile extends React.Component {
+export const Profile = (props) => {
   
-  render() {
-    return (
+  return (
+    <div>
+      <Header/>
       <div>
-        <Header/>
-        <div>
-          {this.props.isCardSaved
-          ? (
-            <ProfileNotification />
-          )
-          : (
-            <ProfileForm />
-          )}
-        </div>
+        {props.isCardSaved
+        ? (
+          <ProfileNotification />
+        )
+        : (
+          <ProfileForm />
+        )}
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 Profile.propTypes = {

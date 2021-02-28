@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {connect} from 'react-redux';
 import errowDown from '../images/errowDown.png';
 import cross from '../images/cross.png';
@@ -9,25 +9,23 @@ import OrderCars from "./OrderCars"
 import NewOrderNotification from "./NewOrderNotification"
 
 
-export class OrderForm extends React.Component {
-  state = {
-    isRouteBuilt: false
-  }
+export const OrderForm = (props) => {
+  const [isRouteBuilt, setState] = useState(false)
   
-  changeRouteStateTrue = () => {
-    this.setState({isRouteBuilt: true})
+  const changeRouteStateTrue = () => {
+    setState({isRouteBuilt: true})
   }
 
-  changeRouteStateFalse = () => {
-    this.setState({isRouteBuilt: false})
+  const changeRouteStateFalse = () => {
+    setState({isRouteBuilt: false})
   }
 
-  onSubmit = (values) => {
-    this.props.getRoute(values.address1, values.address2);
-    this.changeRouteStateTrue();
+  const onSubmit = (values) => {
+    props.getRoute(values.address1, values.address2);
+    changeRouteStateTrue();
   }
 
-  validate = values => {
+  const validate = values => {
     let errors= {}
 
     if (!values.address1) {
@@ -41,24 +39,25 @@ export class OrderForm extends React.Component {
     return errors
   }
 
-  initialValues = {
+  let initialValues = {
     address1: "",
     address2: ""
     
   }
 
-  render() {
+  const addressList = props.addressList;
+
     return (
       <div>
-        {this.state.isRouteBuilt
+        {isRouteBuilt
           ? 
-          <NewOrderNotification onSubmit={this.changeRouteStateFalse}/>
+          <NewOrderNotification onSubmit={changeRouteStateFalse}/>
           : 
           <div className="Form-container Form-container--order-form">
             <Formik
-              initialValues = {this.initialValues}
-              onSubmit={this.onSubmit}
-              validate={this.validate}
+              initialValues = {initialValues}
+              onSubmit={onSubmit}
+              validate={validate}
               >
               {props => (
                 <Form className="Form Form--order-form Order">
@@ -66,8 +65,8 @@ export class OrderForm extends React.Component {
                   <div className="Order-addresses__address Order-addresses__address--from">
                     <select { ...props.getFieldProps("address1")} name="address1" className="Order-addresses__input">
                       <option></option>
-                      { this.props.addressList 
-                        && this.props.addressList.filter(item => item !== props.values.address2).map(item => {
+                      { addressList 
+                        && addressList.filter(item => item !== props.values.address2).map(item => {
                           return <option key={item}>{item}</option>
                         })
                       } 
@@ -82,8 +81,8 @@ export class OrderForm extends React.Component {
                   <div className="Order-addresses__address Order-addresses__address--to">
                     <select { ...props.getFieldProps("address2")} name="address2" className="Order-addresses__input">
                     <option></option>
-                    { this.props.addressList 
-                      && this.props.addressList.filter(item => item!==props.values.address1).map (item => {
+                    { addressList 
+                      && addressList.filter(item => item!==props.values.address1).map (item => {
                         return <option key={item} value={item}>{item}</option>
                       })
                     }
@@ -109,7 +108,7 @@ export class OrderForm extends React.Component {
         }
       </div>
     )
-  }
+  
 }
 
 const mapStateToProps = (state) => ({

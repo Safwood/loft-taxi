@@ -23,7 +23,7 @@ export function* getCardDataSaga(action) {
 
   const data = yield call (serverGetCard, token);
 
-  if (data) {
+  if (data.success) {
     yield put(getCardSuccess(data))
   }
 

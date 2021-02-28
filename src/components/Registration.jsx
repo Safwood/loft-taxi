@@ -7,16 +7,15 @@ import {PropTypes} from "prop-types";
 import '../css/Starting-page.css';
 import '../css/Side-section.css';
 
-class Registration extends React.Component {
+const Registration = (props) => {
   
-  render() {
     return (
       <div  className="Starting-page">
         <section className="Side-section">
           <img src={logo}  className="Side-section__logo" alt='logo'/>
         </section>
         <main className="Starting-page__main-block">
-          {this.props.isLoggedIn 
+          {props.isLoggedIn 
           ? (
             <LoginNotification/>
             ) 
@@ -26,7 +25,6 @@ class Registration extends React.Component {
         </main>
       </div>
     )
-  }
 }
 
 Registration.propTypes = {

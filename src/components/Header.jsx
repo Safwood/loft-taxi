@@ -7,40 +7,38 @@ import { Link, NavLink } from "react-router-dom"
 import '../css/Header.css';
 import '../css/Menu.css';
 
-export class Header extends React.Component {
+export const Header = (props) => {
 
-  unauthenticate = () => {
-    this.props.logOut();
+  const unauthenticate = () => {
+    props.logOut();
   }
 
-  render () {
-    return (
-      <div>
-         <header className="Header">
-             <div className="Container Header__container">
-               <div className="Header__column">
-                 <img src={logo}  className="Header__logo" alt='logo'/>
-               </div>
-               <div  className="Header__column">
-                 <nav className="Menu">
-                   <ul className="Menu__list">
-                     <li className="Menu__item">
-                        <NavLink to="/map" className='Menu__button'>Карты</NavLink>
-                     </li>
-                     <li  className="Menu__item">
-                        <NavLink to="/profile" className='Menu__button'>Профиль</NavLink>
-                     </li>
-                     <li  className="Menu__item">
-                       <Link to="/" onClick={this.unauthenticate} className="Menu__button">Выйти</Link>
-                     </li>
-                   </ul>
-                 </nav>
-               </div>
-             </div>
-           </header>
-      </div>
-    )
-  }
+  return (
+    <div>
+        <header className="Header">
+            <div className="Container Header__container">
+              <div className="Header__column">
+                <img src={logo}  className="Header__logo" alt='logo'/>
+              </div>
+              <div  className="Header__column">
+                <nav className="Menu">
+                  <ul className="Menu__list">
+                    <li className="Menu__item">
+                      <NavLink to="/map" className='Menu__button'>Карты</NavLink>
+                    </li>
+                    <li  className="Menu__item">
+                      <NavLink to="/profile" className='Menu__button'>Профиль</NavLink>
+                    </li>
+                    <li  className="Menu__item">
+                      <Link to="/" onClick={unauthenticate} className="Menu__button">Выйти</Link>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </header>
+    </div>
+  )
 }
 
 Header.propTypes = {

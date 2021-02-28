@@ -9,8 +9,8 @@ import Preloader from './Preloader';
 import ErrorNotification from "./ErrorNotification"
 
 
-export class RegistrationForm extends React.Component {
-  validate = values => {
+export const RegistrationForm = (props) => {
+  const validate = values => {
     let errors= {}
 
     if (!values.email) {
@@ -37,58 +37,55 @@ export class RegistrationForm extends React.Component {
 
   }
 
-  onSubmit = (values) => {
-    this.props.register(values.email, values.password, values.name, values.surname)
+  const onSubmit = (values) => {
+    props.register(values.email, values.password, values.name, values.surname)
   }
 
-  initialValues= {
+  let initialValues = {
     email: "", 
     password: "", 
     name: "", 
     surname: ""
   }
 
-  render() {
-    return (
-      <div  className="Form-container">
-       <Formik
-        initialValues = {this.initialValues}
-        onSubmit={this.onSubmit}
-        validate={this.validate}>
+  return (
+    <div  className="Form-container">
+      <Formik
+      initialValues = {initialValues}
+      onSubmit={onSubmit}
+      validate={validate}>
 
-        {props => (
-        <Form className="Form">
-          <h2 className="Form__heading">Регистрация</h2>
-          <div className="Form__content">
-            <div className="Auth_error">
-                {this.props.hasAuthError
-                ? <ErrorNotification error={this.props.hasAuthError}/>
-                : null
-                }
-            </div>
-            <div>
-              {this.props.isPreloaderOn
-              ? <Preloader />
+      {props => (
+      <Form className="Form">
+        <h2 className="Form__heading">Регистрация</h2>
+        <div className="Form__content">
+          <div className="Auth_error">
+              {props.hasAuthError
+              ? <ErrorNotification error={props.hasAuthError}/>
               : null
               }
-            </div>
-            <Input inputType="email" inputName="email" inputText="Email*" placeholder="mail@mail.ru"  errors={props.errors.email} onBlur={props.handleBlur} onChange={props.handleChange}/>
-            <Input inputType="text" inputName="name" inputText="Как вас зовут?*" placeholder="Alexander"  errors={props.errors.name} onBlur={props.handleBlur} onChange={props.handleChange}/>
-            <Input inputType="text" inputName="surname" inputText="Как ваша фамилия?*" placeholder="Ivanov"  errors={props.errors.surname} onBlur={props.handleBlur} onChange={props.handleChange}/>
-            <Input inputType="password" inputName="password" inputText="Придумайте пароль*" placeholder="**********"  errors={props.errors.password} onBlur={props.handleBlur} onChange={props.handleChange}/>
-            <input type="submit"  disabled={!props.values.email && !props.values.password && !props.values.name && !props.values.surname && props.errors} className="Form__button Entry-button" value="Зарегистрироваться" />
-            <div className="Form__new-user">
-              <p className="Form__new-user-text">Уже зарегистрированы?</p>
-              <Link to="/" className="Button New-user__button Form__button">Войти</Link>
-            </div>
           </div>
-        </Form>
-        )}
-       </Formik>
-      </div>
-    )
-  }
-  
+          <div>
+            {props.isPreloaderOn
+            ? <Preloader />
+            : null
+            }
+          </div>
+          <Input inputType="email" inputName="email" inputText="Email*" placeholder="mail@mail.ru"  errors={props.errors.email} onBlur={props.handleBlur} onChange={props.handleChange}/>
+          <Input inputType="text" inputName="name" inputText="Как вас зовут?*" placeholder="Alexander"  errors={props.errors.name} onBlur={props.handleBlur} onChange={props.handleChange}/>
+          <Input inputType="text" inputName="surname" inputText="Как ваша фамилия?*" placeholder="Ivanov"  errors={props.errors.surname} onBlur={props.handleBlur} onChange={props.handleChange}/>
+          <Input inputType="password" inputName="password" inputText="Придумайте пароль*" placeholder="**********"  errors={props.errors.password} onBlur={props.handleBlur} onChange={props.handleChange}/>
+          <input type="submit"  disabled={!props.values.email && !props.values.password && !props.values.name && !props.values.surname && props.errors} className="Form__button Entry-button" value="Зарегистрироваться" />
+          <div className="Form__new-user">
+            <p className="Form__new-user-text">Уже зарегистрированы?</p>
+            <Link to="/" className="Button New-user__button Form__button">Войти</Link>
+          </div>
+        </div>
+      </Form>
+      )}
+      </Formik>
+    </div>
+  )
 }
 
 const mapStateToProps = state => ({
