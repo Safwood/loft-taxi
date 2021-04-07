@@ -19,7 +19,7 @@ export class App extends React.Component {
           <section>
             <Switch>
               <Route exact path="/" component={Login} />
-              <Route path="/registration" component={Registration} />
+              <Route path="/registration" component={Registration}/>
               <PrivateRoute path="/map" component={Map} />
               <PrivateRoute path="/profile" component={Profile}/>
             </Switch>

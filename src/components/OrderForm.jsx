@@ -4,27 +4,20 @@ import errowDown from '../images/errowDown.png';
 import cross from '../images/cross.png';
 import { Formik, Form, ErrorMessage } from "formik";
 import '../css/Order.css';
-import OrderCars from "./OrderCars"
-import NewOrderNotification from "./NewOrderNotification"
+import OrderCars from "./OrderCars";
+import NewOrderNotification from "./NewOrderNotification";
 
-export const OrderForm = (props) => {
+export const OrderForm = () => {
   const addressList = useSelector((state) => state.address.addressList);
+  const isRouteSaved = useSelector((state) => state.route.isRouteSaved);
   const dispatch = useDispatch();
   const getRoute = useCallback((address1, address2) => dispatch({type: "GETROUTE", payload: {address1, address2}}), [dispatch])
 
-  const [isRouteBuilt, setState] = useState(false)
-  
-  const changeRouteStateTrue = () => {
-    setState({isRouteBuilt: true})
-  }
-
-  const changeRouteStateFalse = () => {
-    setState({isRouteBuilt: false})
-  }
+   
+  console.log(isRouteSaved)
 
   const onSubmit = (values) => {
     getRoute(values.address1, values.address2);
-    changeRouteStateTrue();
   }
 
   const validate = values => {
@@ -47,68 +40,67 @@ export const OrderForm = (props) => {
     
   }
 
-    return (
-      <div>
-        {isRouteBuilt
-          ? 
-          <NewOrderNotification onSubmit={changeRouteStateFalse}/>
-          : 
-          <div className="Form-container Form-container--order-form">
-            <Formik
-              initialValues = {initialValues}
-              onSubmit={onSubmit}
-              validate={validate}
-              >
-              {props => (
-                <Form className="Form Form--order-form Order">
-                <div className="Order-addresses">
-                  <div className="Order-addresses__address Order-addresses__address--from">
-                    <select { ...props.getFieldProps("address1")} name="address1" className="Order-addresses__input">
-                      <option></option>
-                      { addressList 
-                        && addressList.filter(item => item !== props.values.address2).map(item => {
-                          return <option key={item}>{item}</option>
-                        })
-                      } 
-                    </select>
-                    <button className="Order-addresses__button">
-                      <img className="Order-addresses__button-image" src={cross} alt="cross"/>
-                    </button>
-                    <button className="Order-addresses__button Order-addresses__button--errow">
-                      <img  className="Order-addresses__button-image" src={errowDown} alt="errowDown"/>
-                    </button>
-                  </div>
-                  <div className="Order-addresses__address Order-addresses__address--to">
-                    <select { ...props.getFieldProps("address2")} name="address2" className="Order-addresses__input">
+  return (
+    <div>
+      {isRouteSaved
+        ? 
+        <NewOrderNotification/>
+        : 
+        <div className="Form-container Form-container--order-form">
+          <Formik
+            initialValues = {initialValues}
+            onSubmit={onSubmit}
+            validate={validate}
+            >
+            {props => (
+              <Form className="Form Form--order-form Order">
+              <div className="Order-addresses">
+                <div className="Order-addresses__address Order-addresses__address--from">
+                  <select { ...props.getFieldProps("address1")} name="address1" className="Order-addresses__input">
                     <option></option>
                     { addressList 
-                      && addressList.filter(item => item!==props.values.address1).map (item => {
-                        return <option key={item} value={item}>{item}</option>
+                      && addressList.filter(item => item !== props.values.address2).map(item => {
+                        return <option key={item}>{item}</option>
                       })
-                    }
-                    </select>
-                    <button className="Order-addresses__button">
-                      <img  className="Order-addresses__button-image" src={cross} alt="cross"/>
-                    </button>
-                    <button className="Order-addresses__button Order-addresses__button--errow">
-                      <img  className="Order-addresses__button-image" src={errowDown} alt="errowDown"/>
-                    </button>
-                  </div>
+                    } 
+                  </select>
+                  <button className="Order-addresses__button">
+                    <img className="Order-addresses__button-image" src={cross} alt="cross"/>
+                  </button>
+                  <button className="Order-addresses__button Order-addresses__button--errow">
+                    <img  className="Order-addresses__button-image" src={errowDown} alt="errowDown"/>
+                  </button>
                 </div>
-                <OrderCars />
-                <div className="Order-button">
-                  <ErrorMessage name="address1" component="div" className="Form__error"/>
-                  <ErrorMessage name="address2" component="div" className="Form__error"/>
-                  <input type="submit"  disabled={!props.values.address1 && !props.values.address2 && props.errors} className="Order-form__button Entry-button" value="Заказать" />
+                <div className="Order-addresses__address Order-addresses__address--to">
+                  <select { ...props.getFieldProps("address2")} name="address2" className="Order-addresses__input">
+                  <option></option>
+                  { addressList 
+                    && addressList.filter(item => item!==props.values.address1).map (item => {
+                      return <option key={item} value={item}>{item}</option>
+                    })
+                  }
+                  </select>
+                  <button className="Order-addresses__button">
+                    <img  className="Order-addresses__button-image" src={cross} alt="cross"/>
+                  </button>
+                  <button className="Order-addresses__button Order-addresses__button--errow">
+                    <img  className="Order-addresses__button-image" src={errowDown} alt="errowDown"/>
+                  </button>
                 </div>
-              </Form>
-              )}
-            </Formik> 
-          </div>
-        }
-      </div>
-    )
-  
+              </div>
+              <OrderCars />
+              <div className="Order-button">
+                <ErrorMessage name="address1" component="div" className="Form__error"/>
+                <ErrorMessage name="address2" component="div" className="Form__error"/>
+                <input type="submit"  disabled={!props.values.address1 && !props.values.address2 && props.errors} className="Order-form__button Entry-button" value="Заказать" />
+              </div>
+            </Form>
+            )}
+          </Formik> 
+        </div>
+      }
+    </div>
+  )
 }
 
 export default OrderForm;

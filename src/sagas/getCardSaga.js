@@ -4,14 +4,14 @@ import { GETCARD, getCardSuccess } from "../actions/cardAction";
 
 export function* getCardDataSaga(action) {
   let user = {
-  token: action.payload.token, 
-  cardData:
-    {
-      cardNumber: action.payload.cardNumber,
-      expiryDate: action.payload.expiryDate,
-      cardName: action.payload.cardName,
-      cvc: action.payload.cvc
-    }
+    token: action.payload.token, 
+    cardData:
+      {
+        cardNumber: action.payload.cardNumber,
+        expiryDate: action.payload.expiryDate,
+        cardName: action.payload.cardName,
+        cvc: action.payload.cvc
+      }
   }
 
  let allUsers = [];
