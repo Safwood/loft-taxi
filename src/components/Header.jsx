@@ -1,16 +1,19 @@
-import React from 'react';
+import React, {useCallback} from 'react';
+import { useDispatch } from "react-redux";
 import logo from '../images/Logo2.svg';
-import { PropTypes } from "prop-types"
-import { connect } from "react-redux"
-import { logOut } from "../actions/logOutAction"
 import { Link, NavLink } from "react-router-dom"
 import '../css/Header.css';
 import '../css/Menu.css';
 
-export const Header = (props) => {
+export const Header = () => {
+  const dispatch = useDispatch();
+  const logOut = useCallback(
+    () => dispatch({type: "LOG_OUT"}),
+    [dispatch]
+  )
 
   const unauthenticate = () => {
-    props.logOut();
+    logOut()
   }
 
   return (
@@ -41,12 +44,4 @@ export const Header = (props) => {
   )
 }
 
-Header.propTypes = {
-  logOut: PropTypes.func,
-}
-
-const mapDispatchToProps = dispatch => ({
-  logOut: () => dispatch(logOut())
-})
-
-export default connect(null, mapDispatchToProps)(Header);
+export default Header;

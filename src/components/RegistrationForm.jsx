@@ -1,15 +1,18 @@
-import React from 'react';
 import { Link } from "react-router-dom"
 import '../css/Registration.css';
-import {connect} from "react-redux"
-import {register} from "../actions/registerAction"
 import { Formik, Form } from "formik";
 import Input from "./Input"
 import Preloader from './Preloader';
 import ErrorNotification from "./ErrorNotification"
-
+import React, { useCallback } from 'react';
+import { useDispatch, useSelector} from "react-redux"
 
 export const RegistrationForm = (props) => {
+  const hasAuthError = useSelector((state) => state.auth.hasAuthError)
+  const isPreloaderOn = useSelector((state) => state.loader.isPreloaderOn)
+  const dispatch = useDispatch();
+  const register = useCallback((email, password, name, surname) => dispatch({type: 'REGISTER', payload: { email, password, name, surname}}), [dispatch]);
+
   const validate = values => {
     let errors= {}
 
@@ -38,7 +41,7 @@ export const RegistrationForm = (props) => {
   }
 
   const onSubmit = (values) => {
-    props.register(values.email, values.password, values.name, values.surname)
+    register(values.email, values.password, values.name, values.surname)
   }
 
   let initialValues = {
@@ -60,13 +63,13 @@ export const RegistrationForm = (props) => {
         <h2 className="Form__heading">Регистрация</h2>
         <div className="Form__content">
           <div className="Auth_error">
-              {props.hasAuthError
-              ? <ErrorNotification error={props.hasAuthError}/>
+              {hasAuthError
+              ? <ErrorNotification error={hasAuthError}/>
               : null
               }
           </div>
           <div>
-            {props.isPreloaderOn
+            {isPreloaderOn
             ? <Preloader />
             : null
             }
@@ -88,13 +91,4 @@ export const RegistrationForm = (props) => {
   )
 }
 
-const mapStateToProps = state => ({
-  hasAuthError: state.auth.hasAuthError,
-  isPreloaderOn: state.loader.isPreloaderOn
-})
-
-const mapDispatchToProps = dispatch => ({
-  register: (email, password, name, surname) => dispatch(register({email, password, name, surname}))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(RegistrationForm);
+export default RegistrationForm;

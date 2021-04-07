@@ -1,20 +1,23 @@
-import React from 'react';
-import {PropTypes} from "prop-types";
-import { connect } from "react-redux";
-import { authenticate } from "../actions/authenticateAction";
+import React, { useCallback } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import Input from "./Input"
 import ErrorNotification from "./ErrorNotification"
 import Preloader from './Preloader';
 
-export const LoginForm = (props) => {
-  const initialValues ={
+export const LoginForm = () => {
+  const hasAuthError = useSelector((state) => state.auth.hasAuthError);
+  const isPreloaderOn = useSelector((state) => state.loader.isPreloaderOn);
+  const dispatch = useDispatch();
+  const auth = useCallback((email, password) => dispatch({type: "AUTHENTICATE", payload: { email, password }}), [dispatch])
+
+  const initialValues = {
     email: "",
     password: ""
   }
 
-  const onSubmit = values => {props.auth(values.email, values.password)}
+  const onSubmit = values => {auth(values.email, values.password)}
 
   const validate = values => {
     let errors = {};
@@ -44,13 +47,13 @@ export const LoginForm = (props) => {
           <h2 className="Form__heading">Войти</h2>
           <div className="Form__content Form__content--loginForm">
             <div className="Auth_error">
-              {props.hasAuthError
-              ? <ErrorNotification error={props.hasAuthError}/>
+              {hasAuthError
+              ? <ErrorNotification error={hasAuthError}/>
               : null
               }
             </div>
             <div>
-              {props.isPreloaderOn
+              {isPreloaderOn
               ? <Preloader />
               : null
               }
@@ -72,17 +75,4 @@ export const LoginForm = (props) => {
   )
 }
 
-LoginForm.propTypes = {
-  auth: PropTypes.func,
-}
-
-const mapStateToProps = state => ({
-  hasAuthError: state.auth.hasAuthError,
-  isPreloaderOn: state.loader.isPreloaderOn
-})
-
-const mapDispatchToProps = dispatch => ({
-  auth: (email, password) => dispatch(authenticate({email, password}))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default LoginForm;

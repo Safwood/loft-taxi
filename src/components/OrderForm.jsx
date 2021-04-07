@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
-import {connect} from 'react-redux';
+import React, { useState, useCallback} from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import errowDown from '../images/errowDown.png';
 import cross from '../images/cross.png';
-import { getRoute } from '../actions/routeAction';
 import { Formik, Form, ErrorMessage } from "formik";
 import '../css/Order.css';
 import OrderCars from "./OrderCars"
 import NewOrderNotification from "./NewOrderNotification"
 
-
 export const OrderForm = (props) => {
+  const addressList = useSelector((state) => state.address.addressList);
+  const dispatch = useDispatch();
+  const getRoute = useCallback((address1, address2) => dispatch({type: "GETROUTE", payload: {address1, address2}}), [dispatch])
+
   const [isRouteBuilt, setState] = useState(false)
   
   const changeRouteStateTrue = () => {
@@ -21,7 +23,7 @@ export const OrderForm = (props) => {
   }
 
   const onSubmit = (values) => {
-    props.getRoute(values.address1, values.address2);
+    getRoute(values.address1, values.address2);
     changeRouteStateTrue();
   }
 
@@ -44,8 +46,6 @@ export const OrderForm = (props) => {
     address2: ""
     
   }
-
-  const addressList = props.addressList;
 
     return (
       <div>
@@ -111,12 +111,4 @@ export const OrderForm = (props) => {
   
 }
 
-const mapStateToProps = (state) => ({
-  addressList: state.address.addressList,
-})
-
-const mapDispatchToProps = dispatch => ({
-  getRoute: (address1, address2) => dispatch(getRoute(address1, address2))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(OrderForm);
+export default OrderForm;

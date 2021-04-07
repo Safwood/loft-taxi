@@ -1,9 +1,7 @@
-import React from 'react';
-import { connect } from "react-redux"
+import React, { useCallback } from 'react';
+import { useDispatch, useSelector } from "react-redux"
 import chip from "../images/chip.png"
 import cardSign from "../images/card_sign.png"
-import {saveCard} from "../actions/cardAction"
-import {PropTypes} from "prop-types";
 import '../css/Card.css';
 import { Formik, Form } from "formik";
 import Input from "./Input"
@@ -11,6 +9,10 @@ import Input from "./Input"
 let a=0;
 
 export const ProfileForm = (props) => {
+  const token = useSelector((state) => state.auth.token);
+  const dispatch = useDispatch();
+  const saveCard = useCallback((cardNumber, expiryDate, cardName, cvc) => dispatch({type: "SAVECARD", payload: { cardNumber, expiryDate, cardName, cvc, token }}), [dispatch])
+
  
   const addSpace = (event) => {
     if (a===4) {
@@ -60,7 +62,7 @@ export const ProfileForm = (props) => {
   }
 
   const onSubmit= values => {
-    props.saveCard(values.cardNumber, values.expiryDate, values.cardName, values.cvc, props.token )
+    saveCard(values.cardNumber, values.expiryDate, values.cardName, values.cvc, token )
   }
 
   return(
@@ -108,19 +110,6 @@ export const ProfileForm = (props) => {
       </Formik>
     </div>
   )
-  
 }
 
-ProfileForm.propTypes = {
-  saveCard: PropTypes.func,
-}
-
-const mapStateToProps = (state) => ({
-  token: state.auth.token
-})
-
-const mapDispatchToProps = dispatch => ({
-  saveCard: (cardNumber, expiryDate, cardName, cvc) => dispatch(saveCard({cardNumber, expiryDate, cardName, cvc}))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileForm);
+export default ProfileForm;

@@ -1,17 +1,17 @@
 import React from 'react';
 import Header from "./Header";
-import {PropTypes} from "prop-types";
 import ProfileNotification from "./ProfileNotification";
 import ProfileForm from "./ProfileForm";
-import { connect } from "react-redux"
+import { useSelector } from "react-redux"
 
-export const Profile = (props) => {
+export const Profile = () => {
+  const isCardSaved = useSelector((state) => state.card.isCardSaved);
   
   return (
     <div>
       <Header/>
       <div>
-        {props.isCardSaved
+        {isCardSaved
         ? (
           <ProfileNotification />
         )
@@ -23,12 +23,4 @@ export const Profile = (props) => {
   )
 }
 
-Profile.propTypes = {
-  isCardSaved: PropTypes.bool,
-}
-
-const mapStateToProps = (state) => ({
-  isCardSaved: state.card.isCardSaved
-})
-
-export default connect(mapStateToProps)(Profile);
+export default Profile;

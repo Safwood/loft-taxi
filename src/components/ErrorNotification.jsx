@@ -1,8 +1,17 @@
-import React from 'react';
-import { connect } from "react-redux";
-import { logInFailClose } from "../actions/logInAction"
+import React, {useCallback} from 'react';
+import { useDispatch } from "react-redux";
 
 const ErrorNotification = (props) => {
+  const dispatch = useDispatch();
+  const closeErrorNotification = useCallback(
+    () => dispatch({type: 'LOG_IN_FAIL_CLOSE'}),
+    [dispatch]
+  )
+
+  const hangdleClick = () => {
+    closeErrorNotification()
+  }
+
   return(
     <div className="Map-page Map-page--auth-error">
       <div className="Form-container Form-container--auth-error">
@@ -11,7 +20,7 @@ const ErrorNotification = (props) => {
           <p className="Form__notification">
            {props.error}
           </p>
-          <button onClick={props.closeError} className="Entry-button">Закрыть</button>
+          <button onClick={hangdleClick} className="Entry-button">Закрыть</button>
         </div>
         </div>
       </div>
@@ -19,8 +28,4 @@ const ErrorNotification = (props) => {
   )
 }
 
-const mapDispatchToProps = dispatch => ({
-  closeError: () => dispatch(logInFailClose({}))
-})
-
-export default connect(null, mapDispatchToProps)(ErrorNotification);
+export default ErrorNotification;
