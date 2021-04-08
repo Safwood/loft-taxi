@@ -1,18 +1,17 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from "react-redux"
-import chip from "../images/chip.png"
-import cardSign from "../images/card_sign.png"
-import '../css/Card.css';
+import chip from "../../../images/chip.png"
+import cardSign from "../../../images/card_sign.png"
+import './Card.css';
 import { Formik, Form } from "formik";
-import Input from "./Input"
+import Input from "../Input/Input"
 
 let a=0;
 
 export const ProfileForm = (props) => {
   const token = useSelector((state) => state.auth.token);
   const dispatch = useDispatch();
-  const saveCard = useCallback((cardNumber, expiryDate, cardName, cvc) => dispatch({type: "SAVECARD", payload: { cardNumber, expiryDate, cardName, cvc, token }}), [dispatch])
-
+  const saveCard = useCallback((cardNumber, expiryDate, cardName, cvc) => dispatch({type: "SAVECARD", payload: { cardNumber, expiryDate, cardName, cvc, token }}), [dispatch, token])
  
   const addSpace = (event) => {
     if (a===4) {

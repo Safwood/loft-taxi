@@ -1,14 +1,13 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import mapboxgl from 'mapbox-gl';
-import Header from "./Header";
-import MapNotification from "./MapNotification";
-import OrderForm from "./OrderForm";
-import {drawRoute} from "../helper/routeFunction";
-import '../css/Map.css';
+import Header from "../components/Header/Header";
+import MapNotification from "../components/MapNotification/MapNotification";
+import OrderForm from "../components/OrderForm/OrderForm";
+import {drawRoute} from "../../helper/routeFunction";
+import './MapPage.css';
 
-const Map = () => {
-  let map = null;
+const MapPage = () => {
   const mapContainer = useRef();
   const isRouteSaved = useSelector((state) => state.route.isRouteSaved)
   const isCardSaved = useSelector((state) => state.card.isCardSaved)
@@ -20,7 +19,7 @@ const Map = () => {
   
   useEffect(() => {
     mapboxgl.accessToken = "pk.eyJ1Ijoic2Fmd29vZCIsImEiOiJja2h6eTVtY2MwazZmMnNxaHVsdnBhM3k2In0.dipQbU6mft7qKnKJBWj3kA";
-    map = new mapboxgl.Map ({
+    const map = new mapboxgl.Map ({
       container: mapContainer.current,
       style: "mapbox://styles/mapbox/outdoors-v11",
       center: [37.6156, 55.7522],
@@ -47,7 +46,7 @@ const Map = () => {
 
       map.remove();
     }
-  }, [isRouteSaved])
+  }, [isRouteSaved, getAddress, getCard, token, route])
 
   return (
     <div>
@@ -63,4 +62,4 @@ const Map = () => {
   )
 }
 
-export default Map;
+export default MapPage;

@@ -1,9 +1,8 @@
 import React, {useCallback} from 'react';
 import { useDispatch } from "react-redux";
-import logo from '../images/Logo2.svg';
+import logo from '../../../images/Logo2.svg';
 import { Link, NavLink } from "react-router-dom"
-import '../css/Header.css';
-import '../css/Menu.css';
+import './Header.css';
 
 export const Header = () => {
   const dispatch = useDispatch();

@@ -2,9 +2,9 @@ import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
-import Input from "./Input"
-import ErrorNotification from "./ErrorNotification"
-import Preloader from './Preloader';
+import Input from "../Input/Input"
+import ErrorNotification from "../ErrorNotification/ErrorNotification"
+import Preloader from '../Preloader/Preloader';
 
 export const LoginForm = () => {
   const hasAuthError = useSelector((state) => state.auth.hasAuthError);

@@ -29,7 +29,7 @@
 }
 
 .Order-addresses__address--to::before {
-  content: url('./errowRout.png');
+  content: url('../../../images/errowRout.png');
   display: block;
   width: 14px;
   height: 14px;

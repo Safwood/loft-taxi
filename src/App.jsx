@@ -1,8 +1,8 @@
 import React from 'react';
-import Login from './components/Login';
-import Registration from './components/Registration';
-import  Map from './components/Map';
-import Profile from './components/Profile';
+import LoginPage from './pages/LoginPage/LoginPage';
+import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
+import  MapPage from './pages/MapPage/MapPage';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
 import { Switch, Route } from "react-router-dom";
 import { PrivateRoute } from "./privateRoute"
 import './css/App.css';
@@ -18,10 +18,10 @@ export class App extends React.Component {
         <main className="Main">
           <section>
             <Switch>
-              <Route exact path="/" component={Login} />
-              <Route path="/registration" component={Registration}/>
-              <PrivateRoute path="/map" component={Map} />
-              <PrivateRoute path="/profile" component={Profile}/>
+              <Route exact path="/" component={LoginPage} />
+              <Route path="/registration" component={RegistrationPage}/>
+              <PrivateRoute path="/map" component={MapPage} />
+              <PrivateRoute path="/profile" component={ProfilePage}/>
             </Switch>
           </section>
         </main>

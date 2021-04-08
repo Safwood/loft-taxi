@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from "./Header";
-import ProfileNotification from "./ProfileNotification";
-import ProfileForm from "./ProfileForm";
+import Header from "../components/Header/Header";
+import ProfileNotification from "../components/ProfileNotification/ProfileNotification";
+import ProfileForm from "../components/ProfileForm/ProfileForm";
 import { useSelector } from "react-redux"
 
-export const Profile = () => {
+export const ProfilePage = () => {
   const isCardSaved = useSelector((state) => state.card.isCardSaved);
   
   return (
@@ -23,4 +23,4 @@ export const Profile = () => {
   )
 }
 
-export default Profile;
+export default ProfilePage;

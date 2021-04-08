@@ -1,20 +1,17 @@
-import React, { useState, useCallback} from 'react';
+import React, { useCallback} from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import errowDown from '../images/errowDown.png';
-import cross from '../images/cross.png';
+import errowDown from '../../../images/errowDown.png';
+import cross from '../../../images/cross.png';
 import { Formik, Form, ErrorMessage } from "formik";
-import '../css/Order.css';
+import './Order.css';
 import OrderCars from "./OrderCars";
-import NewOrderNotification from "./NewOrderNotification";
+import NewOrderNotification from "../NewOrderNotification/NewOrderNotification";
 
 export const OrderForm = () => {
   const addressList = useSelector((state) => state.address.addressList);
   const isRouteSaved = useSelector((state) => state.route.isRouteSaved);
   const dispatch = useDispatch();
   const getRoute = useCallback((address1, address2) => dispatch({type: "GETROUTE", payload: {address1, address2}}), [dispatch])
-
-   
-  console.log(isRouteSaved)
 
   const onSubmit = (values) => {
     getRoute(values.address1, values.address2);

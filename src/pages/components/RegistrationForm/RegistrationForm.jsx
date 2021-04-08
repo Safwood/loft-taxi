@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom"
-import '../css/Registration.css';
+import './Registration.css';
 import { Formik, Form } from "formik";
-import Input from "./Input"
-import Preloader from './Preloader';
-import ErrorNotification from "./ErrorNotification"
+import Input from "../Input/Input"
+import Preloader from '../Preloader/Preloader';
+import ErrorNotification from "../ErrorNotification/ErrorNotification"
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector} from "react-redux"
 
