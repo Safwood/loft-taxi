@@ -10,14 +10,18 @@ export const LoginForm = () => {
   const hasAuthError = useSelector((state) => state.auth.hasAuthError);
   const isPreloaderOn = useSelector((state) => state.loader.isPreloaderOn);
   const dispatch = useDispatch();
-  const auth = useCallback((email, password) => dispatch({type: "AUTHENTICATE", payload: { email, password }}), [dispatch])
+  const auth = useCallback((email, password) => dispatch({type: "auth/AUTHENTICATE", payload: { email, password }}), [dispatch])
+  const setRouteBuildFalse = useCallback(() => dispatch({type: "route/SET_ROUTE_BUILT_FALSE"}), [dispatch])
 
   const initialValues = {
     email: "",
     password: ""
   }
 
-  const onSubmit = values => {auth(values.email, values.password)}
+  const onSubmit = values => {
+    auth(values.email, values.password);
+    setRouteBuildFalse();
+  }
 
   const validate = values => {
     let errors = {};

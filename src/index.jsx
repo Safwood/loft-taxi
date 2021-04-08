@@ -6,9 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
 import { HashRouter } from "react-router-dom";
 import 'fontsource-roboto';
-import { store, persistor } from "./store"
+import { store, persistor } from "./redux/store"
 import {PersistGate} from 'redux-persist/integration/react'
-
 
 ReactDOM.render(
   <React.StrictMode>

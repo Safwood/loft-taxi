@@ -11,7 +11,7 @@ export const OrderForm = () => {
   const addressList = useSelector((state) => state.address.addressList);
   const isRouteSaved = useSelector((state) => state.route.isRouteSaved);
   const dispatch = useDispatch();
-  const getRoute = useCallback((address1, address2) => dispatch({type: "GETROUTE", payload: {address1, address2}}), [dispatch])
+  const getRoute = useCallback((address1, address2) => dispatch({type: "route/GET_ROUTE", payload: {address1, address2}}), [dispatch])
 
   const onSubmit = (values) => {
     getRoute(values.address1, values.address2);

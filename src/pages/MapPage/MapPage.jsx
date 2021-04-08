@@ -14,8 +14,8 @@ const MapPage = () => {
   const route = useSelector((state) => state.route.route)
   const token = useSelector((state) => state.auth.token)
   const dispatch = useDispatch();
-  const getAddress = useCallback(() => dispatch({type: "GETADDRESS"}), [dispatch])
-  const getCard = useCallback((token) => dispatch({type: "GETCARD", payload: token }), [dispatch])
+  const getAddress = useCallback(() => dispatch({type: "address/GET_ADDRESS"}), [dispatch])
+  const getCard = useCallback((token) => dispatch({type: "card/GET_CARD", payload: token }), [dispatch])
   
   useEffect(() => {
     mapboxgl.accessToken = "pk.eyJ1Ijoic2Fmd29vZCIsImEiOiJja2h6eTVtY2MwazZmMnNxaHVsdnBhM3k2In0.dipQbU6mft7qKnKJBWj3kA";

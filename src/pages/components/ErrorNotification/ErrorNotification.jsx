@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 const ErrorNotification = (props) => {
   const dispatch = useDispatch();
   const closeErrorNotification = useCallback(
-    () => dispatch({type: 'LOG_IN_FAIL_CLOSE'}),
+    () => dispatch({type: 'auth/LOG_IN_FAIL_CLOSE'}),
     [dispatch]
   )
 

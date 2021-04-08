@@ -11,7 +11,7 @@ let a=0;
 export const ProfileForm = (props) => {
   const token = useSelector((state) => state.auth.token);
   const dispatch = useDispatch();
-  const saveCard = useCallback((cardNumber, expiryDate, cardName, cvc) => dispatch({type: "SAVECARD", payload: { cardNumber, expiryDate, cardName, cvc, token }}), [dispatch, token])
+  const saveCard = useCallback((cardNumber, expiryDate, cardName, cvc) => dispatch({type: "SAVE_CARD", payload: { cardNumber, expiryDate, cardName, cvc, token }}), [dispatch, token])
  
   const addSpace = (event) => {
     if (a===4) {

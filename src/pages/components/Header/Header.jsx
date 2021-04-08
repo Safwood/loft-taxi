@@ -7,7 +7,7 @@ import './Header.css';
 export const Header = () => {
   const dispatch = useDispatch();
   const logOut = useCallback(
-    () => dispatch({type: "LOG_OUT"}),
+    () => dispatch({type: "auth/LOG_OUT"}), 
     [dispatch]
   )
 
