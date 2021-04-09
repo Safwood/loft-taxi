@@ -1,30 +1,16 @@
 {
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-customizable"
-    },
-    "cz-customizable": {
-      "config": "config/git/commitizen.js"
-    }
-  },
+  "config": {},
   "name": "loft-taxi",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.11.1",
-    "@material-ui/icons": "^4.9.1",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/user-event": "^12.2.2",
-    "axios": "^0.21.1",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-15": "^1.4.2",
-    "enzyme-adapter-react-16": "^1.15.5",
     "fontsource-roboto": "^3.0.3",
     "formik": "^2.2.6",
     "history": "^5.0.0",
     "mapbox-gl": "^1.13.0",
     "react-dom": "^17.0.1",
-    "react-hook-form": "^6.13.1",
     "react-redux": "^7.2.2",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
@@ -62,10 +48,20 @@
     ]
   },
   "devDependencies": {
+    "@redux-saga/types": "^1.1.0",
     "@testing-library/react": "^11.2.2",
     "@testing-library/react-hooks": "^3.4.2",
-    "cz-customizable": "^6.3.0",
+    "@types/jest": "^26.0.22",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "@types/react-redux": "^7.1.16",
+    "@types/react-router": "^5.1.13",
+    "@types/react-router-dom": "^5.1.7",
+    "@types/react-test-renderer": "^17.0.1",
+    "@types/redux-actions": "^2.6.1",
+    "@types/redux-mock-store": "^1.0.2",
     "react": "^17.0.1",
-    "react-test-renderer": "^17.0.1"
+    "react-test-renderer": "^17.0.1",
+    "typescript": "4.0.5"
   }
 }

@@ -5,7 +5,6 @@ import  MapPage from './pages/MapPage/MapPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import { Switch, Route } from "react-router-dom";
 import { PrivateRoute } from "./privateRoute"
-import './css/App.css';
 import './css/Form.css';
 import './css/Button.css';
 import map from './images/map.png';

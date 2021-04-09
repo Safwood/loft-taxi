@@ -121,3 +121,7 @@
   flex-direction: column;
   align-items: center;
 }
+
+.Order-form__button {
+  width: 394px;
+}
