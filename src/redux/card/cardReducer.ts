@@ -1,7 +1,26 @@
 import { GET_CARD_SUCCESS } from "./cardAction";
 import { SAVE_CARD, SAVE_CARD_SUCCESS } from "./cardAction";
 
-let initialState = {
+type InitialStateType = {
+  cardNumber: string | null
+  expiryDate: string | null
+  cardName: string | null
+  cvc: string | null
+  isCardSaved: boolean
+}
+
+type ActionType = {
+  type: string
+  payload: {
+    cardNumber?: string
+    expiryDate?: string
+    cardName?: string
+    cvc?: string
+    token?: string
+  }
+}
+
+let initialState: InitialStateType = {
   cardNumber: null, 
   expiryDate: null, 
   cardName: null, 
@@ -9,7 +28,7 @@ let initialState = {
   isCardSaved: false
 }
 
-export default function(state = initialState, action) {
+export default function cardReducer(state = initialState, action: ActionType) {
 
   switch(action.type) {
     case SAVE_CARD: {

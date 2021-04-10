@@ -7,7 +7,7 @@ import ErrorNotification from "../ErrorNotification/ErrorNotification"
 import Preloader from '../Preloader/Preloader';
 
 export const LoginForm = () => {
-  const hasAuthError = useSelector((state) => state.auth.hasAuthError);
+  const error = useSelector((state) => state.auth.error);
   const isPreloaderOn = useSelector((state) => state.loader.isPreloaderOn);
   const dispatch = useDispatch();
   const auth = useCallback((email, password) => dispatch({type: "auth/AUTHENTICATE", payload: { email, password }}), [dispatch])
@@ -51,8 +51,8 @@ export const LoginForm = () => {
           <h2 className="Form__heading">Войти</h2>
           <div className="Form__content Form__content--loginForm">
             <div className="Auth_error">
-              {hasAuthError
-              ? <ErrorNotification error={hasAuthError}/>
+              {error
+              ? <ErrorNotification error={error}/>
               : null
               }
             </div>

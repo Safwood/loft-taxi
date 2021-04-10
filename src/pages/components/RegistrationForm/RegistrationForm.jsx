@@ -8,10 +8,10 @@ import React, { useCallback } from 'react';
 import { useDispatch, useSelector} from "react-redux"
 
 export const RegistrationForm = (props) => {
-  const hasAuthError = useSelector((state) => state.auth.hasAuthError)
+  const error = useSelector((state) => state.auth.error)
   const isPreloaderOn = useSelector((state) => state.loader.isPreloaderOn)
   const dispatch = useDispatch();
-  const register = useCallback((email, password, name, surname) => dispatch({type: 'REGISTER', payload: { email, password, name, surname}}), [dispatch]);
+  const register = useCallback((email, password, name, surname) => dispatch({type: 'registration/REGISTER', payload: { email, password, name, surname}}), [dispatch]);
 
   const validate = values => {
     let errors= {}
@@ -63,8 +63,8 @@ export const RegistrationForm = (props) => {
         <h2 className="Form__heading">Регистрация</h2>
         <div className="Form__content">
           <div className="Auth_error">
-              {hasAuthError
-              ? <ErrorNotification error={hasAuthError}/>
+              {error
+              ? <ErrorNotification error={error}/>
               : null
               }
           </div>
