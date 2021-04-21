@@ -1,11 +1,11 @@
 import React, { useCallback} from 'react';
 import { useDispatch } from 'react-redux';
 
-const NewOrderNotification = () => {
+const NewOrderNotification: React.FC = () => {
   const dispatch = useDispatch();
   const setRouteBuildFalse = useCallback(() => dispatch({type: "route/SET_ROUTE_BUILT_FALSE"}), [dispatch])
 
-  const handleClick = () => {
+  const handleClick = ():void => {
     setRouteBuildFalse()
   }
   

@@ -1,14 +1,18 @@
 import React, {useCallback} from 'react';
 import { useDispatch } from "react-redux";
 
-const ErrorNotification = (props) => {
+type PropsType = {
+  error: string
+}
+
+const ErrorNotification: React.FC<PropsType> = ({error}) => {
   const dispatch = useDispatch();
   const closeErrorNotification = useCallback(
     () => dispatch({type: 'auth/LOG_IN_FAIL_CLOSE'}),
     [dispatch]
   )
 
-  const hangdleClick = () => {
+  const hangdleClick = (): void => {
     closeErrorNotification()
   }
 
@@ -18,7 +22,7 @@ const ErrorNotification = (props) => {
       <div className="Form">
         <div className="Form__notification-wrapper">
           <p className="Form__notification">
-           {props.error}
+           {error}
           </p>
           <button onClick={hangdleClick} className="Entry-button">Закрыть</button>
         </div>

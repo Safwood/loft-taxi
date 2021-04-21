@@ -5,15 +5,17 @@ import cardSign from "../../../images/card_sign.png"
 import './Card.css';
 import { Formik, Form } from "formik";
 import Input from "../Input/Input"
+import { RootState } from '../../../redux/rootReducer'
+import { CardErrorsType, CardFormValuesType } from '../../../types'
 
-let a=0;
+let a: number = 0;
 
-export const ProfileForm = (props) => {
-  const token = useSelector((state) => state.auth.token);
+export const ProfileForm = () => {
+  const token = useSelector((state: RootState) => state.auth.token);
   const dispatch = useDispatch();
   const saveCard = useCallback((cardNumber, expiryDate, cardName, cvc) => dispatch({type: "card/SAVE_CARD", payload: { cardNumber, expiryDate, cardName, cvc, token }}), [dispatch, token])
  
-  const addSpace = (event) => {
+  const addSpace = (event: any): void => { //TODO
     if (a===4) {
       a=0;
       event.target.value+=" ";
@@ -21,15 +23,15 @@ export const ProfileForm = (props) => {
     a++;
   }
 
-  let initialValues = {
+  let initialValues: CardFormValuesType = {
     cardNumber: "", 
     expiryDate: "", 
     cardName: "", 
     cvc: ""
   }
 
-  const validate = values => {
-    let errors = {};
+  const validate = (values: CardFormValuesType) => {
+    let errors: CardErrorsType = {};
 
     if (!values.cardNumber) {
       errors.cardNumber = "Поле 'Номер карты' должно быть заполнено"
@@ -60,8 +62,8 @@ export const ProfileForm = (props) => {
     return errors     
   }
 
-  const onSubmit= values => {
-    saveCard(values.cardNumber, values.expiryDate, values.cardName, values.cvc, token )
+  const onSubmit= (values: CardFormValuesType) => {
+    saveCard(values.cardNumber, values.expiryDate, values.cardName, values.cvc )
   }
 
   return(
@@ -81,10 +83,10 @@ export const ProfileForm = (props) => {
               <div className="Form__blocks">
                 <div className="Form__blocks-inputs">
                   <Input inputType="text" inputName="cardName" inputText="Имя владельца" placeholder="ALEXANDER IVANOV"  errors={props.errors.cardName} onBlur={props.handleBlur} onChange={props.handleChange}/>
-                  <Input inputType="card" onKeyPress={addSpace} inputName="cardNumber" maxLength="12" inputText="Номер карты" placeholder="5555 5555 5555 5555"  errors={props.errors.cardNumber} onBlur={props.handleBlur} onChange={props.handleChange} />
+                  <Input inputType="card" onKeyPress={addSpace} inputName="cardNumber"  inputText="Номер карты" placeholder="5555 5555 5555 5555"  errors={props.errors.cardNumber} onBlur={props.handleBlur} onChange={props.handleChange} />
                   <div className="Form__blocks-date-cvc">
                     <Input inputType="month" inputName="expiryDate" inputText="MM.YY" errors={props.errors.expiryDate} onBlur={props.handleBlur} onChange={props.handleChange} />
-                    <Input inputType="text" inputName="cvc" maxLength="3" inputText="CVC" errors={props.errors.cvc} onBlur={props.handleBlur} onChange={props.handleChange} />
+                    <Input inputType="text" inputName="cvc" maxlength={3} inputText="CVC" errors={props.errors.cvc} onBlur={props.handleBlur} onChange={props.handleChange} />
                     </div>
                 </div>
                 <div className="Form__blocks-card" >
@@ -101,7 +103,14 @@ export const ProfileForm = (props) => {
                 </div>
               </div>
             </div>
-            <input type="submit" disabled={!props.values.cardName && !props.values.cardNumber && !props.values.expiryDate && !props.values.cvc && props.errors} className="Login-form__button Entry-button" value="Сохранить" />
+            <input type="submit" disabled={
+              !props.values.cardName && 
+              !props.values.cardNumber && 
+              !props.values.expiryDate && 
+              !props.values.cvc && 
+              props.errors
+              ? true
+              : false} className="Login-form__button Entry-button" value="Сохранить" />
           </Form>
           </div>
           )

@@ -6,15 +6,17 @@ import Preloader from '../Preloader/Preloader';
 import ErrorNotification from "../ErrorNotification/ErrorNotification"
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector} from "react-redux"
+import { RootState } from '../../../redux/rootReducer'
+import { AuthFormValuesType, AuthErrorsType } from '../../../types'
 
-export const RegistrationForm = (props) => {
-  const error = useSelector((state) => state.auth.error)
-  const isPreloaderOn = useSelector((state) => state.loader.isPreloaderOn)
+export const RegistrationForm: React.FC = () => {
+  const error = useSelector((state: RootState) => state.auth.error)
+  const isPreloaderOn = useSelector((state: RootState) => state.loader.isPreloaderOn)
   const dispatch = useDispatch();
   const register = useCallback((email, password, name, surname) => dispatch({type: 'registration/REGISTER', payload: { email, password, name, surname}}), [dispatch]);
 
-  const validate = values => {
-    let errors= {}
+  const validate = (values: AuthFormValuesType): AuthErrorsType => {
+    let errors: AuthErrorsType= {}
 
     if (!values.email) {
       errors.email = "Укажите, пожалуйста, электронную почту"
@@ -40,11 +42,11 @@ export const RegistrationForm = (props) => {
 
   }
 
-  const onSubmit = (values) => {
+  const onSubmit = (values: AuthFormValuesType): void => {
     register(values.email, values.password, values.name, values.surname)
   }
 
-  let initialValues = {
+  let initialValues: AuthFormValuesType = {
     email: "", 
     password: "", 
     name: "", 
@@ -78,7 +80,15 @@ export const RegistrationForm = (props) => {
           <Input inputType="text" inputName="name" inputText="Как вас зовут?*" placeholder="Alexander"  errors={props.errors.name} onBlur={props.handleBlur} onChange={props.handleChange}/>
           <Input inputType="text" inputName="surname" inputText="Как ваша фамилия?*" placeholder="Ivanov"  errors={props.errors.surname} onBlur={props.handleBlur} onChange={props.handleChange}/>
           <Input inputType="password" inputName="password" inputText="Придумайте пароль*" placeholder="**********"  errors={props.errors.password} onBlur={props.handleBlur} onChange={props.handleChange}/>
-          <input type="submit"  disabled={!props.values.email && !props.values.password && !props.values.name && !props.values.surname && props.errors} className="Form__button Entry-button" value="Зарегистрироваться" />
+          <input type="submit"  disabled={
+            !props.values.email && 
+            !props.values.password && 
+            !props.values.name && 
+            !props.values.surname && 
+            props.errors 
+            ? true 
+            : false} 
+            className="Form__button Entry-button" value="Зарегистрироваться" />
           <div className="Form__new-user">
             <p className="Form__new-user-text">Уже зарегистрированы?</p>
             <Link to="/" className="Button New-user__button Form__button">Войти</Link>

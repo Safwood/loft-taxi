@@ -6,19 +6,21 @@ import { Formik, Form, ErrorMessage } from "formik";
 import './Order.css';
 import OrderCars from "./OrderCars";
 import NewOrderNotification from "../NewOrderNotification/NewOrderNotification";
+import { RootState } from '../../../redux/rootReducer'
+import { OrderErrorsType, OrderFormValuesType } from '../../../types'
 
-export const OrderForm = () => {
-  const addressList = useSelector((state) => state.address.addressList);
-  const isRouteSaved = useSelector((state) => state.route.isRouteSaved);
+export const OrderForm: React.FC = () => {
+  const addressList = useSelector((state: RootState) => state.address.addressList);
+  const isRouteSaved = useSelector((state: RootState) => state.route.isRouteSaved);
   const dispatch = useDispatch();
   const getRoute = useCallback((address1, address2) => dispatch({type: "route/GET_ROUTE", payload: {address1, address2}}), [dispatch])
 
-  const onSubmit = (values) => {
+  const onSubmit = (values: OrderFormValuesType) => {
     getRoute(values.address1, values.address2);
   }
 
-  const validate = values => {
-    let errors= {}
+  const validate = (values: OrderFormValuesType): OrderErrorsType => {
+    let errors: OrderErrorsType = {}
 
     if (!values.address1) {
       errors.address1 = "Укажите, пожалуйста, адрес отправления"
@@ -89,7 +91,12 @@ export const OrderForm = () => {
               <div className="Order-button">
                 <ErrorMessage name="address1" component="div" className="Form__error"/>
                 <ErrorMessage name="address2" component="div" className="Form__error"/>
-                <input type="submit"  disabled={!props.values.address1 && !props.values.address2 && props.errors} className="Order-form__button Entry-button" value="Заказать" />
+                <input type="submit"  disabled={
+                  !props.values.address1 && 
+                  !props.values.address2 && 
+                  props.errors
+                  ? true 
+                  : false} className="Order-form__button Entry-button" value="Заказать" />
               </div>
             </Form>
             )}

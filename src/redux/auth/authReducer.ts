@@ -1,17 +1,12 @@
-import { LOG_IN  } from "./logInAction";
-import { LOG_IN_FAIL  } from "./logInAction";
-import { LOG_IN_FAIL_CLOSE  } from "./logInAction";
+import { LOG_IN, LOG_IN_FAIL, LOG_IN_FAIL_CLOSE  } from "./logInAction";
+import { LogInActionType, LoginFailActionType, LogInFailCloseActionType  } from "./logInAction";
 import { LOG_OUT  } from "./logOutAction";
+import { LogOutActionType  } from "./logOutAction";
 
 type InitialStateType = {
   isLoggedIn: boolean
-  token: string | null
-  error: string | null
-}
-
-type ActionType = {
-  type: string
-  payload?: string
+  token?: string | null
+  error?: string | null
 }
 
 const initialState: InitialStateType = {
@@ -20,7 +15,11 @@ const initialState: InitialStateType = {
   error: null
 }
 
-export default function authReducer(state = initialState, action: ActionType) {
+export default function authReducer(state = initialState, action: 
+  LogInActionType |
+  LoginFailActionType |
+  LogInFailCloseActionType |
+  LogOutActionType): InitialStateType {
   switch(action.type) {
     case LOG_IN: {
       return {isLoggedIn: true, token: action.payload, error: null}

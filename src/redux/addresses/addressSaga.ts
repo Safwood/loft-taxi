@@ -1,9 +1,10 @@
 import { takeEvery, call, put } from "redux-saga/effects";
 import { GET_ADDRESS, saveAddressList } from "./addressAction";
 import { serverAddresses } from "../serverFunctions/serverAddresses";
+import { GetAddressListSagaType } from "../../types";
 
-export function* getAddressListSaga(action) {
-  const data = yield call(serverAddresses)
+export function* getAddressListSaga() {
+  const data: GetAddressListSagaType = yield call(serverAddresses)
   yield put(saveAddressList(data.addresses))  
 }
 

@@ -8,7 +8,7 @@ jest.mock('./components/Login', () => ({Login: () => <div>LoginWithAuth componen
 jest.mock('./components/Profile', () => ({Profile: () => <div>Profile component</div>}));
 jest.mock('./components/RegistrationPage', () => ({Registration: () => <div>Registration component</div>}));
 jest.mock('./components/Map', () => ({Map: () => <div>Map component</div>}));
-jest.mock('react-redux', () => ({connect: () => (Component) => Component}));
+jest.mock('react-redux', () => ({connect: () => (Component: any) => Component})); //TODO
 
 describe('App', () => {
   it('renders correctly', () => {

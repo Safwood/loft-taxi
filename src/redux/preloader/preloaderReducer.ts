@@ -1,18 +1,15 @@
 import { PRELOADER_ON, PRELOADER_OFF } from "./preloaderAction";
+import { PreloaderOnActionType, PreloaderOffActionType } from "./preloaderAction";
 
 type InitialStateType = {
   isPreloaderOn: boolean
-}
-
-type ActionType = {
-  type: string
 }
 
 let initialState: InitialStateType = {
   isPreloaderOn: false
 }
 
-export default function preloaderReducer(state = initialState, action: ActionType) {
+export default function preloaderReducer(state = initialState, action: PreloaderOnActionType | PreloaderOffActionType): InitialStateType {
 
   switch(action.type) {
     case PRELOADER_ON: {

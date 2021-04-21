@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom"
 
-export const LoginNotification = () => {
+export const LoginNotification: React.FC = () => {
   return (
     <div  className="Form-container">
       <form className="Form">

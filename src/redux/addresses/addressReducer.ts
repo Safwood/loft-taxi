@@ -1,15 +1,9 @@
 import { SAVE_ADDRESS } from "./addressAction";
+import { SaveAddressActionType } from "./addressAction";
 
 type InitialStateType = {
   addressList: null | Array<string>
   isAddressListUpload: boolean
-}
-
-type ActionType = {
-  type: string
-  payload: {
-    addressList: Array<string>
-  }
 }
 
 const initialState: InitialStateType = {
@@ -17,7 +11,7 @@ const initialState: InitialStateType = {
   isAddressListUpload: false
 }
 
-export default function addressReducer(state = initialState, action: ActionType) {
+export default function addressReducer(state = initialState, action: SaveAddressActionType): InitialStateType {
   switch(action.type) {
     case SAVE_ADDRESS: {
       return {

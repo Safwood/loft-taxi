@@ -4,12 +4,14 @@ import { logIn } from "./logInAction";
 import { preloaderOn, preloaderOff } from "../preloader/preloaderAction";
 import { logInFail } from "./logInAction";
 import { serverLogin } from "../serverFunctions/api";
+import { AuthenticateActionType } from "./authenticateAction";
+import { AuthFormValuesType, ServerLoginFunctonReponseType } from "../../types";
 
-export function* authenticateSaga(action) {
-  const {email, password} = action.payload;
+export function* authenticateSaga(action: AuthenticateActionType) {
+  const {email, password}: AuthFormValuesType = action.payload;
   
   yield put(preloaderOn())
-  const data = yield call(serverLogin, email, password)
+  const data: ServerLoginFunctonReponseType = yield call(serverLogin, email, password)
 
   yield put(preloaderOff())
 

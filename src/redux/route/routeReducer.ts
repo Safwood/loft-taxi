@@ -1,14 +1,9 @@
-import {SAVE_ROUTE} from "./routeAction"
-import {SET_ROUTE_BUILT_FALSE} from "./routeAction"
+import {SET_ROUTE_BUILT_FALSE, SAVE_ROUTE} from "./routeAction"
+import {SetRouteBuiltFalseActionType, SaveRouteActionType} from "./routeAction"
 
 type InitialStateType = {
-  route: Array<Array<number>> | null,
+  route?: Array<Array<number>> | null,
   isRouteSaved: boolean
-}
-
-type ActionType = {
-  type: string
-  payload?: Array<Array<number>>
 }
 
 const initialState: InitialStateType = {
@@ -16,7 +11,9 @@ const initialState: InitialStateType = {
   isRouteSaved: false
 }
 
-export default function routeReducer(state = initialState, action: ActionType) {
+export default function routeReducer(state = initialState, action: 
+  SetRouteBuiltFalseActionType | 
+  SaveRouteActionType): InitialStateType {
   switch (action.type) {
     case SAVE_ROUTE: 
       return {

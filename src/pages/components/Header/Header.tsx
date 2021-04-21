@@ -4,14 +4,14 @@ import logo from '../../../images/Logo2.svg';
 import { Link, NavLink } from "react-router-dom"
 import './Header.css';
 
-export const Header = () => {
+export const Header: React.FC = () => {
   const dispatch = useDispatch();
   const logOut = useCallback(
     () => dispatch({type: "auth/LOG_OUT"}), 
     [dispatch]
   )
 
-  const unauthenticate = () => {
+  const unauthenticate = ():void => {
     logOut()
   }
 

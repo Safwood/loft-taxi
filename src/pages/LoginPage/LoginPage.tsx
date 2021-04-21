@@ -4,9 +4,10 @@ import LoginForm from "../components/LoginForm/LoginForm";
 import { useSelector } from "react-redux"
 import LoginNotification from "../components/LoginNotification/LoginNotification";
 import styles from "./styles.module.css";
+import { RootState } from '../../redux/rootReducer'
 
 const LoginPage = () => {
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn)
   
     return (
       <div  className={styles.StartingPage}>

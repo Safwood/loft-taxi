@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from "react-router-dom"
 
-const MapNotification = () => {
+const ProfileNotification: React.FC = () => {
   return(
-    <div className="Map-page">
+    <div className="Profile-page">
       <div className="Form-container Form-container--profile">
       <form className="Form">
         <div className="Form__notification-wrapper">
         <h2 className="Form__heading Form__heading--profile">Профиль</h2>
           <p className="Form__notification">
-          Для заказа такси заполните платёжные данные в профиле. 
+          Платёжные данные обновлены. Теперь вы можете заказывать такси.
           </p>
-          <Link to="/profile" className="Entry-button">Перейти в профиль</Link>
+          <Link to="/map" className="Entry-button">Перейти на карту</Link>
         </div>
         </form>
       </div>
@@ -19,4 +19,4 @@ const MapNotification = () => {
   )
 }
 
-export default MapNotification;
+export default ProfileNotification;
