@@ -6,7 +6,7 @@ import LoginNotification from "../components/LoginNotification/LoginNotification
 import styles from "./styles.module.css";
 import { RootState } from '../../redux/rootReducer'
 
-const LoginPage = () => {
+const LoginPage: React.FC<{}> = () => {
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn)
   
     return (

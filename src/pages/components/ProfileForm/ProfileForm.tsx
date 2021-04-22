@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import chip from "../../../images/chip.png"
 import cardSign from "../../../images/card_sign.png"
-import './Card.css';
+import './ProfileForm.css';
 import { Formik, Form } from "formik";
 import Input from "../Input/Input"
 import { RootState } from '../../../redux/rootReducer'
@@ -10,7 +10,7 @@ import { CardErrorsType, CardFormValuesType } from '../../../types'
 
 let a: number = 0;
 
-export const ProfileForm = () => {
+export const ProfileForm: React.FC<{}> = () => {
   const token = useSelector((state: RootState) => state.auth.token);
   const dispatch = useDispatch();
   const saveCard = useCallback((cardNumber, expiryDate, cardName, cvc) => dispatch({type: "card/SAVE_CARD", payload: { cardNumber, expiryDate, cardName, cvc, token }}), [dispatch, token])

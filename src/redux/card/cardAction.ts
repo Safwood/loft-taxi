@@ -2,10 +2,15 @@ export const GET_CARD = "card/GET_CARD"
 export const GET_CARD_SUCCESS = "card/GET_CARD_SUCCESS"
 export const SAVE_CARD = "card/SAVE_CARD"
 export const SAVE_CARD_SUCCESS = "card/SAVE_CARD_SUCCESS"
+export const UPDATE_CARD = "card/UPDATE_CARD"
 
 export type GetActionType = {
   type: typeof GET_CARD
   payload: string
+}
+
+export type UpdateCardActionType = {
+  type: typeof UPDATE_CARD
 }
 
 export type SaveCardActionType = {
@@ -34,6 +39,7 @@ export type GetCardSuccessActionType = {
 
 export const getCard = (
   token: string): GetActionType => ({type: GET_CARD, payload: token }  as const)
+export const UpdateCard = (): UpdateCardActionType => ({type: UPDATE_CARD}  as const)
 export const getCardSuccess = (
   cardNumber: string, 
   expiryDate: string, 

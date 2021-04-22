@@ -7,7 +7,7 @@ import styles from "./styles.module.css";
 import { RootState } from '../../redux/rootReducer'
 
 
-const RegistrationPage = () => {
+const RegistrationPage: React.FC<{}> = () => {
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   
     return (

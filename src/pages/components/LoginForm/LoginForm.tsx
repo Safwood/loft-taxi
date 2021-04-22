@@ -8,7 +8,7 @@ import Preloader from '../Preloader/Preloader';
 import { RootState } from '../../../redux/rootReducer'
 import { AuthFormValuesType, AuthErrorsType } from '../../../types'
 
-export const LoginForm = () => {
+export const LoginForm: React.FC<{}> = () => {
   const error = useSelector((state: RootState) => state.auth.error);
   const isPreloaderOn = useSelector((state: RootState) => state.loader.isPreloaderOn);
   const dispatch = useDispatch();
