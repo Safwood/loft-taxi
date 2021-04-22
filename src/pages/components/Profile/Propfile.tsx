@@ -16,7 +16,6 @@ export const Profile: React.FC<{}> = () => {
   const dispatch = useDispatch();
   const updateCard = useCallback(() => dispatch({type: "card/UPDATE_CARD"}), [dispatch])
  
-
   const coverCardNumber = (cardNumber: string | null | undefined): any => {
     if (typeof cardNumber === 'string') {
       return cardNumber.split('').reverse()

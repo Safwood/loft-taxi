@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from "../components/Header/Header";
-import ProfileNotification from "../components/ProfileNotification/ProfileNotification";
 import { Profile } from "../components/Profile/Propfile";
 import ProfileForm from "../components/ProfileForm/ProfileForm";
 import { useSelector } from "react-redux"
