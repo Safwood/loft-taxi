@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom"
-import './Registration.css';
+import './RegistrationForm.css';
 import { Formik, Form } from "formik";
+import AppLink from "../Link/Link"
 import Input from "../Input/Input"
 import Preloader from '../Preloader/Preloader';
 import ErrorNotification from "../ErrorNotification/ErrorNotification"
@@ -8,6 +8,7 @@ import React, { useCallback } from 'react';
 import { useDispatch, useSelector} from "react-redux"
 import { RootState } from '../../../redux/rootReducer'
 import { AuthFormValuesType, AuthErrorsType } from '../../../types'
+import SubmitButton from '../SubmitButton/SubmitButton'
 
 export const RegistrationForm: React.FC = () => {
   const error = useSelector((state: RootState) => state.auth.error)
@@ -80,7 +81,7 @@ export const RegistrationForm: React.FC = () => {
           <Input inputType="text" inputName="name" inputText="Как вас зовут?*" placeholder="Alexander"  errors={props.errors.name} onBlur={props.handleBlur} onChange={props.handleChange}/>
           <Input inputType="text" inputName="surname" inputText="Как ваша фамилия?*" placeholder="Ivanov"  errors={props.errors.surname} onBlur={props.handleBlur} onChange={props.handleChange}/>
           <Input inputType="password" inputName="password" inputText="Придумайте пароль*" placeholder="**********"  errors={props.errors.password} onBlur={props.handleBlur} onChange={props.handleChange}/>
-          <input type="submit"  disabled={
+          <SubmitButton  disabled={
             !props.values.email && 
             !props.values.password && 
             !props.values.name && 
@@ -88,10 +89,10 @@ export const RegistrationForm: React.FC = () => {
             props.errors 
             ? true 
             : false} 
-            className="Form__button Entry-button" value="Зарегистрироваться" />
+            value={"Зарегистрироваться"} />
           <div className="Form__new-user">
             <p className="Form__new-user-text">Уже зарегистрированы?</p>
-            <Link to="/" className="Button New-user__button Form__button">Войти</Link>
+            <AppLink link={"/"} text={"Войти"}/>
           </div>
         </div>
       </Form>

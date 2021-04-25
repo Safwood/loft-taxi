@@ -1,5 +1,6 @@
 import React, { useCallback} from 'react';
 import { useDispatch } from 'react-redux';
+import AppButton from '../Button/Button'
 
 const NewOrderNotification: React.FC = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const NewOrderNotification: React.FC = () => {
           <p className="Form__notification">
            Ваше такси уже едет к вам. Прибудет приблизительно через 10 минут.
           </p>
-          <button className="Entry-button" onClick={handleClick}>Сделать новый заказ</button>
+          <AppButton onClick={handleClick} text={"Сделать новый заказ"}/>
         </div>
         </form>
       </div>

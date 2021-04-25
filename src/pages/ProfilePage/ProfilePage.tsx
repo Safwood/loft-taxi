@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from "../components/Header/Header";
-import { Profile } from "../components/Profile/Propfile";
+import { Profile } from "../components/Profile/Profile";
 import ProfileForm from "../components/ProfileForm/ProfileForm";
 import { useSelector } from "react-redux"
 import { RootState } from '../../redux/rootReducer'

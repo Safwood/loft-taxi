@@ -1,14 +1,16 @@
 import React from 'react';
-import car1 from '../../../images/car1.png';
-import car2 from '../../../images/car2.png';
-import car3 from '../../../images/car3.png';
+import car1 from '../../../../images/car1.png';
+import car2 from '../../../../images/car2.png';
+import car3 from '../../../../images/car3.png';
+import './OrderCars.css';
 
 const OrderCars: React.FC = () => {
+     
   return (
     <div className="Order-cars">
       <ul className="Order-cars__list">
         <li className="Order-cars__item">
-          <input className="Order-cars__item-label" name="car" type="radio" id="car1"/>
+          <input className="Order-cars__item-label" name="car" type="radio" checked id="car1"/>
           <label htmlFor="car1">
             <h3 className="Order-cars__heading">Стандарт</h3>
             <p className="Order-cars__cost">стоимость</p>

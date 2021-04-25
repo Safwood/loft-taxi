@@ -1,23 +1,15 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import './Button.css'
+import { Link } from "react-router-dom"
 
 type PropsType = {
   text: string,
-  onClick: any
+  onClick?: any
+  link?: string
 }
 
-export const MyButton: React.FC<PropsType> = ({text, onClick}) => {
+export default function AppButton ({text, onClick, link}: PropsType) {
   return (
-          <Button style={{
-            backgroundColor: '#FDBF5A',
-            borderRadius: '70px',
-            fontSize: '25px',
-            padding: '8px 60px',
-            width: '356px',
-            textTransform: 'none'
-          }} className="Button" onClick={onClick}>{text}</Button>
+          <button className="Button" onClick={onClick}>{link? <Link to={link}>{text}</Link> : text}</button>
   )
 }
-
-export default MyButton;

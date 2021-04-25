@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import './Profile.css';
 import Typography from '@material-ui/core/Typography';
-import { MyButton } from '../Button/Button'
+import AppButton from '../Button/Button'
 
 export const Profile: React.FC<{}> = () => {
   const userName = useSelector((state: RootState) => state.card.cardName);
@@ -59,7 +59,7 @@ export const Profile: React.FC<{}> = () => {
             <Typography variant="body1">***</Typography>
           </Grid>
        </Grid >
-        <MyButton text={buttonText} onClick={handleClick}/>
+        <AppButton text={buttonText} onClick={handleClick}/>
       </Grid>
     </Container>
     </>

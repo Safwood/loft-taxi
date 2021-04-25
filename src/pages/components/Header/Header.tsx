@@ -26,13 +26,13 @@ export const Header: React.FC = () => {
                 <nav className="Menu">
                   <ul className="Menu__list">
                     <li className="Menu__item">
-                      <NavLink to="/map" className='Menu__button'>Карты</NavLink>
+                      <NavLink to="/map" className='Menu__link'>Карты</NavLink>
                     </li>
                     <li  className="Menu__item">
-                      <NavLink to="/profile" className='Menu__button'>Профиль</NavLink>
+                      <NavLink to="/profile" className='Menu__link'>Профиль</NavLink>
                     </li>
                     <li  className="Menu__item">
-                      <Link to="/" onClick={unauthenticate} className="Menu__button">Выйти</Link>
+                      <Link to="/" onClick={unauthenticate} className="Menu__link">Выйти</Link>
                     </li>
                   </ul>
                 </nav>

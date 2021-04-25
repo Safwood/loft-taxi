@@ -1,5 +1,6 @@
 import React, {useCallback} from 'react';
 import { useDispatch } from "react-redux";
+import AppButton from '../Button/Button'
 
 type PropsType = {
   error: string
@@ -24,7 +25,7 @@ const ErrorNotification: React.FC<PropsType> = ({error}) => {
           <p className="Form__notification">
            {error}
           </p>
-          <button onClick={hangdleClick} className="Entry-button">Закрыть</button>
+          <AppButton onClick={hangdleClick} text={"Закрыть"} />
         </div>
         </div>
       </div>

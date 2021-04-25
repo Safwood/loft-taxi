@@ -56,66 +56,6 @@
   border-left: 2px solid #E0E0E0;
 }
 
-.Order-cars {
-  max-height: 357px;
-  border-radius: 20px;
-  box-shadow: 0 -4px 7px 0 #E0E0E0;
-  display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 32px 46px;
-}
-
-.Order-cars__list {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 32px;
-  max-width: 383px;
-  padding: 0;
-}
-
-.Order-cars__item {
-  padding: 11px;
-  max-height: 167px;
-  width: 118px;
-  box-shadow: 0 0 14px 1px #E0E0E0;
-  border-radius: 7px;
-  margin-right: 20px;
-}
-
-.Order-cars__item:last-child {
-  margin-right: 0;
-}
-
-.Order-cars__item-label {
-  display: none;
-}
-
-.Order-cars__image {
-  max-width: 95px;
-  max-height: 64px;
-}
-
-.Order-cars__heading {
-  font-size: 16px;
-  font-weight: normal;
-  margin: 0;
-  margin-bottom: 8px;
-  line-height: 1;
-}
-
-.Order-cars__cost {
-  font-size: 11px;
-  margin: 0;
-  margin-bottom: 8px;
-}
-
-.Order-cars__price {
-  font-size: 24px;
-  margin: 0;
-  margin-bottom: 10px;
-}
-
 .Order-button {
   display: flex;
   flex-direction: column;

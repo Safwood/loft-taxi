@@ -3,7 +3,7 @@ import logo from '../../images/logo.svg';
 import RegistrationForm from "../components/RegistrationForm/RegistrationForm";
 import { useSelector } from "react-redux"
 import LoginNotification from "../components/LoginNotification/LoginNotification";
-import styles from "./styles.module.css";
+import "./RegistrationPage.css";
 import { RootState } from '../../redux/rootReducer'
 
 
@@ -11,11 +11,11 @@ const RegistrationPage: React.FC<{}> = () => {
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   
     return (
-      <div  className={styles.StartingPage}>
-        <section className={styles.SideSection}>
-          <img src={logo}  className={styles.SideSectionLogo} alt='logo'/>
+      <div  className="StartingPage">
+        <section className="SideSection">
+          <img src={logo}  className="SideSectionLogo" alt='logo'/>
         </section>
-        <main className={styles.StartingPageMainBlock}>
+        <main className="StartingPageMainBlock">
           {isLoggedIn 
           ? (
             <LoginNotification/>

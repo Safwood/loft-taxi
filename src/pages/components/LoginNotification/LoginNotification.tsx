@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom"
+import AppButton from '../Button/Button'
 
 export const LoginNotification: React.FC = () => {
   return (
@@ -10,7 +10,7 @@ export const LoginNotification: React.FC = () => {
           <p className="Form__notification">
             Вы зарегистрированы.
           </p>
-          <Link to="/map" className="Entry-button">Перейти на страницу карты</Link>
+          <AppButton link={"/map"} text={"Далее"} />
         </div>
         </form>
     </div>

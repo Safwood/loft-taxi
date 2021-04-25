@@ -1,12 +1,13 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import Input from "../Input/Input"
+import AppLink from "../Link/Link"
 import ErrorNotification from "../ErrorNotification/ErrorNotification"
 import Preloader from '../Preloader/Preloader';
 import { RootState } from '../../../redux/rootReducer'
 import { AuthFormValuesType, AuthErrorsType } from '../../../types'
+import SubmitButton from '../SubmitButton/SubmitButton';
 
 export const LoginForm: React.FC<{}> = () => {
   const error = useSelector((state: RootState) => state.auth.error);
@@ -68,10 +69,16 @@ export const LoginForm: React.FC<{}> = () => {
               <Input inputType="text" inputName="email" inputText="Email:" placeholder="mail@mail.ru"  onChange={props.handleChange} onBlur={props.handleBlur} errors={props.errors.email}/>
               <Input inputType="password" inputName="password" inputText="Пароль:" placeholder="************"  errors={props.errors.password} onBlur={props.handleBlur} onChange={props.handleChange} />
             </div>
-            <input type="submit" disabled={!props.values.email || !props.values.password || props.errors.email || props.errors.password ? true : false} className="Login-form__button Entry-button" value="Войти" />
+            <SubmitButton  disabled={
+              !props.values.email || 
+              !props.values.password || 
+              props.errors.email || 
+              props.errors.password 
+              ? true : false}
+              value={"Войти"} />
             <div className="Form__new-user">
               <p className="Form__new-user-text">Новый пользователь?</p>
-              <Link to="/registration" className="Button New-user__button Login-form__new-user-button">Регистрация</Link>
+              <AppLink link={"/registration"} text={"Регистрация"}/>
             </div>
           </div>
         </Form>

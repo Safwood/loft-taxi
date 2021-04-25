@@ -7,6 +7,7 @@ import { Formik, Form } from "formik";
 import Input from "../Input/Input"
 import { RootState } from '../../../redux/rootReducer'
 import { CardErrorsType, CardFormValuesType } from '../../../types'
+import SubmitButton from '../SubmitButton/SubmitButton';
 
 let a: number = 0;
 
@@ -103,14 +104,15 @@ export const ProfileForm: React.FC<{}> = () => {
                 </div>
               </div>
             </div>
-            <input type="submit" disabled={
+            <SubmitButton  disabled={
               !props.values.cardName && 
               !props.values.cardNumber && 
               !props.values.expiryDate && 
               !props.values.cvc && 
               props.errors
               ? true
-              : false} className="Login-form__button Entry-button" value="Сохранить" />
+              : false}
+              value={"Сохранить"} />
           </Form>
           </div>
           )

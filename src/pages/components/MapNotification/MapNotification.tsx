@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom"
+import AppButton from '../Button/Button'
 
 const MapNotification: React.FC = () => {
   return(
@@ -11,7 +11,7 @@ const MapNotification: React.FC = () => {
           <p className="Form__notification">
           Для заказа такси заполните платёжные данные в профиле. 
           </p>
-          <Link to="/profile" className="Entry-button">Перейти в профиль</Link>
+          <AppButton link={"/profile"} text={"Перейти в профиль"} />
         </div>
         </form>
       </div>

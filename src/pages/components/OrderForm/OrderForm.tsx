@@ -1,13 +1,12 @@
 import React, { useCallback} from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import errowDown from '../../../images/errowDown.png';
-import cross from '../../../images/cross.png';
 import { Formik, Form, ErrorMessage } from "formik";
-import './Order.css';
-import OrderCars from "./OrderCars";
+import './OrderForm.css';
+import OrderCars from "./OrderCars/OrderCars";
 import NewOrderNotification from "../NewOrderNotification/NewOrderNotification";
 import { RootState } from '../../../redux/rootReducer'
 import { OrderErrorsType, OrderFormValuesType } from '../../../types'
+import SubmitButton from '../SubmitButton/SubmitButton';
 
 export const OrderForm: React.FC = () => {
   const addressList = useSelector((state: RootState) => state.address.addressList);
@@ -63,12 +62,6 @@ export const OrderForm: React.FC = () => {
                       })
                     } 
                   </select>
-                  <button className="Order-addresses__button">
-                    <img className="Order-addresses__button-image" src={cross} alt="cross"/>
-                  </button>
-                  <button className="Order-addresses__button Order-addresses__button--errow">
-                    <img  className="Order-addresses__button-image" src={errowDown} alt="errowDown"/>
-                  </button>
                 </div>
                 <div className="Order-addresses__address Order-addresses__address--to">
                   <select { ...props.getFieldProps("address2")} name="address2" className="Order-addresses__input">
@@ -79,24 +72,19 @@ export const OrderForm: React.FC = () => {
                     })
                   }
                   </select>
-                  <button className="Order-addresses__button">
-                    <img  className="Order-addresses__button-image" src={cross} alt="cross"/>
-                  </button>
-                  <button className="Order-addresses__button Order-addresses__button--errow">
-                    <img  className="Order-addresses__button-image" src={errowDown} alt="errowDown"/>
-                  </button>
                 </div>
               </div>
               <OrderCars />
               <div className="Order-button">
                 <ErrorMessage name="address1" component="div" className="Form__error"/>
                 <ErrorMessage name="address2" component="div" className="Form__error"/>
-                <input type="submit"  disabled={
+                <SubmitButton  disabled={
                   !props.values.address1 && 
                   !props.values.address2 && 
                   props.errors
                   ? true 
-                  : false} className="Order-form__button Entry-button" value="Заказать" />
+                  : false}
+                value={"Заказать"} />
               </div>
             </Form>
             )}
