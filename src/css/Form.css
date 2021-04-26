@@ -35,10 +35,6 @@
   margin: 56px 113px;
 }
 
-.Form--new-order {
-  margin: 0 20px
-}
-
 .Form--profile {
   margin: 59px 45px 67px;
   align-items: center;
@@ -115,26 +111,6 @@
 .Form__new-user-text {
   color: #828282;
   margin-right: 5px;
-}
-
-.Form__notification {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 53px;
-  color: #7B7B7B;
-  font-weight: normal;
-}
-
-.Form__notification-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 100px 0px;
-}
-
-.Form__notification-wrapper--new-order {
-  padding: 12px 0px;
 }
 
 .Form__subtitle {

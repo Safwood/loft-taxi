@@ -10,11 +10,11 @@ const OrderCars: React.FC = () => {
     <div className="Order-cars">
       <ul className="Order-cars__list">
         <li className="Order-cars__item">
-          <input className="Order-cars__item-label" name="car" type="radio" checked id="car1"/>
+          <input className="Order-cars__item-label" name="car" type="radio" defaultChecked id="car1"/>
           <label htmlFor="car1">
             <h3 className="Order-cars__heading">Стандарт</h3>
             <p className="Order-cars__cost">стоимость</p>
-            <p className="Order-cars__price">150 ₽</p>
+            <p className="Order-cars__price">350 ₽</p>
             <img className="Order-cars__image" src={car1} alt="car"/>
           </label>
         </li>
@@ -23,7 +23,7 @@ const OrderCars: React.FC = () => {
           <label htmlFor="car2">
             <h3 className="Order-cars__heading">Премиум</h3>
             <p className="Order-cars__cost">стоимость</p>
-            <p className="Order-cars__price">250 ₽</p>
+            <p className="Order-cars__price">450 ₽</p>
             <img className="Order-cars__image" src={car2} alt="car"/>
           </label>
         </li>
@@ -32,7 +32,7 @@ const OrderCars: React.FC = () => {
           <label htmlFor="car3">
             <h3 className="Order-cars__heading">Бизнес</h3>
             <p className="Order-cars__cost">стоимость</p>
-            <p className="Order-cars__price">300 ₽</p>
+            <p className="Order-cars__price">550 ₽</p>
             <img className="Order-cars__image" src={car3} alt="car"/>
           </label>
         </li>
