@@ -36,7 +36,7 @@ export const ProfileForm: React.FC<{}> = () => {
   }
 
   return(
-    <div className="Profile__form">
+    <div className="ProfileForm">
       <Formik
         initialValues = {initialValues}
         onSubmit={onSubmit}
@@ -50,15 +50,15 @@ export const ProfileForm: React.FC<{}> = () => {
             <p className="Form__subtitle">Введите платежные  данные</p>
             <div className="Form__content Form__content--profile">
               <div className="Form__blocks">
-                <div className="Form__blocks-inputs">
+                <div className="Form__inputs">
                   <Input inputType="text" inputName="cardName" inputText="Имя владельца" placeholder="ALEXANDER IVANOV"  errors={errors.cardName} onBlur={handleBlur} onChange={handleChange}/>
                   <Input inputType="card" onKeyPress={addSpace} inputName="cardNumber"  inputText="Номер карты" placeholder="5555 5555 5555 5555"  errors={errors.cardNumber} onBlur={handleBlur} onChange={handleChange} />
-                  <div className="Form__blocks-date-cvc">
+                  <div className="Form__date-cvc">
                     <Input inputType="month" inputName="expiryDate" inputText="MM.YY" errors={errors.expiryDate} onBlur={handleBlur} onChange={handleChange} />
                     <Input inputType="text" inputName="cvc" maxlength={3} inputText="CVC" errors={errors.cvc} onBlur={handleBlur} onChange={handleChange} />
                     </div>
                 </div>
-                <div className="Form__blocks-card" >
+                <div className="Form__card" >
                   <Card expiryDate={values.expiryDate} cardNumber={values.cardNumber}/>
                 </div>
               </div>

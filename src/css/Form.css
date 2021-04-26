@@ -120,22 +120,8 @@
   font-weight: 400;
 }
 
-.Form__blocks {
-  display: flex;
-  justify-content: space-between;
-}
-
-.Form__blocks-inputs {
-  width: 43%;
-}
-
-.Form__blocks-card {
-  max-width: 347px;
-}
-
-.Form__blocks-date-cvc {
-  display: flex;
-  justify-content: space-between;
+.Form__inputs {
+  width: 100%;
 }
 
 .Form__error {

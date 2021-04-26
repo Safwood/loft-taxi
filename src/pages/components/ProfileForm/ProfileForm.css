@@ -1,8 +1,30 @@
-.Profile__form {
+.ProfileForm {
   height: 100%;
   width:100%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 50px;
+}
+
+.Form__blocks {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Form__inputs {
+  width: 43%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 78px;
+}
+
+.Form__card {
+  max-width: 347px;
+}
+
+.Form__date-cvc {
+  display: flex;
+  justify-content: space-between;
 }

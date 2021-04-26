@@ -45,23 +45,13 @@ export type serverGetCardFunctonReponseType = {
   token?: string
 }
 
-export type AuthErrorsType = {
-  email?: string
-  password?: string
-  name?: string
-  surname?: string
-}
-
 export type CardErrorsType = {
   cardNumber?: string 
   expiryDate?: string 
   cardName?: string 
   cvc?: string
 }
-export type OrderErrorsType = {
-  address1?: string 
-  address2?: string 
-}
+
 export type GetAddressListSagaType = {
   addresses: Array<string>
 }

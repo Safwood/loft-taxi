@@ -7,41 +7,15 @@ import ErrorNotification from "../ErrorNotification/ErrorNotification"
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector} from "react-redux"
 import { RootState } from '../../../redux/rootReducer'
-import { AuthFormValuesType, AuthErrorsType } from '../../../types'
+import { AuthFormValuesType } from '../../../types'
 import SubmitButton from '../SubmitButton/SubmitButton'
+import { registrationSchema } from './registrationSchema'
 
 export const RegistrationForm: React.FC = () => {
   const error = useSelector((state: RootState) => state.auth.error)
   const isPreloaderOn = useSelector((state: RootState) => state.loader.isPreloaderOn)
   const dispatch = useDispatch();
   const register = useCallback((email, password, name, surname) => dispatch({type: 'registration/REGISTER', payload: { email, password, name, surname}}), [dispatch]);
-
-  const validate = (values: AuthFormValuesType): AuthErrorsType => {
-    let errors: AuthErrorsType= {}
-
-    if (!values.email) {
-      errors.email = "Укажите, пожалуйста, электронную почту"
-    } else if (!/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-      errors.email = "Email должен быть написан латинскими буквами, содержать символы '@' и '.'";
-    }
-
-    if (!values.password) {
-      errors.password = "Укажите, пожалуйста, пароль"
-    } else if (values.password.length < 6) {
-      errors.password = "Пароль должен быть не менее 6 символов"
-    }
-
-    if (!values.name) {
-      errors.name = "Укажите, пожалуйста, Ваше имя"
-    }
-
-    if (!values.surname) {
-      errors.surname = "Укажите, пожалуйста, Вашу фамилию"
-    }
-
-    return errors
-
-  }
 
   const onSubmit = (values: AuthFormValuesType): void => {
     register(values.email, values.password, values.name, values.surname)
@@ -59,9 +33,9 @@ export const RegistrationForm: React.FC = () => {
       <Formik
       initialValues = {initialValues}
       onSubmit={onSubmit}
-      validate={validate}>
+      validationSchema={registrationSchema}>
 
-      {props => (
+      {({errors, values, handleBlur, handleChange}) => (
       <Form className="Form">
         <h2 className="Form__heading">Регистрация</h2>
         <div className="Form__content">
@@ -77,16 +51,16 @@ export const RegistrationForm: React.FC = () => {
             : null
             }
           </div>
-          <Input inputType="email" inputName="email" inputText="Email*" placeholder="mail@mail.ru"  errors={props.errors.email} onBlur={props.handleBlur} onChange={props.handleChange}/>
-          <Input inputType="text" inputName="name" inputText="Как вас зовут?*" placeholder="Alexander"  errors={props.errors.name} onBlur={props.handleBlur} onChange={props.handleChange}/>
-          <Input inputType="text" inputName="surname" inputText="Как ваша фамилия?*" placeholder="Ivanov"  errors={props.errors.surname} onBlur={props.handleBlur} onChange={props.handleChange}/>
-          <Input inputType="password" inputName="password" inputText="Придумайте пароль*" placeholder="**********"  errors={props.errors.password} onBlur={props.handleBlur} onChange={props.handleChange}/>
+          <Input inputType="email" inputName="email" inputText="Email*" placeholder="mail@mail.ru"  errors={errors.email} onBlur={handleBlur} onChange={handleChange}/>
+          <Input inputType="text" inputName="name" inputText="Как вас зовут?*" placeholder="Alexander"  errors={errors.name} onBlur={handleBlur} onChange={handleChange}/>
+          <Input inputType="text" inputName="surname" inputText="Как ваша фамилия?*" placeholder="Ivanov"  errors={errors.surname} onBlur={handleBlur} onChange={handleChange}/>
+          <Input inputType="password" inputName="password" inputText="Придумайте пароль*" placeholder="**********"  errors={errors.password} onBlur={handleBlur} onChange={handleChange}/>
           <SubmitButton  disabled={
-            !props.values.email && 
-            !props.values.password && 
-            !props.values.name && 
-            !props.values.surname && 
-            props.errors 
+            !values.email && 
+            !values.password && 
+            !values.name && 
+            !values.surname && 
+            errors 
             ? true 
             : false} 
             value={"Зарегистрироваться"} />

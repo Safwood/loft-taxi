@@ -6,8 +6,9 @@ import AppLink from "../Link/Link"
 import ErrorNotification from "../ErrorNotification/ErrorNotification"
 import Preloader from '../Preloader/Preloader';
 import { RootState } from '../../../redux/rootReducer'
-import { AuthFormValuesType, AuthErrorsType } from '../../../types'
+import { AuthFormValuesType } from '../../../types'
 import SubmitButton from '../SubmitButton/SubmitButton';
+import { loginSchema } from './loginSchema'
 
 export const LoginForm: React.FC<{}> = () => {
   const error = useSelector((state: RootState) => state.auth.error);
@@ -26,30 +27,14 @@ export const LoginForm: React.FC<{}> = () => {
     setRouteBuildFalse();
   }
 
-  const validate = (values: AuthFormValuesType): AuthErrorsType => {
-    let errors: AuthErrorsType = {};
-
-    if (!values.email) {
-      errors.email = "Поле 'Email' должно быть заполнено"
-    } else if (!/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-      errors.email = "Email должен быть написан латинскими буквами, содержать символы '@' и '.'";
-    }
-
-    if (!values.password) {
-      errors.password = "Поле 'Пароль' должно быть заполнено"
-    }
-
-    return errors     
-  }
-
   return (
     <div className="Form-container">
       <Formik 
         initialValues = {initialValues}
         onSubmit={onSubmit}
-        validate={validate}
+        validationSchema={loginSchema}
         >
-        {props => (
+        {({values, errors, handleChange, handleBlur}) => (
         <Form className="Form">
           <h2 className="Form__heading">Войти</h2>
           <div className="Form__content Form__content--loginForm">
@@ -66,14 +51,14 @@ export const LoginForm: React.FC<{}> = () => {
               }
             </div>
             <div className="Form__inputs">
-              <Input inputType="text" inputName="email" inputText="Email:" placeholder="mail@mail.ru"  onChange={props.handleChange} onBlur={props.handleBlur} errors={props.errors.email}/>
-              <Input inputType="password" inputName="password" inputText="Пароль:" placeholder="************"  errors={props.errors.password} onBlur={props.handleBlur} onChange={props.handleChange} />
+              <Input inputType="text" inputName="email" inputText="Email:" placeholder="mail@mail.ru"  onChange={handleChange} onBlur={handleBlur} errors={errors.email}/>
+              <Input inputType="password" inputName="password" inputText="Пароль:" placeholder="************"  errors={errors.password} onBlur={handleBlur} onChange={handleChange} />
             </div>
             <SubmitButton  disabled={
-              !props.values.email || 
-              !props.values.password || 
-              props.errors.email || 
-              props.errors.password 
+              !values.email || 
+              !values.password || 
+              errors.email || 
+              errors.password 
               ? true : false}
               value={"Войти"} />
             <div className="Form__new-user">

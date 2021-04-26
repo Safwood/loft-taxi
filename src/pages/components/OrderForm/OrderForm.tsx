@@ -5,8 +5,9 @@ import './OrderForm.css';
 import OrderCars from "./OrderCars/OrderCars";
 import NewOrderNotification from "../NewOrderNotification/NewOrderNotification";
 import { RootState } from '../../../redux/rootReducer'
-import { OrderErrorsType, OrderFormValuesType } from '../../../types'
+import { OrderFormValuesType } from '../../../types'
 import SubmitButton from '../SubmitButton/SubmitButton';
+import { orderSchema } from './orderSchema'
 
 export const OrderForm: React.FC = () => {
   const addressList = useSelector((state: RootState) => state.address.addressList);
@@ -16,20 +17,6 @@ export const OrderForm: React.FC = () => {
 
   const onSubmit = (values: OrderFormValuesType) => {
     getRoute(values.address1, values.address2);
-  }
-
-  const validate = (values: OrderFormValuesType): OrderErrorsType => {
-    let errors: OrderErrorsType = {}
-
-    if (!values.address1) {
-      errors.address1 = "Укажите, пожалуйста, адрес отправления"
-    }
-
-    if (!values.address2) {
-      errors.address2 = "Укажите, пожалуйста, адрес места назначения"
-    }
-
-    return errors
   }
 
   let initialValues = {
@@ -48,7 +35,7 @@ export const OrderForm: React.FC = () => {
           <Formik
             initialValues = {initialValues}
             onSubmit={onSubmit}
-            validate={validate}
+            validationSchema={orderSchema}
             >
             {props => (
               <Form className="Form Form--order-form Order">
