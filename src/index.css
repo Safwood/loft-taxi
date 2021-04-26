@@ -28,7 +28,6 @@ button {
 
 * {
   box-sizing: border-box;
-
 }
 
 #root, body, html {
@@ -57,13 +56,4 @@ a {
 .App-main {
   flex: 1;
   background-image: './map.png' center center no-repeat;
-}
-
-.Profile-page {
-  height: 100%;
-  width:100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 50px;
 }
