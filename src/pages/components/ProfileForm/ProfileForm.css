@@ -4,27 +4,62 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 50px;
+  padding-top: 10px;
 }
 
-.Form__blocks {
+.ProfileForm__container {
+  position: relative;
+  border-radius: 20px;
+  min-height: 500px;
+  background-color: #fff;
+  width: 888px;
+}
+
+.ProfileForm__form {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  margin: 18px 45px 0;
+  align-items: center;
 }
 
-.Form__inputs {
+.ProfileForm__heading {
+  text-align: center;
+  font-size: 36px; 
+  font-weight: bold;
+  margin: 0;
+}
+
+.ProfileForm__subtitle {
+  margin-bottom: 39px;
+  color: #7B7B7B;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.ProfileForm__content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.ProfileForm__blocks {
+  display: flex;
+  justify-content: space-between; 
+}
+
+.ProfileForm__inputs {
   width: 43%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 78px;
 }
 
-.Form__card {
+.ProfileForm__card {
   max-width: 347px;
 }
 
-.Form__date-cvc {
+.ProfileForm__date-cvc {
   display: flex;
   justify-content: space-between;
 }

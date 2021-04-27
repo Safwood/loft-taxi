@@ -15,7 +15,7 @@ export default function Notification ({text, heading, buttonText, onClick, link}
     onClick()
   }
   return (
-    <div className="Notification Form-container--new-order">
+    <div className="Notification">
         <div className="Notification__content">
           <h2 className="Notification__heading">{heading}</h2>
           <p className="Notification__text">

@@ -9,6 +9,7 @@ import { RootState } from '../../../redux/rootReducer'
 import { AuthFormValuesType } from '../../../types'
 import SubmitButton from '../SubmitButton/SubmitButton';
 import { loginSchema } from './loginSchema'
+import './LoginForm.css'
 
 export const LoginForm: React.FC<{}> = () => {
   const error = useSelector((state: RootState) => state.auth.error);
@@ -28,16 +29,16 @@ export const LoginForm: React.FC<{}> = () => {
   }
 
   return (
-    <div className="Form-container">
+    <div className="Login">
       <Formik 
         initialValues = {initialValues}
         onSubmit={onSubmit}
         validationSchema={loginSchema}
         >
         {({values, errors, handleChange, handleBlur}) => (
-        <Form className="Form">
-          <h2 className="Form__heading">Войти</h2>
-          <div className="Form__content Form__content--loginForm">
+        <Form className="Login__form">
+          <h2 className="Login__heading">Войти</h2>
+          <div className="Login__content">
             <div className="Auth_error">
               {error
               ? <ErrorNotification error={error}/>
@@ -50,7 +51,7 @@ export const LoginForm: React.FC<{}> = () => {
               : null
               }
             </div>
-            <div className="Form__inputs">
+            <div className="Login__inputs">
               <Input inputType="text" inputName="email" inputText="Email:" placeholder="mail@mail.ru"  onChange={handleChange} onBlur={handleBlur} errors={errors.email}/>
               <Input inputType="password" inputName="password" inputText="Пароль:" placeholder="************"  errors={errors.password} onBlur={handleBlur} onChange={handleChange} />
             </div>
@@ -61,8 +62,8 @@ export const LoginForm: React.FC<{}> = () => {
               errors.password 
               ? true : false}
               value={"Войти"} />
-            <div className="Form__new-user">
-              <p className="Form__new-user-text">Новый пользователь?</p>
+            <div className="Login__new">
+              <p className="Login__text">Новый пользователь?</p>
               <AppLink link={"/registration"} text={"Регистрация"}/>
             </div>
           </div>

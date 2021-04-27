@@ -1,9 +1,27 @@
-.Order-addresses {
+.OrderForm__container {
+  border-radius: 20px;
+  background-color: #fff;
+  position: absolute;
+  left: 6%;
+  top: 7%;
+  min-height: 486px;
+  width: 471px;
+}
+
+.OrderForm__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  overflow: hidden;
+}
+
+.OrderForm__addresses {
   padding: 10px 22px;
 
 }
 
-.Order-addresses__address {
+.OrderForm__address {
   height: 45.5px;
   display: flex;
   align-items: center;
@@ -15,7 +33,7 @@
   position: relative;
 }
 
-.Order-addresses__address--from::before {
+.OrderForm__address--from::before {
   content: "";
   display: block;
   width: 14px;
@@ -28,7 +46,7 @@
   transform: translateY(-50%);
 }
 
-.Order-addresses__address--to::before {
+.OrderForm__address--to::before {
   content: url('../../../images/errowRout.png');
   display: block;
   width: 14px;
@@ -39,7 +57,7 @@
   transform: translateY(-50%);
 }
 
-.Order-addresses__input {
+.OrderForm__input {
   border: none;
   flex: 1;
   font-size: 18px;
@@ -52,16 +70,14 @@
   border: none;
 }
 
-.Order-addresses__button--errow {
-  border-left: 2px solid #E0E0E0;
-}
-
-.Order-button {
+.OrderForm__button {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.Order-form__button {
-  width: 394px;
+.OrderForm__error {
+  color: red;
+  font-size: 16px;
+  text-align: left;
 }

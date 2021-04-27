@@ -1,5 +1,6 @@
 import React from 'react';
 import { ErrorMessage } from "formik";
+import './Input.css';
 
 type PropsType = {
   inputName: string
@@ -13,13 +14,12 @@ type PropsType = {
   errors?: string
 }
 
-const Input: React.FC<PropsType> = (props) => {
+export default function Input (props: PropsType) {
   return (
-    <div className="Form__input-wrapper">
-      <label className="Form__label" htmlFor={props.inputName}>{props.inputText}</label>
-      <input type={props.inputType} maxLength={props.maxlength} onKeyPress={props.onKeyPress} onChange={props.onChange} id={props.inputName} className="Form__input" name={props.inputName} placeholder={props.placeholder} onBlur={props.onBlur}/>
-      <ErrorMessage name={props.inputName} component="div" className="Form__error"/>
+    <div className="Input__wrapper">
+      <label className="Input__label" htmlFor={props.inputName}>{props.inputText}</label>
+      <input className="Input__input" type={props.inputType} maxLength={props.maxlength} onKeyPress={props.onKeyPress} onChange={props.onChange} id={props.inputName} name={props.inputName} placeholder={props.placeholder} onBlur={props.onBlur}/>
+      <ErrorMessage className="Input__error" name={props.inputName} component="div"/>
     </div>
   )
 }
-export default Input;

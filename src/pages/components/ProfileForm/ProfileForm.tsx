@@ -44,21 +44,21 @@ export const ProfileForm: React.FC<{}> = () => {
         validationSchema={profileSchema}
       > 
       {({errors, values, handleBlur, handleChange}) => (
-        <div className="Form-container Form-container--profile">
-          <Form className="Form Form--profile">
-            <h2 className="Form__heading Form__heading--profile">Профиль</h2>
-            <p className="Form__subtitle">Введите платежные  данные</p>
-            <div className="Form__content Form__content--profile">
-              <div className="Form__blocks">
-                <div className="Form__inputs">
+        <div className="ProfileForm__container">
+          <Form className="ProfileForm__form">
+            <h2 className="ProfileForm__heading">Профиль</h2>
+            <p className="ProfileForm__subtitle">Введите платежные  данные</p>
+            <div className="ProfileForm__content">
+              <div className="ProfileForm__blocks">
+                <div className="ProfileForm__inputs">
                   <Input inputType="text" inputName="cardName" inputText="Имя владельца" placeholder="ALEXANDER IVANOV"  errors={errors.cardName} onBlur={handleBlur} onChange={handleChange}/>
                   <Input inputType="card" onKeyPress={addSpace} inputName="cardNumber"  inputText="Номер карты" placeholder="5555 5555 5555 5555"  errors={errors.cardNumber} onBlur={handleBlur} onChange={handleChange} />
-                  <div className="Form__date-cvc">
+                  <div className="ProfileForm__date-cvc">
                     <Input inputType="month" inputName="expiryDate" inputText="MM.YY" errors={errors.expiryDate} onBlur={handleBlur} onChange={handleChange} />
                     <Input inputType="text" inputName="cvc" maxlength={3} inputText="CVC" errors={errors.cvc} onBlur={handleBlur} onChange={handleChange} />
                     </div>
                 </div>
-                <div className="Form__card" >
+                <div className="ProfileForm__card" >
                   <Card expiryDate={values.expiryDate} cardNumber={values.cardNumber}/>
                 </div>
               </div>

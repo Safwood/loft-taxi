@@ -29,16 +29,16 @@ export const RegistrationForm: React.FC = () => {
   }
 
   return (
-    <div  className="Form-container">
+    <div  className="RegistrationForm__container">
       <Formik
       initialValues = {initialValues}
       onSubmit={onSubmit}
       validationSchema={registrationSchema}>
 
       {({errors, values, handleBlur, handleChange}) => (
-      <Form className="Form">
-        <h2 className="Form__heading">Регистрация</h2>
-        <div className="Form__content">
+      <Form className="RegistrationForm">
+        <h2 className="RegistrationForm__heading">Регистрация</h2>
+        <div className="RegistrationForm__content">
           <div className="Auth_error">
               {error
               ? <ErrorNotification error={error}/>
@@ -64,8 +64,8 @@ export const RegistrationForm: React.FC = () => {
             ? true 
             : false} 
             value={"Зарегистрироваться"} />
-          <div className="Form__new-user">
-            <p className="Form__new-user-text">Уже зарегистрированы?</p>
+          <div className="RegistrationForm__registered">
+            <p className="RegistrationForm__text">Уже зарегистрированы?</p>
             <AppLink link={"/"} text={"Войти"}/>
           </div>
         </div>

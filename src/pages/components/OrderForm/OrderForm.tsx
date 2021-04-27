@@ -31,17 +31,17 @@ export const OrderForm: React.FC = () => {
         ? 
         <NewOrderNotification/>
         : 
-        <div className="Form-container Form-container--order-form">
+        <div className="OrderForm__container">
           <Formik
             initialValues = {initialValues}
             onSubmit={onSubmit}
             validationSchema={orderSchema}
             >
             {props => (
-              <Form className="Form Form--order-form Order">
-              <div className="Order-addresses">
-                <div className="Order-addresses__address Order-addresses__address--from">
-                  <select { ...props.getFieldProps("address1")} name="address1" className="Order-addresses__input">
+              <Form className="OrderForm__form">
+              <div className="OrderForm__addresses">
+                <div className="OrderForm__address OrderForm__address--from">
+                  <select { ...props.getFieldProps("address1")} name="address1" className="OrderForm__input">
                     <option></option>
                     { addressList 
                       && addressList.filter(item => item !== props.values.address2).map(item => {
@@ -50,8 +50,8 @@ export const OrderForm: React.FC = () => {
                     } 
                   </select>
                 </div>
-                <div className="Order-addresses__address Order-addresses__address--to">
-                  <select { ...props.getFieldProps("address2")} name="address2" className="Order-addresses__input">
+                <div className="OrderForm__address OrderForm__address--to">
+                  <select { ...props.getFieldProps("address2")} name="address2" className="OrderForm__input">
                   <option></option>
                   { addressList 
                     && addressList.filter(item => item!==props.values.address1).map (item => {
@@ -62,9 +62,9 @@ export const OrderForm: React.FC = () => {
                 </div>
               </div>
               <OrderCars />
-              <div className="Order-button">
-                <ErrorMessage name="address1" component="div" className="Form__error"/>
-                <ErrorMessage name="address2" component="div" className="Form__error"/>
+              <div className="OrderForm__button">
+                <ErrorMessage name="address1" component="div" className="OrderForm__error"/>
+                <ErrorMessage name="address2" component="div" className="OrderForm__error"/>
                 <SubmitButton  disabled={
                   !props.values.address1 && 
                   !props.values.address2 && 

@@ -7,15 +7,24 @@
   padding: 50px 150px;
 }
 
-.ProfileInfo {
+.Profile__info {
   margin-bottom: 20px;
 }
 
-.ProfileLine {
+.Profile__line {
   display: flex;
   justify-content: space-between;
 }
 
-.ProfileTitle {
-  margin-bottom: 20px;
+.Profile__heading {
+  margin-bottom: 0;
+  font-size: 36px;
+}
+
+.Profile__title {
+  font-weight: bold;
+  font-size: 19px;
+}
+.Profile__value {
+  font-size: 19px;
 }

@@ -1,38 +1,44 @@
-.RegistrationForm__container {
+.Login {
   position: relative;
   border-radius: 20px;
-  min-height: 541px;
-  width: 554px;
+  min-height: 501px;
+  width: 536px;
   background-color: #fff;
-  padding: 29px 98px;
+  padding: 56px 90px;
 }
 
-
-.RegistrationForm {
+.Login__form {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.RegistrationForm__heading {
+.Login__heading {
   text-align: center;
   font-size: 36px;
   margin: 0 0 20px;
 }
 
-.RegistrationForm__content {
+.Login__content {
   display: flex;
   flex-direction: column;
 }
 
-.RegistrationForm__registered {
+.Login__inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.Login__new {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 16px;
 }
 
-.RegistrationForm__text {
+.Login__text {
   color: #828282;
   margin: 0 5px 0 0;
 }

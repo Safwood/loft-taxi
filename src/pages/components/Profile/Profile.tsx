@@ -1,10 +1,8 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from '../../../redux/rootReducer'
-import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import './Profile.css';
-import Typography from '@material-ui/core/Typography';
 import AppButton from '../Button/Button'
 
 export const Profile: React.FC<{}> = () => {
@@ -39,28 +37,28 @@ export const Profile: React.FC<{}> = () => {
   return (
     <>
     <Container maxWidth='sm'>
-      <Grid className="Profile">
-        <Typography variant="h3"  className="ProfileTitle">Профиль</Typography>
-       <Grid className="ProfileInfo">
-          <Grid className="ProfileLine">
-            <Typography variant="body1"><b>ФИО:</b></Typography>
-            <Typography variant="body1">{userName}</Typography>
-          </Grid>
-          <Grid className="ProfileLine">
-            <Typography variant="body1"><b>Номер карты:</b></Typography>
-            <Typography variant="body1">{disguisedNumber}</Typography>
-          </Grid>
-         <Grid className="ProfileLine">
-            <Typography variant="body1"><b>Срок действия:</b></Typography>
-            <Typography variant="body1">{expiryDate}</Typography>
-         </Grid>
-          <Grid className="ProfileLine">
-            <Typography variant="body1"><b>CVC:</b></Typography>
-            <Typography variant="body1">***</Typography>
-          </Grid>
-       </Grid >
+      <div className="Profile">
+        <h3 className="Profile__heading">Профиль</h3>
+       <div className="Profile__info">
+          <div className="Profile__line">
+            <p className="Profile__title">ФИО:</p>
+            <p className="Profile__value">{userName}</p>
+          </div>
+          <div className="Profile__line">
+            <p className="Profile__title">Номер карты:</p>
+            <p className="Profile__value">{disguisedNumber}</p>
+          </div>
+         <div className="Profile__line">
+            <p className="Profile__title">Срок действия:</p>
+            <p className="Profile__value">{expiryDate}</p>
+         </div>
+          <div className="Profile__line">
+            <p className="Profile__title">CVC:</p>
+            <p className="Profile__value">***</p>
+          </div>
+       </div >
         <AppButton text={buttonText} onClick={handleClick}/>
-      </Grid>
+      </div>
     </Container>
     </>
   )
