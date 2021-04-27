@@ -1,5 +1,5 @@
 
-export const serverGetCard = async (token) => {
+export const serverGetCard = async (token: string) => {
   return fetch(
     `https://loft-taxi.glitch.me/card?token=${token}`, {
       method: "GET",
