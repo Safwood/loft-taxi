@@ -9,7 +9,7 @@ import { OrderFormValuesType } from '../../../types'
 import SubmitButton from '../SubmitButton/SubmitButton';
 import { orderSchema } from './orderSchema'
 
-export const OrderForm: React.FC = () => {
+function OrderForm() {
   const addressList = useSelector((state: RootState) => state.address.addressList);
   const isRouteSaved = useSelector((state: RootState) => state.route.isRouteSaved);
   const dispatch = useDispatch();
@@ -86,4 +86,4 @@ export const OrderForm: React.FC = () => {
   )
 }
 
-export default OrderForm;
+export default React.memo(OrderForm);

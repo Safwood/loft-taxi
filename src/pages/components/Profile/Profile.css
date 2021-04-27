@@ -1,10 +1,9 @@
 .Profile {
   background-color: #fff;
-  width: 100%;
   height: 474px;
   margin-top: 17px;
   border-radius: 4px;
-  padding: 50px 150px;
+  padding: 37px 150px;
 }
 
 .Profile__info {
@@ -17,7 +16,7 @@
 }
 
 .Profile__heading {
-  margin-bottom: 0;
+  margin: 0;
   font-size: 36px;
 }
 

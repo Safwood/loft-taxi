@@ -11,7 +11,7 @@ import SubmitButton from '../SubmitButton/SubmitButton';
 import { loginSchema } from './loginSchema'
 import './LoginForm.css'
 
-export const LoginForm: React.FC<{}> = () => {
+function LoginForm() {
   const error = useSelector((state: RootState) => state.auth.error);
   const isPreloaderOn = useSelector((state: RootState) => state.loader.isPreloaderOn);
   const dispatch = useDispatch();
@@ -74,4 +74,4 @@ export const LoginForm: React.FC<{}> = () => {
   )
 }
 
-export default LoginForm;
+export default React.memo(LoginForm);

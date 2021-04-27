@@ -9,7 +9,7 @@ import './MapPage.css';
 import { RootState } from '../../redux/rootReducer'
 
 
-const MapPage: React.FC = () => {
+function MapPage() {
   const mapContainer = useRef<HTMLInputElement>(null);
   const isRouteSaved = useSelector((state: RootState) => state.route.isRouteSaved)
   const isCardSaved = useSelector((state: RootState) => state.card.isCardSaved)
@@ -67,4 +67,4 @@ const MapPage: React.FC = () => {
   )
 }
 
-export default MapPage;
+export default React.memo(MapPage);

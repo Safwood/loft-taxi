@@ -11,7 +11,7 @@ import { AuthFormValuesType } from '../../../types'
 import SubmitButton from '../SubmitButton/SubmitButton'
 import { registrationSchema } from './registrationSchema'
 
-export const RegistrationForm: React.FC = () => {
+function RegistrationForm() {
   const error = useSelector((state: RootState) => state.auth.error)
   const isPreloaderOn = useSelector((state: RootState) => state.loader.isPreloaderOn)
   const dispatch = useDispatch();
@@ -76,4 +76,4 @@ export const RegistrationForm: React.FC = () => {
   )
 }
 
-export default RegistrationForm;
+export default React.memo(RegistrationForm);

@@ -11,7 +11,7 @@ import { profileSchema } from './profileSchema'
 
 let a: number = 0;
 
-export const ProfileForm: React.FC<{}> = () => {
+function ProfileForm() {
   const token = useSelector((state: RootState) => state.auth.token);
   const dispatch = useDispatch();
   const saveCard = useCallback((cardNumber, expiryDate, cardName, cvc) => dispatch({type: "card/SAVE_CARD", payload: { cardNumber, expiryDate, cardName, cvc, token }}), [dispatch, token])
@@ -81,4 +81,4 @@ export const ProfileForm: React.FC<{}> = () => {
   )
 }
 
-export default ProfileForm;
+export default React.memo(ProfileForm);

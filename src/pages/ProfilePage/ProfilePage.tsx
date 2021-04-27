@@ -5,7 +5,7 @@ import ProfileForm from "../components/ProfileForm/ProfileForm";
 import { useSelector } from "react-redux"
 import { RootState } from '../../redux/rootReducer'
 
-export const ProfilePage: React.FC<{}> = () => {
+function ProfilePage() {
   const isCardUpdating = useSelector((state: RootState) => state.card.isCardUpdating);
   const isCardSaved = useSelector((state: RootState) => state.card.isCardSaved);
   
@@ -25,4 +25,4 @@ export const ProfilePage: React.FC<{}> = () => {
   )
 }
 
-export default ProfilePage;
+export default React.memo(ProfilePage);

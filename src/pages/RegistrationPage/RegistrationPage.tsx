@@ -7,7 +7,7 @@ import "./RegistrationPage.css";
 import { RootState } from '../../redux/rootReducer'
 
 
-const RegistrationPage: React.FC<{}> = () => {
+function RegistrationPage() {
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   
     return (
@@ -28,4 +28,4 @@ const RegistrationPage: React.FC<{}> = () => {
     )
 }
 
-export default RegistrationPage;
+export default React.memo(RegistrationPage);

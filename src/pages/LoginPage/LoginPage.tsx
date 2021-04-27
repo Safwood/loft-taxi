@@ -6,7 +6,7 @@ import LoginNotification from "../components/LoginNotification/LoginNotification
 import "./LoginPage.css";
 import { RootState } from '../../redux/rootReducer'
 
-const LoginPage: React.FC<{}> = () => {
+function LoginPage() {
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn)
   
     return (
@@ -27,4 +27,4 @@ const LoginPage: React.FC<{}> = () => {
     )
 }
 
-export default LoginPage;
+export default React.memo(LoginPage);
