@@ -4,13 +4,28 @@ import car2 from '../../../../images/car2.png';
 import car3 from '../../../../images/car3.png';
 import './OrderCars.css';
 
-const OrderCars: React.FC = () => {
+type OrderCarsPropsType = {
+  onChange: (value: string) => void
+  checked: string
+}
+
+function OrderCars ({onChange, checked}: OrderCarsPropsType) {
+
+  const handleChange = (event: any) => {
+    onChange(event.target.value);
+  };
      
   return (
     <div className="Order-cars">
       <ul className="Order-cars__list">
         <li className="Order-cars__item">
-          <input className="Order-cars__item-label" name="car" type="radio" defaultChecked id="car1"/>
+          <input 
+          className="Order-cars__item-label" 
+          name="car" 
+          type="radio" 
+          checked={checked === 'a'}
+          onChange={handleChange}
+          value="a"/>
           <label htmlFor="car1">
             <h3 className="Order-cars__heading">Стандарт</h3>
             <p className="Order-cars__cost">стоимость</p>
@@ -19,7 +34,14 @@ const OrderCars: React.FC = () => {
           </label>
         </li>
         <li className="Order-cars__item">
-          <input className="Order-cars__item-label" name="car" type="radio" id="car2"/>
+          <input 
+          className="Order-cars__item-label" 
+          name="car" 
+          type="radio" 
+          id="car2"
+          checked={checked === 'b'}
+          onChange={handleChange}
+          value="b"/>
           <label htmlFor="car2">
             <h3 className="Order-cars__heading">Премиум</h3>
             <p className="Order-cars__cost">стоимость</p>
@@ -28,7 +50,14 @@ const OrderCars: React.FC = () => {
           </label>
         </li>
         <li className="Order-cars__item">
-          <input className="Order-cars__item-label" name="car" type="radio" id="car3"/>
+          <input 
+          className="Order-cars__item-label" 
+          name="car" 
+          type="radio" 
+          id="car3"
+          checked={checked === 'c'}
+          onChange={handleChange}
+          value="c"/>
           <label htmlFor="car3">
             <h3 className="Order-cars__heading">Бизнес</h3>
             <p className="Order-cars__cost">стоимость</p>

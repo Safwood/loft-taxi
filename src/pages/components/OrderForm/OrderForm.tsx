@@ -14,7 +14,11 @@ export const OrderForm: React.FC = () => {
   const isRouteSaved = useSelector((state: RootState) => state.route.isRouteSaved);
   const dispatch = useDispatch();
   const getRoute = useCallback((address1, address2) => dispatch({type: "route/GET_ROUTE", payload: {address1, address2}}), [dispatch])
+  const [selectedValue, setSelectedValue] = React.useState('a');
 
+  const handleChange = (value: string) => {
+    setSelectedValue(value);
+  };
   const onSubmit = (values: OrderFormValuesType) => {
     getRoute(values.address1, values.address2);
   }
@@ -61,7 +65,7 @@ export const OrderForm: React.FC = () => {
                   </select>
                 </div>
               </div>
-              <OrderCars />
+              <OrderCars onChange={handleChange} checked={selectedValue}/>
               <div className="OrderForm__button">
                 <ErrorMessage name="address1" component="div" className="OrderForm__error"/>
                 <ErrorMessage name="address2" component="div" className="OrderForm__error"/>

@@ -19,7 +19,7 @@ export const ProfileForm: React.FC<{}> = () => {
   const addSpace = (event: any): void => {
     if (a===4) {
       a=0;
-      event.target.value+=" ";
+      (event.target as HTMLInputElement).value+=" ";
     } 
     a++;
   }
