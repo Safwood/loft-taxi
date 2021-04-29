@@ -7,5 +7,5 @@ export const serverAddresses = async () => {
         "Content-Type": "application/json",
       },
     }
-    ).then(res => res.json())
+    ).then((value: Response) => value.json())
 }

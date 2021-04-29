@@ -6,6 +6,6 @@ export const serverRoute = async (address1: string, address2: string) => {
         "Content-Type": "application/json",
       },
     }
-    ).then(res => res.json())
+    ).then((value: Response) => value.json())
 }
 

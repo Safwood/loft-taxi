@@ -12,5 +12,5 @@ export const serverRegister = async (email: string, password: string, name: stri
         "Content-Type": "application/json",
       },
     }
-    ).then(res => res.json())
+    ).then((value: Response) => value.json())
 }

@@ -1,14 +1,3 @@
-import * as AddressActions from "./redux/addresses/addressAction";
-import * as AuthActions from "./redux/auth/authenticateAction";
-import * as LoginActions from "./redux/auth/logInAction";
-import * as LogoutActions from "./redux/auth/logOutAction";
-import * as CardActions from "./redux/card/cardAction";
-import * as PreloaderActions from "./redux/preloader/preloaderAction";
-import * as RegistrationActions from "./redux/registration/registerAction";
-import * as RouteActions from "./redux/route/routeAction";
-
-// type ActionTypes = AddressActions |
-
 export type AuthFormValuesType = {
   email: string
   password: string

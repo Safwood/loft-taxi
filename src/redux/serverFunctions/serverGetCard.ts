@@ -7,6 +7,6 @@ export const serverGetCard = async (token: string) => {
         "Content-Type": "application/json",
       },
     }
-    ).then(res => res.json())
+    ).then((value: Response) => value.json())
 }
 
