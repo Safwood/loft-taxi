@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/static/css/main.d60e7180.chunk.css",
-    "main.js": "/static/js/main.ed4b592a.chunk.js",
-    "main.js.map": "/static/js/main.ed4b592a.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.8ceda820.js",
-    "runtime-main.js.map": "/static/js/runtime-main.8ceda820.js.map",
-    "static/css/2.c984a218.chunk.css": "/static/css/2.c984a218.chunk.css",
-    "static/js/2.24070e64.chunk.js": "/static/js/2.24070e64.chunk.js",
-    "static/js/2.24070e64.chunk.js.map": "/static/js/2.24070e64.chunk.js.map",
-    "static/js/3.d413b4c4.chunk.js": "/static/js/3.d413b4c4.chunk.js",
-    "static/js/3.d413b4c4.chunk.js.map": "/static/js/3.d413b4c4.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/2.c984a218.chunk.css.map": "/static/css/2.c984a218.chunk.css.map",
-    "static/css/main.d60e7180.chunk.css.map": "/static/css/main.d60e7180.chunk.css.map",
-    "static/js/2.24070e64.chunk.js.LICENSE.txt": "/static/js/2.24070e64.chunk.js.LICENSE.txt",
-    "static/media/Logo2.b83f8458.svg": "/static/media/Logo2.b83f8458.svg",
-    "static/media/logo.4a665a7a.svg": "/static/media/logo.4a665a7a.svg",
-    "static/media/map.2d6d8e3f.png": "/static/media/map.2d6d8e3f.png",
-    "static/media/index.css": "/static/media/roboto-vietnamese-400-normal.52cebac0.woff2"
+    "main.css": "/loft-taxi/static/css/main.a838b15f.chunk.css",
+    "main.js": "/loft-taxi/static/js/main.3b325ba4.chunk.js",
+    "main.js.map": "/loft-taxi/static/js/main.3b325ba4.chunk.js.map",
+    "runtime-main.js": "/loft-taxi/static/js/runtime-main.abc458d6.js",
+    "runtime-main.js.map": "/loft-taxi/static/js/runtime-main.abc458d6.js.map",
+    "static/css/2.c1cf0afd.chunk.css": "/loft-taxi/static/css/2.c1cf0afd.chunk.css",
+    "static/js/2.24070e64.chunk.js": "/loft-taxi/static/js/2.24070e64.chunk.js",
+    "static/js/2.24070e64.chunk.js.map": "/loft-taxi/static/js/2.24070e64.chunk.js.map",
+    "static/js/3.d413b4c4.chunk.js": "/loft-taxi/static/js/3.d413b4c4.chunk.js",
+    "static/js/3.d413b4c4.chunk.js.map": "/loft-taxi/static/js/3.d413b4c4.chunk.js.map",
+    "index.html": "/loft-taxi/index.html",
+    "static/css/2.c1cf0afd.chunk.css.map": "/loft-taxi/static/css/2.c1cf0afd.chunk.css.map",
+    "static/css/main.a838b15f.chunk.css.map": "/loft-taxi/static/css/main.a838b15f.chunk.css.map",
+    "static/js/2.24070e64.chunk.js.LICENSE.txt": "/loft-taxi/static/js/2.24070e64.chunk.js.LICENSE.txt",
+    "static/media/Logo2.b83f8458.svg": "/loft-taxi/static/media/Logo2.b83f8458.svg",
+    "static/media/logo.4a665a7a.svg": "/loft-taxi/static/media/logo.4a665a7a.svg",
+    "static/media/map.2d6d8e3f.png": "/loft-taxi/static/media/map.2d6d8e3f.png",
+    "static/media/index.css": "/loft-taxi/static/media/roboto-vietnamese-400-normal.52cebac0.woff2"
   },
   "entrypoints": [
-    "static/js/runtime-main.8ceda820.js",
-    "static/css/2.c984a218.chunk.css",
+    "static/js/runtime-main.abc458d6.js",
+    "static/css/2.c1cf0afd.chunk.css",
     "static/js/2.24070e64.chunk.js",
-    "static/css/main.d60e7180.chunk.css",
-    "static/js/main.ed4b592a.chunk.js"
+    "static/css/main.a838b15f.chunk.css",
+    "static/js/main.3b325ba4.chunk.js"
   ]
 }
