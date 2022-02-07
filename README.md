@@ -3,3 +3,5 @@
 
 ### В приложение  использовались:
 Redux, Redux-Saga, TS
+
+Тестовые пароль и логин email@example.com / password
